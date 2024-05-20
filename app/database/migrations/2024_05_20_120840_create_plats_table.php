@@ -10,7 +10,8 @@ class CreatePlatsTable extends Migration
         Schema::create('plats', function (Blueprint $table) {
             $table->id('idPlat');
             $table->string('imagePlat')->nullable();
-            $table->foreignId('idCategorie')->constrained('categories');
+            $table->unsignedBigInteger('idCategorie'); // Changed data type
+            $table->foreign('idCategorie')->references('idCategorie')->on('categories')->onDelete('cascade');            
             $table->timestamps();
         });
     }

@@ -10,8 +10,10 @@ class CreatePaiementsTable extends Migration
         Schema::create('paiements', function (Blueprint $table) {
             $table->id('idPaiement');
             $table->string('modePaiement');
-            $table->foreignId('idClient')->constrained('clients');
-            $table->foreignId('numeroFacture')->unique()->constrained('factures');
+            $table->unsignedBigInteger('idClient');
+            $table->foreign('idClient')->references('idClient')->on('clients')->onDelete('cascade');    
+            $table->unsignedBigInteger('numeroFacture');
+            $table->foreign('numeroFacture')->references('numeroFacture')->on('factures')->onDelete('cascade');         
             $table->timestamps();
         });
     }

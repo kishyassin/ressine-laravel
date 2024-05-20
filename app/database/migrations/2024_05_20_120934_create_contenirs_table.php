@@ -8,8 +8,14 @@ class CreateContenirsTable extends Migration
     public function up()
     {
         Schema::create('contenir', function (Blueprint $table) {
-            $table->foreignId('idPlat')->constrained('plats');
-            $table->foreignId('idCommande')->constrained('commandes');
+
+                                    
+            $table->unsignedBigInteger('idPlat');
+            $table->foreign('idPlat')->references('idPlat')->on('plats')->onDelete('cascade');         
+                                                
+            $table->unsignedBigInteger('idCommande');
+            $table->foreign('idCommande')->references('idCommande')->on('commandes')->onDelete('cascade');         
+            
             $table->primary(['idPlat', 'idCommande']);
             $table->timestamps();
         });

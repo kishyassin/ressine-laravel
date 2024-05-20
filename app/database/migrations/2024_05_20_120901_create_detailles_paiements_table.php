@@ -10,7 +10,10 @@ class CreateDetaillesPaiementsTable extends Migration
         Schema::create('detailles_paiements', function (Blueprint $table) {
             $table->id('idMp');
             $table->string('numeroCarte', 19);
-            $table->foreignId('idPaiement')->unique()->constrained('paiements');
+              
+            $table->unsignedBigInteger('idPaiement');
+            $table->foreign('idPaiement')->references('idPaiement')->on('paiements')->onDelete('cascade');         
+            
             $table->timestamps();
         });
     }

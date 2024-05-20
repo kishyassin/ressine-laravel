@@ -10,10 +10,21 @@ class CreateCommandesTable extends Migration
         Schema::create('commandes', function (Blueprint $table) {
             $table->id('idCommande');
             $table->string('etat');
-            $table->foreignId('idDate')->constrained('order_dates');
-            $table->foreignId('numeroFacture')->constrained('factures');
-            $table->foreignId('idLivreur')->constrained('livreurs');
-            $table->foreignId('idClient')->constrained('clients');
+
+
+                          
+            $table->unsignedBigInteger('idDate');
+            $table->foreign('idDate')->references('idDate')->on('order_dates')->onDelete('cascade');         
+            
+            $table->unsignedBigInteger('numeroFacture');
+            $table->foreign('numeroFacture')->references('numeroFacture')->on('factures')->onDelete('cascade');         
+                        
+            $table->unsignedBigInteger('idLivreur');
+            $table->foreign('idLivreur')->references('idLivreur')->on('livreurs')->onDelete('cascade');         
+                                    
+            $table->unsignedBigInteger('idClient');
+            $table->foreign('idClient')->references('idClient')->on('clients')->onDelete('cascade');         
+            
             $table->timestamps();
         });
     }

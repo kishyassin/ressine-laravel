@@ -3,14 +3,24 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReserverTable extends Migration
+class CreateReserversTable extends Migration
 {
     public function up()
     {
-        Schema::create('reserver', function (Blueprint $table) {
-            $table->foreignId('idClient')->constrained('clients');
-            $table->foreignId('numeroTable')->constrained('tables');
-            $table->foreignId('idDate')->constrained('order_dates');
+        Schema::create('reservers', function (Blueprint $table) {
+
+
+            $table->unsignedBigInteger('idClient');
+            $table->foreign('idClient')->references('idClient')->on('clients')->onDelete('cascade');         
+        
+            $table->unsignedBigInteger('numeroTable');
+            $table->foreign('numeroTable')->references('numeroTable')->on('tables')->onDelete('cascade');         
+        
+                    
+            $table->unsignedBigInteger('idDate');
+            $table->foreign('idDate')->references('idDate')->on('order_dates')->onDelete('cascade');         
+        
+            
             $table->string('repa');
             $table->primary(['idClient', 'numeroTable', 'idDate']);
             $table->timestamps();

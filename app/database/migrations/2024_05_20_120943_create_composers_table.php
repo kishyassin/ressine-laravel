@@ -3,13 +3,20 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreateComposerTable extends Migration
+    class CreateComposersTable extends Migration
     {
         public function up()
         {
-            Schema::create('composer', function (Blueprint $table) {
-                $table->foreignId('idPlat')->constrained('plats');
-                $table->foreignId('idIngredient')->constrained('ingredients');
+            Schema::create('composers', function (Blueprint $table) {
+
+
+                $table->unsignedBigInteger('idPlat');
+                $table->foreign('idPlat')->references('idPlat')->on('plats')->onDelete('cascade');         
+            
+                $table->unsignedBigInteger('idIngredient');
+                $table->foreign('idIngredient')->references('idIngredient')->on('ingredients')->onDelete('cascade');         
+            
+                
                 $table->primary(['idPlat', 'idIngredient']);
                 $table->timestamps();
             });

@@ -24,6 +24,9 @@ class CreateCommandesTable extends Migration
                                     
             $table->unsignedBigInteger('idClient');
             $table->foreign('idClient')->references('idClient')->on('clients')->onDelete('cascade');         
+                                                
+            $table->unsignedBigInteger('idPlat');
+            $table->foreign('idPlat')->references('idPlat')->on('plats')->onDelete('cascade');         
             
             $table->timestamps();
         });

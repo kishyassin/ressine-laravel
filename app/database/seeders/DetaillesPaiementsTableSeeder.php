@@ -2,16 +2,13 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\DetaillesPaiement;
 
-class DetaillesPaiementsTableSeeder extends Seeder
+class DetailsPaiementsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        //
+        DetaillesPaiement::factory(10)->create();
     }
 }

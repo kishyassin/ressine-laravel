@@ -11,7 +11,7 @@ class PlatFactory extends Factory
         return [
             'imagePlat' => fake()->imageUrl(),
             'idCategorie' =>fake()->numberBetween(1,3),
-            'designationPlat'=>fake()->unique()->text(),
+            'designationPlat' => fake()->unique()->words($nb = rand(3, 4), $asText = true),
             'descriptionPlat'=>fake()->paragraph(),
             'prixUnitaire'=>fake()->numberBetween(1, 99),
             'etoiles'=>fake()->numberBetween(1, 5),

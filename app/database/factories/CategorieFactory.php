@@ -11,10 +11,7 @@ class CategorieFactory extends Factory
 
     public function definition()
     {
-        return [
-            'designation' => $this->faker->text(),
-            'description' => $this->faker->text(),
-        ];
+        return [];
     }
 
     // public function configure()

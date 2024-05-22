@@ -8,9 +8,5 @@ class CategoriesTableSeeder extends Seeder
 {
     public function run()
     {
-        // Create three categories with specific IDs
-        Categorie::factory()->create(['idCategorie' => 1]);
-        Categorie::factory()->create(['idCategorie' => 2]);
-        Categorie::factory()->create(['idCategorie' => 3]);
-    }
+        // Create three categories with specific IDs    }
 }

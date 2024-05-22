@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class testimoniale extends Model
+class Testimoniale extends Model
 {
-    use HasFactory;
+    public function clients()
+    {
+        return $this->belongsToMany(Client::class, 'ecrires', 'idTestimoniale', 'idClient')
+            ->withPivot('idDate')
+            ->withTimestamps();
+    }
 }

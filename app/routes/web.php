@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [PlatController::class, 'topThreePlats']);
-Route::get('/booking/{idPlat}', [ReserverController::class, 'bookingPage'])->name('booking');
+Route::get('/booking', [ReserverController::class, 'bookingPage'])->name('booking');

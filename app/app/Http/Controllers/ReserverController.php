@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class ReserverController extends Controller
 {
-    public function bookingPage($idPlat)
+    public function bookingPage()
     {
         return view("booking");
     }

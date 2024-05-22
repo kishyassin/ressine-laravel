@@ -137,10 +137,10 @@
 
 
         <!-- special offers start -->
-        <div class="container-fluid my-5 wow fadeInUp">
-            <div class="container-fluid">
-                <section id="tranding" class=" container-fluid">
-                    <div class="container-fluid">
+        <div class="container-fluid mt-5 wow fadeInUp p-0 m-0">
+            <div class="container-fluid p-0 m-0">
+                <section id="tranding" class=" container-fluid p-0 m-0">
+                    <div class="container-fluid p-0 m-0">
                         <div class="text-center" data-wow-delay="0.1s">
                             <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
                             <h1 class="mb-2">Trending food</h1>

@@ -8,7 +8,9 @@ class IngredientFactory extends Factory
     public function definition(): array
     {
         return [
-            'idIngredient' => fake()->unique()->numberBetween(1, 1000)
+            'idIngredient' => fake()->unique()->numberBetween(1, 1000),
+            'libelle'=>fake()->unique()->text(),
+            'quantite'=>fake()->randomFloat()
         ];
     }
 }

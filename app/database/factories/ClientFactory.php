@@ -17,6 +17,7 @@ class ClientFactory extends Factory
     {
         return [
             'nom' => fake()->unique()->lastName,
+            'imageClient' => fake()->imageUrl(),
             'prenom' => fake()->unique()->firstName,
             'telephone' =>substr(fake()->phoneNumber(), 0, 15),
             'adresse' => fake()->unique()->address

@@ -8,5 +8,6 @@ class CategoriesTableSeeder extends Seeder
 {
     public function run()
     {
-        // Create three categories with specific IDs    }
+        // Create three categories with specific IDs    
+    }
 }

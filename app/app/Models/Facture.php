@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Facture extends Model
 {
+    protected $primaryKey = 'numeroFacture';
+
     public function orderDate()
     {
         return $this->belongsTo(OrderDate::class, 'idDate', 'idDate');

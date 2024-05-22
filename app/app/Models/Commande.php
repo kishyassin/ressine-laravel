@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commande extends Model
 {
+    protected $primaryKey = 'idCommande';
+
     public function orderDate()
     {
         return $this->belongsTo(OrderDate::class, 'idDate', 'idDate');

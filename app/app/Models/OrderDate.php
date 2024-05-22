@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderDate extends Model
 {
+    protected $primaryKey = 'idDate';
+
     public function factures()
     {
         return $this->hasMany(Facture::class, 'idDate', 'idDate');

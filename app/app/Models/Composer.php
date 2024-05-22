@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Composer extends Model
 {
+    
     protected $primaryKey = null;
     public $incrementing = false;
 

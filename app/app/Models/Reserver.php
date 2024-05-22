@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reserver extends Model
 {
+
+    protected $primaryKey = null;
+    public $incrementing = false;
     public function client()
     {
         return $this->belongsTo(Client::class, 'idClient', 'idClient');
@@ -23,6 +26,6 @@ class Reserver extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class, 'idCategorie', 'idCategorie');
+        return $this->belongsTo(Categorie::class, 'idCategorie', 'idCategorie');
     }
 }

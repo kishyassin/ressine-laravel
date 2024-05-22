@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CommandeController;
+use App\Http\Controllers\PlatController;
+use App\Http\Controllers\ReserverController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,5 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/test',[CommandeController::class,'topThreePlats']);
+Route::get('/', [PlatController::class, 'topThreePlats']);
+Route::get('/booking/{idPlat}', [ReserverController::class, 'bookingPage'])->name('booking');

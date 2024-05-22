@@ -14,9 +14,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -78,53 +76,20 @@
         <!-- hero start  -->
         <div class="container-xxl col-12 d-flex overflow-hidden slider">
             <div class="list">
-                <div class="col-12 py-5 bg-dark hero-header item" id="slide-1">
+
+                @foreach ($topThreePlats as $plat)
+                <div class="col-12 py-5 bg-dark hero-header item" id="slide-{{ $plat->idPlat }}" style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ $plat->imagePlat }}');">
                     <div class="container my-5 py-2">
                         <div class="row justify-content-center align-items-center g-5">
                             <div class="col-lg-7 text-center wow fadeInUp">
-                                <h1 class="display-3 text-white ">Order. Eat. Enjoy: <br> <span
-                                        class=" text-primary">Ressine</span></h1>
-                                <p class="text-white  mx-4 mb-4 pb-2">Indulge in a culinary adventure with Ressine,
-                                    where tantalizing flavors meet seamless convenience. Order, savor, and delight in
-                                    every bite, making dining an experience to remember.</p>
-                                <a href="booking.php"
-                                    class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full">Book A Table</a>
+                                <h1 class="display-3 text-white">{{ $plat->categoryName }}<br> <span class="text-primary">{{ $plat->designationPlat }}</span></h1>
+                                <p class="text-white mx-4 mb-4 pb-2">{{ $plat->descriptionPlat }}</p>
+                                <a href="{{ route('booking', ['idPlat' => $plat->idPlat]) }}" class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link">Book A Table</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-12 py-5 bg-dark hero-header item" id="slide-1">
-                    <div class="container my-5 py-2">
-                        <div class="row justify-content-center align-items-center g-5">
-                            <div class="col-lg-7 text-center">
-                                <h1 class="display-3 text-white ">Order. Eat. Enjoy: <br> <span
-                                        class=" text-primary">Ressine</span></h1>
-                                <p class="text-white  mx-4 mb-4 pb-2">Indulge in a culinary adventure with Ressine,
-                                    where tantalizing flavors meet seamless convenience. Order, savor, and delight in
-                                    every bite, making dining an experience to remember.</p>
-                                <a href="booking.php"
-                                    class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full">Book A Table</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 py-5 bg-dark hero-header item" id="slide-1">
-                    <div class="container my-5 py-2">
-                        <div class="row justify-content-center align-items-center g-5">
-                            <div class="col-lg-7 text-center">
-                                <h1 class="display-3 text-white ">Order. Eat. Enjoy: <br> <span
-                                        class=" text-primary">Ressine</span></h1>
-                                <p class="text-white  mx-4 mb-4 pb-2">Indulge in a culinary adventure with Ressine,
-                                    where tantalizing flavors meet seamless convenience. Order, savor, and delight in
-                                    every bite, making dining an experience to remember.</p>
-                                <a href="booking.php"
-                                    class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full">Book A Table</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             <div class="buttons">
@@ -170,12 +135,10 @@
                                             </h5>
                                             <div class="w-100 row">
                                                 <div class="col-6 p-1">
-                                                    <button
-                                                        class="w-100  p-2 rounded-full btn btn-outline-primary">Explore</button>
+                                                    <button class="w-100  p-2 rounded-full btn btn-outline-primary">Explore</button>
                                                 </div>
                                                 <div class="col-6 p-1">
-                                                    <button class="w-100  p-2 rounded-full btn btn-primary ">Order <i
-                                                            class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                                                    <button class="w-100  p-2 rounded-full btn btn-primary ">Order <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -382,9 +345,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date3" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" id="datetime"
-                                            placeholder="Date & Time" data-target="#date3"
-                                            data-toggle="datetimepicker" />
+                                        <input type="text" class="form-control datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
                                         <label for="datetime">Date & Time</label>
                                     </div>
                                 </div>
@@ -400,8 +361,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Special Request" id="message"
-                                            style="height: 100px"></textarea>
+                                        <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
                                         <label for="message">Special Request</label>
                                     </div>
                                 </div>
@@ -429,8 +389,7 @@
                         <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
                             diam</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/client1.png"
-                                style="width: 50px; height: 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/client1.png" style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h5 class="mb-1">Client Name</h5>
                                 <small>Profession</small>
@@ -442,8 +401,7 @@
                         <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
                             diam</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/client2.png"
-                                style="width: 50px; height: 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/client2.png" style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h5 class="mb-1">Client Name</h5>
                                 <small>Profession</small>
@@ -455,8 +413,7 @@
                         <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
                             diam</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/client3.jpg"
-                                style="width: 50px; height: 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/client3.jpg" style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h5 class="mb-1">Client Name</h5>
                                 <small>Profession</small>
@@ -468,8 +425,7 @@
                         <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
                             diam</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/client4.webp"
-                                style="width: 50px; height: 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/client4.webp" style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h5 class="mb-1">Client Name</h5>
                                 <small>Profession</small>
@@ -522,10 +478,8 @@
                         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
                         <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
                         <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text"
-                                placeholder="Your email">
-                            <button type="button"
-                                class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                            <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                         </div>
                     </div>
                 </div>

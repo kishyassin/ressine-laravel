@@ -77,7 +77,7 @@
         <div class="container-xxl col-12 d-flex overflow-hidden slider">
             <div class="list">
 
-                @foreach ($topThreePlats as $plat)
+                @foreach ($topPlatsByCategory as $plat)
                 <div class="col-12 py-5 bg-dark hero-header item" id="slide-{{ $plat->idPlat }}" style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ $plat->imagePlat }}');">
                     <div class="container my-5 py-2">
                         <div class="row justify-content-center align-items-center g-5">

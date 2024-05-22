@@ -15,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [PlatController::class, 'topThreePlats']);
+// Route::get('/', [PlatController::class, 'topThreePlats']);
+Route::get('/', [PlatController::class, 'topPlatsByCategory']);
+
 Route::get('/booking/{idPlat}', [ReserverController::class, 'bookingPage'])->name('booking');

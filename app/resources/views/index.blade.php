@@ -84,7 +84,7 @@
                             <div class="col-lg-7 text-center wow fadeInUp">
                                 <h2 class="display-5 text-white">{{ $plat->categoryName }}<br> <span class="text-primary">{{ $plat->designationPlat }}</span></h2>
                                 <p class="text-white mx-4 mb-4 pb-2">{{ $plat->descriptionPlat }}</p>
-                                <a href="{{ route('booking', ['idPlat' => $plat->idPlat]) }}" class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link">Book A Table</a>
+                                <a href="{{ route('booking', ['idPlat' => $plat->idPlat]) }}" class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link booking-link-of-slider">Book A Table</a>
                             </div>
                         </div>
                     </div>

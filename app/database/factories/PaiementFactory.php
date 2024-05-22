@@ -9,7 +9,7 @@ class PaiementFactory extends Factory
     public function definition(): array
     {
         return [
-            'modePaiement' => fake()->randomElement(['cash', 'card', 'online']),
+            'modePaiement' => fake()->randomElement(['Carte de crédit', 'Espèces', 'Chèque']),
             'idClient' => \App\Models\Client::factory(),
             'numeroFacture' => \App\Models\Facture::factory()
         ];

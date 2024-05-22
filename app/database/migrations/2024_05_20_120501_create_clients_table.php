@@ -11,7 +11,7 @@ class CreateClientsTable extends Migration
             $table->id('idClient');
             $table->string('nom');
             $table->string('prenom');
-            $table->string('telephone', 15);
+            $table->string('telephone', 20); 
             $table->string('adresse')->nullable();
             $table->timestamps();
         });

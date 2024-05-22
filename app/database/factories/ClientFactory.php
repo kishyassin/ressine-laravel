@@ -18,7 +18,7 @@ class ClientFactory extends Factory
         return [
             'nom' => fake()->unique()->lastName,
             'prenom' => fake()->unique()->firstName,
-            'telephone' => fake()->unique()->phoneNumber,
+            'telephone' =>substr(fake()->phoneNumber(), 0, 15),
             'adresse' => fake()->unique()->address
         ];
     }

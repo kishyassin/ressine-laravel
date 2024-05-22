@@ -9,9 +9,8 @@ class FactureFactory extends Factory
     public function definition(): array
     {
         return [
-            'etat' => fake()->randomElement(['prepared', 'delivered', 'cancelled']),
+            'etat' => fake()->randomElement(['annulée', 'payée', 'impayée','en attente de paiement']),
             'idDate' => \App\Models\OrderDate::factory(),
-            'numeroFacture' => \App\Models\Facture::factory(),
         ];
     }
 }

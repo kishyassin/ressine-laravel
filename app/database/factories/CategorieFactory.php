@@ -2,16 +2,28 @@
 
 namespace Database\Factories;
 
+use App\Models\Categorie;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CategorieFactory extends Factory
 {
-    public function definition(): array
+    protected $model = Categorie::class;
+
+    public function definition()
     {
         return [
-            'designation' => fake()->unique()->word,
-            'description' => fake()->unique()->sentence
+            'designation' => $this->faker->text(),
+            'description' => $this->faker->text(),
         ];
     }
-}
 
+    // public function configure()
+    // {
+    //     return $this->afterCreating(function (Categorie $categorie) {
+    //         // Manually set the IDs for the specific records
+    //         if ($categorie->idCategorie === null) {
+    //             $categorie->idCategorie = fake()->randomElement([1, 2, 3]);
+    //         }
+    //     });
+    // }
+}

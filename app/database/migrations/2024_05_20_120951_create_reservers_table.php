@@ -21,7 +21,9 @@ class CreateReserversTable extends Migration
             $table->foreign('idDate')->references('idDate')->on('order_dates')->onDelete('cascade');         
         
             
-            $table->string('repa');
+            $table->unsignedBigInteger('idCategorie');
+            $table->foreign('idCategorie')->references('idCategorie')->on('categories')->onDelete('cascade');         
+        
             $table->primary(['idClient', 'numeroTable', 'idDate']);
             $table->timestamps();
         });

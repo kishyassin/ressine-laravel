@@ -12,7 +12,8 @@ class ReserverFactory extends Factory
             'idClient' => \App\Models\Client::factory(),
             'numeroTable' => \App\Models\Table::factory(),
             'idDate' => \App\Models\OrderDate::factory(),
-            'repa' => fake()->randomElement(['breakfast', 'lunch', 'dinner'])
+            'idCategorie' =>\App\Models\Categorie::factory(),
+
         ];
     }
 }

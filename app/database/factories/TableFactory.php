@@ -10,7 +10,7 @@ class TableFactory extends Factory
     {
         return [
             'numeroTable' => fake()->unique()->numberBetween(1, 100),
-            'nbPlaces' => fake()->numberBetween(1, 5)
+            'nbPlaces' => fake()->numberBetween(1,5)
         ];
     }
 }

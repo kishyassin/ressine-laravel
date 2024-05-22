@@ -10,6 +10,9 @@ class CreateLivreursTable extends Migration
         Schema::create('livreurs', function (Blueprint $table) {
             $table->id('idLivreur');
             $table->string('nom');
+            $table->string('prenom');
+            $table->string('email');
+            $table->string('telephone');
             $table->timestamps();
         });
     }

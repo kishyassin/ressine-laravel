@@ -10,7 +10,11 @@ class PlatFactory extends Factory
     {
         return [
             'imagePlat' => fake()->imageUrl(),
-            'idCategorie' => \App\Models\Categorie::factory() // Assumes Categorie Factory exists and is linked properly.
+            'idCategorie' =>fake()->numberBetween(1,3),
+            'designationPlat'=>fake()->unique()->text(),
+            'descriptionPlat'=>fake()->paragraph(),
+            'prixUnitaire'=>fake()->numberBetween(1, 99),
+            'etoiles'=>fake()->numberBetween(1, 5),
         ];
     }
 }

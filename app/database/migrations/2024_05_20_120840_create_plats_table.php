@@ -9,6 +9,10 @@ class CreatePlatsTable extends Migration
     {
         Schema::create('plats', function (Blueprint $table) {
             $table->id('idPlat');
+            $table->string('designationPlat')->nullable();
+            $table->text('descriptionPlat')->nullable();
+            $table->decimal('prixUnitaire', 10, 2); // Adjust precision and scale as needed
+            $table->unsignedTinyInteger('etoiles')->nullable();
             $table->string('imagePlat')->nullable();
             $table->unsignedBigInteger('idCategorie'); // Changed data type
             $table->foreign('idCategorie')->references('idCategorie')->on('categories')->onDelete('cascade');            

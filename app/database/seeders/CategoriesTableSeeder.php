@@ -1,17 +1,16 @@
 <?php
-
 namespace Database\Seeders;
-use \App\Models\Categorie;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
+use App\Models\Categorie;
 
 class CategoriesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        Categorie::factory(10)->create();
+        // Create three categories with specific IDs
+        Categorie::factory()->create(['idCategorie' => 1]);
+        Categorie::factory()->create(['idCategorie' => 2]);
+        Categorie::factory()->create(['idCategorie' => 3]);
     }
 }

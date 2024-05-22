@@ -17,8 +17,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.2-web/css/all.min.css" rel="stylesheet">
+
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -113,24 +116,25 @@
                         <div class="swiper tranding-slider">
                             <div class="swiper-wrapper">
                                 <!-- Slide-start -->
+                                @foreach($topSevenPlats as $plat)
                                 <div class="swiper-slide tranding-slide">
                                     <div class="tranding-slide-img">
-                                        <img src="img/tranding-food-1.png" alt="Tranding">
+                                        <img src="{{$plat->imagePlat}}" alt="Tranding">
                                     </div>
                                     <div class="tranding-slide-content">
-                                        <h1 class="food-price">$20</h1>
+                                        <h1 class="food-price">${{$plat->prixUnitaire}}</h1>
                                         <div class="tranding-slide-content-bottom">
                                             <h2 class="food-name">
-                                                Special Pizza
+                                                {{$plat->designationPlat}}
                                             </h2>
                                             <h5 class="food-rating">
-                                                <span>4.5</span>
+                                                <span>{{$plat->etoiles}}.0</span>
                                                 <div class="rating">
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
+                                                    @for($i=0 ; $i<$plat->etoiles ; $i++)
+                                                    <i class="fa-solid fa-star text-primary"></i>
+                                                    @endfor
+                                                    @for($i=0 ; $i< 5 - $plat->etoiles ; $i++)
+                                                    <i class="fa-regular fa-star text-primary"></i>                                                    @endfor
                                                 </div>
                                             </h5>
                                             <div class="w-100 row">
@@ -138,162 +142,13 @@
                                                     <button class="w-100  p-2 rounded-full btn btn-outline-primary">Explore</button>
                                                 </div>
                                                 <div class="col-6 p-1">
-                                                    <button class="w-100  p-2 rounded-full btn btn-primary ">Order <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                                                    <a href="{{url('booking',['idPlat'=>$plat->idPlat])}}" class="w-100  p-2 rounded-full btn btn-primary ">Order <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Slide-end -->
-                                <!-- Slide-start -->
-                                <div class="swiper-slide tranding-slide">
-                                    <div class="tranding-slide-img">
-                                        <img src="img/tranding-food-2.png" alt="Tranding">
-                                    </div>
-                                    <div class="tranding-slide-content">
-                                        <h1 class="food-price">$20</h1>
-                                        <div class="tranding-slide-content-bottom">
-                                            <h2 class="food-name">
-                                                Meat Ball
-                                            </h2>
-                                            <h3 class="food-rating">
-                                                <span>4.5</span>
-                                                <div class="rating">
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                </div>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide-end -->
-                                <!-- Slide-start -->
-                                <div class="swiper-slide tranding-slide">
-                                    <div class="tranding-slide-img">
-                                        <img src="img/tranding-food-3.png" alt="Tranding">
-                                    </div>
-                                    <div class="tranding-slide-content">
-                                        <h1 class="food-price">$40</h1>
-                                        <div class="tranding-slide-content-bottom">
-                                            <h2 class="food-name">
-                                                Burger
-                                            </h2>
-                                            <h3 class="food-rating">
-                                                <span>4.5</span>
-                                                <div class="rating">
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                </div>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide-end -->
-                                <!-- Slide-start -->
-                                <div class="swiper-slide tranding-slide">
-                                    <div class="tranding-slide-img">
-                                        <img src="img/tranding-food-4.png" alt="Tranding">
-                                    </div>
-                                    <div class="tranding-slide-content">
-                                        <h1 class="food-price">$15</h1>
-                                        <div class="tranding-slide-content-bottom">
-                                            <h2 class="food-name">
-                                                Frish Curry
-                                            </h2>
-                                            <h3 class="food-rating">
-                                                <span>4.5</span>
-                                                <div class="rating">
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                </div>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide-end -->
-                                <!-- Slide-start -->
-                                <div class="swiper-slide tranding-slide">
-                                    <div class="tranding-slide-img">
-                                        <img src="img/tranding-food-5.png" alt="Tranding">
-                                    </div>
-                                    <div class="tranding-slide-content">
-                                        <h1 class="food-price">$15</h1>
-                                        <div class="tranding-slide-content-bottom">
-                                            <h2 class="food-name">
-                                                Pane Cake
-                                            </h2>
-                                            <h3 class="food-rating">
-                                                <span>4.5</span>
-                                                <div class="rating">
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                </div>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide-end -->
-                                <!-- Slide-start -->
-                                <div class="swiper-slide tranding-slide">
-                                    <div class="tranding-slide-img">
-                                        <img src="img/tranding-food-6.png" alt="Tranding">
-                                    </div>
-                                    <div class="tranding-slide-content">
-                                        <h1 class="food-price">$20</h1>
-                                        <div class="tranding-slide-content-bottom">
-                                            <h2 class="food-name">
-                                                Vanilla cake
-                                            </h2>
-                                            <h3 class="food-rating">
-                                                <span>4.5</span>
-                                                <div class="rating">
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                </div>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide-end -->
-                                <!-- Slide-start -->
-                                <div class="swiper-slide tranding-slide">
-                                    <div class="tranding-slide-img">
-                                        <img src="img/tranding-food-7.png" alt="Tranding">
-                                    </div>
-                                    <div class="tranding-slide-content">
-                                        <h1 class="food-price">$8</h1>
-                                        <div class="tranding-slide-content-bottom">
-                                            <h2 class="food-name">
-                                                Straw Cake
-                                            </h2>
-                                            <h3 class="food-rating">
-                                                <span>4.5</span>
-                                                <div class="rating">
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                </div>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                                 <!-- Slide-end -->
                             </div>
 
@@ -317,13 +172,13 @@
 
         <!-- Reservation Start -->
         <div class="container-fluid py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Book your table</h5>
-                <h1 class="mb-2"><span class=" text-primary">Ressine</span> for an unforgettable experience</h1>
-            </div>
             <div class="row g-0">
-                <div class="col-md-6 reservation-image">
-                    <!-- <img src="./img/tranding-food-5.png" alt=""> -->
+                <div class="col-md-6">
+                    <div class="video">
+                        <button type="button" class="btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/-Ed-GNq2EyU?si=dkmPyGVj_eda-7ql" data-bs-target="#videoModal">
+                            <span></span>
+                        </button>
+                    </div>
                 </div>
                 <div class="col-md-6 bg-dark d-flex align-items-center">
                     <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
@@ -352,12 +207,12 @@
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <select class="form-select" id="select1">
-                                            <option value="1">People 1</option>
-                                            <option value="2">People 2</option>
-                                            <option value="3">People 3</option>
+                                          <option value="1">People 1</option>
+                                          <option value="2">People 2</option>
+                                          <option value="3">People 3</option>
                                         </select>
                                         <label for="select1">No Of People</label>
-                                    </div>
+                                      </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
@@ -370,6 +225,24 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 16:9 aspect ratio -->
+                        <div class="ratio ratio-16x9">
+                            <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
+                                allow="autoplay"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>

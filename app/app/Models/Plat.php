@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Categorie;
 use Illuminate\Database\Eloquent\Model;
 
 class Plat extends Model
 {
     protected $primaryKey = 'idPlat';
 
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Categorie::class, 'idCategorie', 'idCategorie');
     }
@@ -34,5 +34,14 @@ class Plat extends Model
         ->map(function ($category) {
             return $category->plats->first(); // Get the top plat in each category
         });
+    }
+
+    public static function getTopSevenPlats()
+    {
+        return Plat::withCount('commandes')
+            ->orderBy('commandes_count', 'desc')
+            ->orderBy('etoiles', 'desc')
+            ->take(7)
+            ->get();
     }
 }

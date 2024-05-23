@@ -4,6 +4,7 @@ use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\PlatController;
 use App\Http\Controllers\ReserverController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Route::get('/', [PlatController::class, 'topThreePlats']);
-Route::get('/', [PlatController::class, 'topPlatsByCategory']);
+Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/booking/{idPlat}', [ReserverController::class, 'bookingPage'])->name('booking');

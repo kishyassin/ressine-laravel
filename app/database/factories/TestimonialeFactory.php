@@ -13,7 +13,8 @@ class TestimonialeFactory extends Factory
         return [
             'message' => fake()->text(),
             'jjmmaaaa' =>fake()->date(),
-            'idClient' => \App\Models\Client::factory()
+            'idClient' => \App\Models\Client::factory(),
+            'etatTestimoniale' =>fake()->boolean()
         ];
     }
 }

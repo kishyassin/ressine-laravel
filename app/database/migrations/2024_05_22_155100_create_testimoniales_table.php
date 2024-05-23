@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('testimoniales', function (Blueprint $table) {
             $table->id('idTestimoniale');
             $table->string('message');
-
+            $table->date('jjmmaaaa');
             $table->timestamps();
+            $table->unsignedBigInteger('idClient');
+            $table->foreign('idClient')->references('idClient')->on('clients')->onDelete('cascade');
         });
     }
 

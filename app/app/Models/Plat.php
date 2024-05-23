@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Plat extends Model
 {
+    use HasFactory;
+
     protected $primaryKey = 'idPlat';
 
     public function categories()

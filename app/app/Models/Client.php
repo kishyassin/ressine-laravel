@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Client extends Model
 {
+    use HasFactory;
     protected $primaryKey = 'idClient';
 
     public function commandes()
@@ -15,8 +17,11 @@ class Client extends Model
 
     public function testimoniales()
     {
-        return $this->belongsToMany(Testimoniale::class, 'ecrires', 'idClient', 'idTestimoniale')
-            ->withPivot('idDate')
-            ->withTimestamps();
+        return $this->hasMany(Testimoniale::class, 'idClient', 'idClient');
+    }
+
+    public function paiements()
+    {
+        return $this->hasMany(Paiement::class, 'idClient', 'idClient');
     }
 }

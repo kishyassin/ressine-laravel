@@ -10,22 +10,23 @@ class Client extends Model
     use HasFactory;
     protected $primaryKey = 'idClient';
 
-    public function testimoniales()
+    public function paiements()
     {
-        return $this->belongsToMany(Testimoniale::class, 'ecrires', 'idClient', 'idTestimoniale')
-                    ->withPivot('idDate')
-                    ->withTimestamps();
+        return $this->hasMany(Paiement::class, 'idClient', 'idClient');
     }
 
-    public function orderDates()
+    public function commandes()
     {
-        return $this->hasManyThrough(
-            OrderDate::class, 
-            Ecrire::class, 
-            'idClient',     // Foreign key on Ecrire table
-            'idDate',       // Foreign key on OrderDate table
-            'idClient',     // Local key on Client table
-            'idDate'        // Local key on Ecrire table
-        );
+        return $this->hasMany(Commande::class, 'idClient', 'idClient');
+    }
+
+    public function testimonials()
+    {
+        return $this->hasMany(Testimoniale::class, 'idClient', 'idClient');
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reserver::class, 'idClient', 'idClient');
     }
 }

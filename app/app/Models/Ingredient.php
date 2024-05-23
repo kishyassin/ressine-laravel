@@ -11,10 +11,9 @@ class Ingredient extends Model
 
     protected $primaryKey = 'idIngredient';
 
-    public function plats()
+    public function composer()
     {
-        return $this->belongsToMany(Plat::class, 'composers', 'idIngredient', 'idPlat')
-            ->withTimestamps();
+        return $this->hasMany(Composer::class, 'idIngredient', 'idIngredient');
     }
 }
 

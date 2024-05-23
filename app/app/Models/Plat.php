@@ -18,13 +18,12 @@ class Plat extends Model
 
     public function commandes()
     {
-        return $this->hasMany(Commande::class, 'idPlat');
+        return $this->hasMany(Commande::class, 'idPlat','idPlat');
     }
 
-    public function ingredients()
+    public function composer()
     {
-        return $this->belongsToMany(Ingredient::class, 'composers', 'idPlat', 'idIngredient')
-            ->withTimestamps();
+        return $this->hasMany(Composer::class, 'idPlat', 'idPlat');
     }
 
     public static function getTopPlatsByCategory()

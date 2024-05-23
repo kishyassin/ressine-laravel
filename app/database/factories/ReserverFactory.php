@@ -12,7 +12,7 @@ class ReserverFactory extends Factory
             'idClient' => \App\Models\Client::factory(),
             'numeroTable' => \App\Models\Table::factory(),
             'idDate' => \App\Models\OrderDate::factory(),
-            'idCategorie' =>\App\Models\Categorie::factory(),
+            'idCategorie' =>fake()->numberBetween(1,3),
         ];
     }
 }

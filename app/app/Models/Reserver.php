@@ -27,8 +27,4 @@ class Reserver extends Model
         return $this->belongsTo(OrderDate::class, 'idDate', 'idDate');
     }
 
-    public function category()
-    {
-        return $this->belongsTo(Categorie::class, 'idCategorie', 'idCategorie');
-    }
 }

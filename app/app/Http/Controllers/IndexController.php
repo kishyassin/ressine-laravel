@@ -11,8 +11,7 @@ class IndexController extends Controller
     {
         $topPlatsByCategory = Plat::getTopPlatsByCategory();
         $topSevenPlats = Plat::getTopSevenPlats();
-        $acceptedTestimonials = Testimoniale::with(['clients', 'clients.orderDates'])->take(4)->get();
-    
+        $acceptedTestimonials = Testimoniale::with('client')->take(4)->get();    
         return view('index', compact('topPlatsByCategory', 'topSevenPlats', 'acceptedTestimonials'));
     }
 

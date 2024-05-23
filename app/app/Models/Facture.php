@@ -20,4 +20,10 @@ class Facture extends Model
     {
         return $this->hasMany(Commande::class, 'numeroFacture', 'numeroFacture');
     }
+
+    public function paiements()
+    {
+        return $this->hasMany(Paiement::class, 'numeroFacture', 'numeroFacture');
+    }
 }
+

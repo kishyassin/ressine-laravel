@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\CommandeController;
-use App\Http\Controllers\PlatController;
-use App\Http\Controllers\ReserverController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReserverController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +15,21 @@ use App\Http\Controllers\IndexController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 // Route::get('/', [PlatController::class, 'topThreePlats']);
 Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/booking/{idPlat}', [ReserverController::class, 'bookingPage'])->name('booking');
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

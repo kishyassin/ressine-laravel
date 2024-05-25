@@ -21,6 +21,9 @@ Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/booking/{idPlat}', [ReserverController::class, 'bookingPage'])->name('booking');
 
+Route::get('/welcome',function(){
+    return view('welcome');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

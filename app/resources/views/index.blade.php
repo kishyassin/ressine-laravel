@@ -81,11 +81,10 @@
 
 
         <!-- hero start  -->
-        <div class="container-xxl col-12 d-flex overflow-hidden slider">
+        <div class="container-xxl col-12 d-flex overflow-hidden slider ">
             <div class="list">
-
                 @foreach ($topPlatsByCategory as $plat)
-                <div class="col-12 py-5 bg-dark hero-header item" id="slide-{{ $plat->idPlat }}" style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ $plat->imagePlat }}');">
+                <div class="col-12 py-5 bg-dark hero-header item d-flex align-items-center justify-content-center" id="slide-{{ $plat->idPlat }}" style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ $plat->imagePlat }}');">
                     <div class="container my-5 py-2">
                         <div class="row justify-content-center align-items-center g-5">
                             <div class="col-lg-7 text-center wow fadeInUp">
@@ -100,9 +99,8 @@
             </div>
 
             <div class="buttons">
-                <button id="prev" class=" wow fadeInRight">
-                    <</button>
-                        <button id="next" class=" wow fadeInLeft">></button>
+                <button id="prev" class=" wow fadeInRight"><</button>
+                <button id="next" class=" wow fadeInLeft">></button>
             </div>
         </div>
         <!-- hero end  -->
@@ -260,11 +258,13 @@
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Testimonial</h5>
                     <h1 class="mb-5">Our <span class="text-primary">Clients </span> Say!!!</h1>
                 </div>
-                <div class="owl-carousel testimonial-carousel">
+                <div class="owl-carousel testimonial-carousel row">
                     @foreach($acceptedTestimonials as $testimonial)
-                        <div class="testimonial-item bg-transparent border rounded p-4">
+                        <div class="testimonial-item bg-transparent border rounded p-4 h-100">
                             <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p> {{$testimonial->message}} </p>
+                            <p  style="height: 6.6em; line-height: 1.2em;"> 
+                                {{$testimonial->message}}
+                            </p>
                             <div class="d-flex align-items-center">
                                 <img class="img-fluid flex-shrink-0 rounded-circle"  src="{{$testimonial->client->imageClient}}" style="width: 50px; height: 50px;">
                                 <div class="ps-3">

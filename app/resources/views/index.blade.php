@@ -269,7 +269,7 @@
                                 <img class="img-fluid flex-shrink-0 rounded-circle"  src="{{$testimonial->client->imageClient}}" style="width: 50px; height: 50px;">
                                 <div class="ps-3">
                                     <h5 class="mb-1">{{$testimonial->client->nom}}  {{$testimonial->client->prenom}}</h5>
-                                    <small>Profession</small>
+                                    <small>{{$testimonial->jjmmaaaa}}</small>
                                 </div>
                             </div>
                         </div>

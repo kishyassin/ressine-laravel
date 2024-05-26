@@ -19,7 +19,6 @@ class PlatsTableSeeder extends Seeder
                 'designationPlat' => $faker->word,
                 'descriptionPlat' => $faker->sentence,
                 'prixUnitaire' => $faker->randomFloat(2, 10, 99.99),
-                'etoiles' => $faker->numberBetween(1, 5),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

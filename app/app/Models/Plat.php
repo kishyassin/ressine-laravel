@@ -15,6 +15,11 @@ class Plat extends Model
     {
         return $this->belongsTo(Categorie::class, 'idCategorie', 'idCategorie');
     }
+    public function etoiles()
+    {
+        return $this->hasMany(Etoile::class, 'idPlat', 'idPlat');
+    }
+
 
     public function commandes()
     {

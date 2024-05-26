@@ -11,16 +11,11 @@ class CategorieFactory extends Factory
 
     public function definition()
     {
-        return [];
+        return [
+            'designation'=>fake()->text(),
+            'description'=>fake()->sentence(),
+        ];
     }
 
-    // public function configure()
-    // {
-    //     return $this->afterCreating(function (Categorie $categorie) {
-    //         // Manually set the IDs for the specific records
-    //         if ($categorie->idCategorie === null) {
-    //             $categorie->idCategorie = fake()->randomElement([1, 2, 3]);
-    //         }
-    //     });
-    // }
+
 }

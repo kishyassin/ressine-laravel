@@ -19,6 +19,10 @@ class Client extends Model
     {
         return $this->hasMany(Commande::class, 'idClient', 'idClient');
     }
+    public function etoiles()
+    {
+        return $this->hasMany(Etoile::class, 'idClient', 'idClient');
+    }
 
     public function testimonials()
     {

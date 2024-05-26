@@ -18,7 +18,7 @@
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.2-web/css/all.min.css" rel="stylesheet">
@@ -67,14 +67,14 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">
-                            <a href="booking.php" class="dropdown-item active">Booking</a>
+                            <a href="booking.blade.php" class="dropdown-item active">Booking</a>
                             <a href="team.php" class="dropdown-item">Our Team</a>
                             <a href="testimonial.php" class="dropdown-item">Testimonial</a>
                         </div>
                     </div>
                     <a href="contact.php" class="nav-item nav-link">Contact</a>
                 </div>
-                <a href="booking.php" class="btn btn-primary py-2 px-4 rounded-full">Book A Table</a>
+                <a href="booking.blade.php" class="btn btn-primary py-2 px-4 rounded-full">Book A Table</a>
             </div>
         </nav>
         <!-- Navbar End -->
@@ -262,7 +262,7 @@
                     @foreach($acceptedTestimonials as $testimonial)
                         <div class="testimonial-item bg-transparent border rounded p-4 h-100">
                             <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p  style="height: 6.6em; line-height: 1.2em;"> 
+                            <p  style="height: 6.6em; line-height: 1.2em;">
                                 {{$testimonial->message}}
                             </p>
                             <div class="d-flex align-items-center">

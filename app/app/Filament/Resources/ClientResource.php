@@ -10,7 +10,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ClientResource extends Resource
 {
@@ -22,11 +23,20 @@ class ClientResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nom'),
-                Forms\Components\TextInput::make('prenom'),
-                Forms\Components\TextInput::make('telephone'),
-                Forms\Components\TextInput::make('adresse'),
-                Forms\Components\FileUpload::make('imageClient'),
+                Forms\Components\TextInput::make('nom')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('prenom')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('imageClient')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('telephone')
+                    ->tel()
+                    ->required()
+                    ->maxLength(20),
+                Forms\Components\TextInput::make('adresse')
+                    ->maxLength(255),
             ]);
     }
 
@@ -34,17 +44,30 @@ class ClientResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('imageClient'),
-                Tables\Columns\TextColumn::make('nom'),
-                Tables\Columns\TextColumn::make('prenom'),
-                Tables\Columns\TextColumn::make('telephone'),
+                Tables\Columns\TextColumn::make('nom')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('prenom')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('imageClient')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('telephone')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('adresse')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -55,14 +78,14 @@ class ClientResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-
+    
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-
+    
     public static function getPages(): array
     {
         return [
@@ -70,5 +93,5 @@ class ClientResource extends Resource
             'create' => Pages\CreateClient::route('/create'),
             'edit' => Pages\EditClient::route('/{record}/edit'),
         ];
-    }
+    }    
 }

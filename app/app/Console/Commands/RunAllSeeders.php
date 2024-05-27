@@ -28,7 +28,6 @@ class RunAllSeeders extends Command
     public function handle()
     {
         $this->call('db:seed', ['--class' => 'ClientsTableSeeder']);
-        $this->call('db:seed', ['--class' => 'ClientsTableSeeder']);
         $this->call('db:seed', ['--class' => 'CategoriesTableSeeder']);
         $this->call('db:seed', ['--class' => 'EtoilesTableSeeder']);
         $this->call('db:seed', ['--class' => 'CommandesTableSeeder']);
@@ -46,8 +45,9 @@ class RunAllSeeders extends Command
         $this->call('db:seed', ['--class' => 'ReserversTableSeeder']);
         $this->call('db:seed', ['--class' => 'TablesTableSeeder']);
         $this->call('db:seed', ['--class' => 'UsersTableSeeder']);
-        
+        $this->call('db:seed', ['--class' => 'TestimonialeSeeder']);
+
         return 0;
     }
-    
+
 }

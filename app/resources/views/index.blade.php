@@ -83,7 +83,8 @@
         <!-- hero start  -->
         <div class="container-xxl col-12 d-flex overflow-hidden slider ">
             <div class="list">
-                @foreach ($topPlatsByCategory as $plat)
+                @foreach ($topPlatsByCategory as $categoryName => $topPlats)
+                    @foreach ($topPlats as $plat)
                 <div class="col-12 py-5 bg-dark hero-header item d-flex align-items-center justify-content-center" id="slide-{{ $plat->idPlat }}" style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ $plat->imagePlat }}');">
                     <div class="container my-5 py-2">
                         <div class="row justify-content-center align-items-center g-5">
@@ -95,6 +96,7 @@
                         </div>
                     </div>
                 </div>
+                    @endforeach
                 @endforeach
             </div>
 
@@ -119,38 +121,41 @@
                             <div class="swiper-wrapper">
                                 <!-- Slide-start -->
                                 @foreach($topSevenPlats as $plat)
-                                <div class="swiper-slide tranding-slide">
-                                    <div class="tranding-slide-img">
-                                        <img src="{{$plat->imagePlat}}" alt="Tranding">
-                                    </div>
-                                    <div class="tranding-slide-content">
-                                        <h1 class="food-price">${{$plat->prixUnitaire}}</h1>
-                                        <div class="tranding-slide-content-bottom">
-                                            <h2 class="food-name">
-                                                {{$plat->designationPlat}}
-                                            </h2>
-                                            <h5 class="food-rating">
-                                                <span>{{$plat->etoiles}}.0</span>
-                                                <div class="rating">
-                                                    @for($i=0 ; $i<$plat->etoiles ; $i++)
-                                                    <i class="fa-solid fa-star text-primary"></i>
-                                                    @endfor
-                                                    @for($i=0 ; $i< 5 - $plat->etoiles ; $i++)
-                                                    <i class="fa-regular fa-star text-primary"></i>                                                    @endfor
-                                                </div>
-                                            </h5>
-                                            <div class="w-100 row">
-                                                <div class="col-6 p-1">
-                                                    <button class="w-100  p-2 rounded-full btn btn-outline-primary">Explore</button>
-                                                </div>
-                                                <div class="col-6 p-1">
-                                                    <a href="{{url('booking',['idPlat'=>$plat->idPlat])}}" class="w-100  p-2 rounded-full btn btn-primary ">Order <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                                    <div class="swiper-slide tranding-slide">
+                                        <div class="tranding-slide-img">
+                                            <img src="{{ $plat->imagePlat }}" alt="Tranding">
+                                        </div>
+                                        <div class="tranding-slide-content">
+                                            <h1 class="food-price">${{ $plat->prixUnitaire }}</h1>
+                                            <div class="tranding-slide-content-bottom">
+                                                <h2 class="food-name">
+                                                    {{ $plat->designationPlat }}
+                                                </h2>
+                                                <h5 class="food-rating">
+                                                    <span>{{ $plat->avg_star_rating }}</span>
+                                                    <div class="rating">
+                                                        @for ($i = 0; $i < 5; $i++)
+                                                            @if ($i < $plat->avg_star_rating)
+                                                                <i class="fa-solid fa-star text-primary"></i>
+                                                            @else
+                                                                <i class="fa-regular fa-star text-primary"></i>
+                                                            @endif
+                                                        @endfor
+                                                    </div>
+                                                </h5>
+                                                <div class="w-100 row">
+                                                    <div class="col-6 p-1">
+                                                        <button class="w-100 p-2 rounded-full btn btn-outline-primary">Explore</button>
+                                                    </div>
+                                                    <div class="col-6 p-1">
+                                                        <a href="{{ url('booking', ['idPlat' => $plat->idPlat]) }}" class="w-100 p-2 rounded-full btn btn-primary">Order <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
+
                                 <!-- Slide-end -->
                             </div>
 
@@ -252,8 +257,8 @@
         <!-- Reservation Start -->
         <!-- testimonail start  -->
 
-        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container">
+        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container-fluid">
                 <div class="text-center">
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Testimonial</h5>
                     <h1 class="mb-5">Our <span class="text-primary">Clients </span> Say!!!</h1>

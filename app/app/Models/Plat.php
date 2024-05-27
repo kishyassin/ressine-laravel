@@ -33,22 +33,44 @@ class Plat extends Model
 
     public static function getTopPlatsByCategory()
     {
-        return Categorie::with(['plats' => function($query) {
-            $query->withCount('commandes')
-                  ->orderBy('commandes_count', 'desc')
-                  ->orderBy('etoiles', 'desc');
-        }])->get()
-        ->map(function ($category) {
-            return $category->plats->first(); // Get the top plat in each category
-        });
+        // Define an array to store the top plats for each category
+        $topPlatsByCategory = [];
+
+        // Retrieve all categories
+        $categories = Categorie::all();
+
+        // Loop through each category
+        foreach ($categories as $category) {
+            // Retrieve the top three plats for the current category
+            $topPlats = Plat::select('plats.*', \DB::raw('AVG(etoiles.nombreEtoile) as avg_star_rating'))
+                ->join('etoiles', 'plats.idPlat', '=', 'etoiles.idPlat')
+                ->where('plats.idCategorie', $category->idCategorie)
+                ->withCount('commandes') // Count the number of times the plat was bought
+                ->groupBy('plats.idPlat', 'plats.designationPlat', 'plats.descriptionPlat', 'plats.prixUnitaire', 'plats.imagePlat', 'plats.idCategorie', 'plats.created_at', 'plats.updated_at')
+                ->orderByDesc('commandes_count') // Order by the number of times bought
+                ->orderByDesc('avg_star_rating') // Then by average star rating
+                ->limit(3) // Limit to top three plats
+                ->get();
+
+            // Add the top plats for the current category to the array
+            $topPlatsByCategory[$category->designation] = $topPlats;
+        }
+
+        return $topPlatsByCategory;
     }
 
     public static function getTopSevenPlats()
     {
-        return Plat::withCount('commandes')
-            ->orderBy('commandes_count', 'desc')
-            ->orderBy('etoiles', 'desc')
-            ->take(7)
+        // Retrieve the top seven plats based on stars and purchases
+        $topPlats = Plat::select('plats.*', \DB::raw('AVG(etoiles.nombreEtoile) as avg_star_rating'))
+            ->join('etoiles', 'plats.idPlat', '=', 'etoiles.idPlat')
+            ->withCount('commandes') // Count the number of times the plat was bought
+            ->groupBy('plats.idPlat', 'plats.designationPlat', 'plats.descriptionPlat', 'plats.prixUnitaire', 'plats.imagePlat', 'plats.idCategorie', 'plats.created_at', 'plats.updated_at')
+            ->orderByDesc('commandes_count') // Order by the number of times bought
+            ->orderByDesc('avg_star_rating') // Then by average star rating
+            ->limit(7) // Limit to top seven plats
             ->get();
+
+        return $topPlats;
     }
 }

@@ -11,7 +11,7 @@ class Testimoniale extends Model
 
     protected $primaryKey = 'idTestimoniale';
 
-    
+
     public function client()
     {
         return $this->belongsTo(Client::class, 'idClient', 'idClient');

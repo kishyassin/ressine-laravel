@@ -9,7 +9,6 @@ class PlatFactory extends Factory
     public function definition(): array
     {
         return [
-            'imagePlat' => fake()->imageUrl(),
             'idCategorie' =>fake()->numberBetween(1,3),
             'designationPlat' => fake()->unique()->words($nb = rand(3, 4), $asText = true),
             'descriptionPlat'=>fake()->paragraph(),

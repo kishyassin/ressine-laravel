@@ -14,6 +14,8 @@ class CreateClientsTable extends Migration
             $table->string('imageClient')->nullable();
             $table->string('telephone', 20); 
             $table->string('adresse')->nullable();
+            $table->string('login'); // Ajout du champ login
+            $table->string('password')->unique(); // Ajout du champ password unique
             $table->timestamps();
         });
     }

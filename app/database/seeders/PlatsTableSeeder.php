@@ -14,7 +14,6 @@ class PlatsTableSeeder extends Seeder
 
         foreach (range(1, 10) as $index) {
             DB::table('plats')->insert([
-                'imagePlat' => $faker->imageUrl($width = 1366, $height = 770, 'food', true, 'Faker'),
                 'idCategorie' => $faker->numberBetween(1, 3), // Assuming you have 10 categories
                 'designationPlat' => $faker->word,
                 'descriptionPlat' => $faker->sentence,

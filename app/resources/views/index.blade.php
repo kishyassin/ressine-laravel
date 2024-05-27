@@ -84,20 +84,21 @@
         <div class="container-xxl col-12 d-flex overflow-hidden slider ">
             <div class="list">
                 @foreach ($topPlatsByCategory as $categoryName => $topPlats)
-                    @foreach ($topPlats as $plat)
-                <div class="col-12 py-5 bg-dark hero-header item d-flex align-items-center justify-content-center" id="slide-{{ $plat->idPlat }}" style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ $plat->imagePlat }}');">
-                    <div class="container my-5 py-2">
-                        <div class="row justify-content-center align-items-center g-5">
-                            <div class="col-lg-7 text-center wow fadeInUp">
-                                <h1 class="display-4 text-white">{{ $plat->categoryName }}<br> <span class="text-primary">{{ $plat->designationPlat }}</span></h1>
-                                <p class="text-white mx-4 mb-4 pb-2">{{ $plat->descriptionPlat }}</p>
-                                <a href="{{url('booking',['idPlat'=>$plat->idPlat])}}" class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link booking-link-of-slider">Book A Table</a>
-                            </div>
-                        </div>
+    @foreach ($topPlats as $plat)
+        <div class="col-12 py-5 bg-dark hero-header item d-flex align-items-center justify-content-center" id="slide-{{ $plat->idPlat }}" style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ $plat->imageHero }}');">
+            <div class="container my-5 py-2">
+                <div class="row justify-content-center align-items-center g-5">
+                    <div class="col-lg-7 text-center wow fadeInUp">
+                        <h1 class="display-4 text-white">{{ $categoryName }}<br> <span class="text-primary">{{ $plat->designationPlat }}</span></h1>
+                        <p class="text-white mx-4 mb-4 pb-2">{{ $plat->descriptionPlat }}</p>
+                        <a href="{{ url('booking', ['idPlat' => $plat->idPlat]) }}" class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link booking-link-of-slider">Book A Table</a>
                     </div>
                 </div>
-                    @endforeach
-                @endforeach
+            </div>
+        </div>
+    @endforeach
+@endforeach
+
             </div>
 
             <div class="buttons">
@@ -121,40 +122,41 @@
                             <div class="swiper-wrapper">
                                 <!-- Slide-start -->
                                 @foreach($topSevenPlats as $plat)
-                                    <div class="swiper-slide tranding-slide">
-                                        <div class="tranding-slide-img">
-                                            <img src="{{ $plat->imagePlat }}" alt="Tranding">
-                                        </div>
-                                        <div class="tranding-slide-content">
-                                            <h1 class="food-price">${{ $plat->prixUnitaire }}</h1>
-                                            <div class="tranding-slide-content-bottom">
-                                                <h2 class="food-name">
-                                                    {{ $plat->designationPlat }}
-                                                </h2>
-                                                <h5 class="food-rating">
-                                                    <span>{{ $plat->avg_star_rating }}</span>
-                                                    <div class="rating">
-                                                        @for ($i = 0; $i < 5; $i++)
-                                                            @if ($i < $plat->avg_star_rating)
-                                                                <i class="fa-solid fa-star text-primary"></i>
-                                                            @else
-                                                                <i class="fa-regular fa-star text-primary"></i>
-                                                            @endif
-                                                        @endfor
-                                                    </div>
-                                                </h5>
-                                                <div class="w-100 row">
-                                                    <div class="col-6 p-1">
-                                                        <button class="w-100 p-2 rounded-full btn btn-outline-primary">Explore</button>
-                                                    </div>
-                                                    <div class="col-6 p-1">
-                                                        <a href="{{ url('booking', ['idPlat' => $plat->idPlat]) }}" class="w-100 p-2 rounded-full btn btn-primary">Order <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
+    <div class="swiper-slide tranding-slide">
+        <div class="tranding-slide-img">
+            <img src="{{ $plat->imageSlide }}" alt="Tranding">
+        </div>
+        <div class="tranding-slide-content">
+            <h1 class="food-price">${{ $plat->prixUnitaire }}</h1>
+            <div class="tranding-slide-content-bottom">
+                <h2 class="food-name">
+                    {{ $plat->designationPlat }}
+                </h2>
+                <h5 class="food-rating">
+                    <span>{{ round($plat->avg_star_rating, 1) }}</span>
+                    <div class="rating">
+                        @for ($i = 0; $i < 5; $i++)
+                            @if ($i < $plat->avg_star_rating)
+                                <i class="fa-solid fa-star text-primary"></i>
+                            @else
+                                <i class="fa-regular fa-star text-primary"></i>
+                            @endif
+                        @endfor
+                    </div>
+                </h5>
+                <div class="w-100 row">
+                    <div class="col-6 p-1">
+                        <button class="w-100 p-2 rounded-full btn btn-outline-primary">Explore</button>
+                    </div>
+                    <div class="col-6 p-1">
+                        <a href="{{ url('booking', ['idPlat' => $plat->idPlat]) }}" class="w-100 p-2 rounded-full btn btn-primary">Order <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
+
 
                                 <!-- Slide-end -->
                             </div>

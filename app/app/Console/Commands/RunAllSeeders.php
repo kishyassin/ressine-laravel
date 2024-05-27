@@ -46,7 +46,6 @@ class RunAllSeeders extends Command
         $this->call('db:seed', ['--class' => 'TablesTableSeeder']);
         $this->call('db:seed', ['--class' => 'UsersTableSeeder']);
         $this->call('db:seed', ['--class' => 'TestimonialeSeeder']);
-
         return 0;
     }
 

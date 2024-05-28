@@ -80,33 +80,40 @@
         <!-- Navbar End -->
 
 
-        <!-- hero start  -->
-        <div class="container-xxl col-12 d-flex overflow-hidden slider ">
-            <div class="list">
-                @foreach ($topPlatsByCategory as $categoryName => $topPlats)
-    @foreach ($topPlats as $plat)
-        <div class="col-12 py-5 bg-dark hero-header item d-flex align-items-center justify-content-center" id="slide-{{ $plat->idPlat }}" style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ $plat->imageHero }}');">
-            <div class="container my-5 py-2">
-                <div class="row justify-content-center align-items-center g-5">
-                    <div class="col-lg-7 text-center wow fadeInUp">
-                        <h1 class="display-4 text-white">{{ $categoryName }}<br> <span class="text-primary">{{ $plat->designationPlat }}</span></h1>
-                        <p class="text-white mx-4 mb-4 pb-2">{{ $plat->descriptionPlat }}</p>
-                        <a href="{{ url('booking', ['idPlat' => $plat->idPlat]) }}" class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link booking-link-of-slider">Book A Table</a>
+     <!-- hero start -->
+<div class="container-xxl col-12 d-flex overflow-hidden slider">
+    <div class="list">
+        @foreach ($topPlatsByCategory as $categoryName => $plat)
+            @if ($plat)
+                <div class="col-12 py-5 bg-dark hero-header item d-flex align-items-center justify-content-center" 
+                     id="slide-{{ $plat->idPlat }}" 
+                     style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ $plat->imageHero }}');">
+                    <div class="container my-5 py-2">
+                        <div class="row justify-content-center align-items-center g-5">
+                            <div class="col-lg-7 text-center wow fadeInUp">
+                                <h1 class="display-4 text-white">{{ $categoryName }}<br> 
+                                    <span class="text-primary">{{ $plat->designationPlat }}</span>
+                                </h1>
+                                <p class="text-white mx-4 mb-4 pb-2">{{ $plat->descriptionPlat }}</p>
+                                <a href="{{ url('booking', ['idPlat' => $plat->idPlat]) }}" 
+                                   class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link booking-link-of-slider">
+                                    Book A Table
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    @endforeach
-@endforeach
+            @endif
+        @endforeach
+    </div>
 
-            </div>
+    <div class="buttons">
+        <button id="prev" class="wow fadeInRight"><</button>
+        <button id="next" class="wow fadeInLeft">></button>
+    </div>
+</div>
+<!-- hero end -->
 
-            <div class="buttons">
-                <button id="prev" class=" wow fadeInRight"><</button>
-                <button id="next" class=" wow fadeInLeft">></button>
-            </div>
-        </div>
-        <!-- hero end  -->
 
 
         <!-- special offers start -->

@@ -14,5 +14,11 @@ class IndexController extends Controller
         $acceptedTestimonials = Testimoniale::fourAcceptedTestimonials();
         return view('index', compact('topPlatsByCategory', 'topSevenPlats', 'acceptedTestimonials'));
     }
+    public function loginRestaurant(){
+        return view('loginRestaurant');
+    }
+    public function signupRestaurant(){
+        return view('signupRestaurant');
+    }
 
 }

@@ -1,87 +1,121 @@
 <?php
 
 namespace App\Models;
-use App\Models\Categorie;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use DB;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Plat Model
+ *
+ * Represents a dish.
+ */
 class Plat extends Model
 {
     use HasFactory;
 
+    // Specify the primary key for the model
     protected $primaryKey = 'idPlat';
 
+    /**
+     * Get the category to which this dish belongs.
+     *
+     * This defines a many-to-one relationship between plats and categories.
+     * Each plat belongs to one category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function category()
     {
         return $this->belongsTo(Categorie::class, 'idCategorie', 'idCategorie');
     }
+
+    /**
+     * Get the ratings (etoiles) for this dish.
+     *
+     * This defines a one-to-many relationship between plats and etoiles.
+     * Each plat may have multiple etoiles (ratings) associated with it.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function etoiles()
     {
         return $this->hasMany(Etoile::class, 'idPlat', 'idPlat');
     }
+
+    /**
+     * Get the images associated with this dish.
+     *
+     * This defines a one-to-many relationship between plats and images.
+     * Each plat may have multiple images associated with it.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function images()
     {
         return $this->hasMany(Image::class, 'idPlat', 'idPlat');
     }
 
-
+    /**
+     * Get the orders placed for this dish.
+     *
+     * This defines a one-to-many relationship between plats and commandes.
+     * Each plat may have multiple commandes placed for it.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function commandes()
     {
-        return $this->hasMany(Commande::class, 'idPlat','idPlat');
+        return $this->hasMany(Commande::class, 'idPlat', 'idPlat');
     }
 
+    /**
+     * Get the ingredients used in this dish.
+     *
+     * This defines a one-to-many relationship between plats and composers.
+     * Each plat may have multiple composers (ingredient combinations) associated with it.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function composer()
     {
         return $this->hasMany(Composer::class, 'idPlat', 'idPlat');
     }
 
-    public static function getTopPlatsByCategory()
-{
-    // Define an array to store the top plat for each category
-    $topPlatByCategory = [];
-    
-    // Retrieve all categories
-    $categories = Categorie::all();
-    
-    // Loop through each category
-    foreach ($categories as $category) {
-        // Retrieve the top plat for the current category
-        $topPlat = Plat::select('plats.*', \DB::raw('AVG(etoiles.nombreEtoile) as avg_star_rating'), 'images.imageHero')
-            ->leftJoin('etoiles', 'plats.idPlat', '=', 'etoiles.idPlat')
-            ->leftJoin('images', 'plats.idPlat', '=', 'images.idPlat') // Join with the images table
-            ->where('plats.idCategorie', $category->idCategorie)
-            ->withCount('commandes') // Count the number of times the plat was bought
-            ->groupBy('plats.idPlat', 'plats.designationPlat', 'plats.descriptionPlat', 'plats.prixUnitaire', 'images.imageHero', 'plats.idCategorie', 'plats.created_at', 'plats.updated_at')
-            ->orderByDesc('commandes_count') // Order by the number of times bought
-            ->orderByDesc('avg_star_rating') // Then by average star rating
-            ->limit(1) // Limit to the top one plat
-            ->first(); // Get the first result
 
-        // Ensure we only add non-null top plats to the array
-        if ($topPlat) {
-            $topPlatByCategory[$category->designation] = $topPlat;
-        }
-    }
-    
-    return $topPlatByCategory;
-}
 
-    
+  //  model functions:
 
+    //top 7 plats
     public static function getTopSevenPlats()
-{
-    // Retrieve the top seven plats based on stars and purchases
-    $topPlats = Plat::select('plats.*', \DB::raw('AVG(etoiles.nombreEtoile) as avg_star_rating'), 'images.imageSlide')
-        ->join('etoiles', 'plats.idPlat', '=', 'etoiles.idPlat')
-        ->join('images', 'plats.idPlat', '=', 'images.idPlat') // Join with the images table
-        ->withCount('commandes') // Count the number of times the plat was bought
-        ->groupBy('plats.idPlat', 'plats.designationPlat', 'plats.descriptionPlat', 'plats.prixUnitaire', 'images.imageSlide', 'plats.idCategorie', 'plats.created_at', 'plats.updated_at')
-        ->orderByDesc('commandes_count') // Order by the number of times bought
-        ->orderByDesc('avg_star_rating') // Then by average star rating
-        ->limit(7) // Limit to top seven plats
-        ->get();
+    {
+        // Select the top seven plats based on their ratings
+        return self::orderBy('etoiles_count', 'desc')
+            ->limit(7)
+            ->get();
+    }
 
-    return $topPlats;
-}
+    //  get top three plats for each category
+    public static function getTopPlatsByCategory()
+    {
+        // Subquery to get the maximum etoiles_count for each category
+        $subquery = DB::table('plats')
+            ->select('idCategorie', DB::raw('MAX(etoiles_count) as max_etoiles_count'))
+            ->groupBy('idCategorie')
+            ->toSql();
+
+        // Main query to join with the subquery and retrieve the top plats for each category
+        return DB::table('plats AS p1')
+            ->select('p1.*', 'c.designation as category')
+            ->join(DB::raw("({$subquery}) AS max_counts"), function ($join) {
+                $join->on('p1.idCategorie', '=', 'max_counts.idCategorie')
+                    ->on('p1.etoiles_count', '=', 'max_counts.max_etoiles_count');
+            })
+            ->join('categories as c', 'p1.idCategorie', '=', 'c.idCategorie')
+            ->get();
+    }
+
+
 
 }

@@ -81,6 +81,7 @@ class Plat extends Model
         ->limit(7) // Limit to top seven plats
         ->get();
 
+        
     return $topPlats;
 }
 

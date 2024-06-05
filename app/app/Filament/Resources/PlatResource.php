@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ClientResource\Pages;
-use App\Filament\Resources\ClientResource\RelationManagers;
-use App\Models\Client;
+use App\Filament\Resources\PlatResource\Pages;
+use App\Filament\Resources\PlatResource\RelationManagers;
+use App\Models\Plat;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ClientResource extends Resource
+class PlatResource extends Resource
 {
-    protected static ?string $model = Client::class;
+    protected static ?string $model = Plat::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,20 +23,19 @@ class ClientResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nom')
+                Forms\Components\TextInput::make('designationPlat')
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('descriptionPlat')
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('prixUnitaire')
                     ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('imageIcon')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('prenom')
+                Forms\Components\TextInput::make('idCategorie')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('imageClient')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('telephone')
-                    ->tel()
-                    ->required()
-                    ->maxLength(20),
-                Forms\Components\TextInput::make('adresse')
-                    ->maxLength(255),
+                    ->numeric(),
             ]);
     }
 
@@ -44,16 +43,16 @@ class ClientResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nom')
+                Tables\Columns\TextColumn::make('designationPlat')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('prenom')
+                Tables\Columns\TextColumn::make('prixUnitaire')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\ImageColumn::make('imageIcon')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('imageClient')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('telephone')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('adresse')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('idCategorie')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -68,7 +67,6 @@ class ClientResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -90,9 +88,9 @@ class ClientResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListClients::route('/'),
-            'create' => Pages\CreateClient::route('/create'),
-            'edit' => Pages\EditClient::route('/{record}/edit'),
+            'index' => Pages\ListPlats::route('/'),
+            'create' => Pages\CreatePlat::route('/create'),
+            'edit' => Pages\EditPlat::route('/{record}/edit'),
         ];
     }    
 }

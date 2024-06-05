@@ -19,9 +19,8 @@ use App\Http\Controllers\ReserverController;
 // Route::get('/', [PlatController::class, 'topThreePlats']);
 Route::get('/', [IndexController::class, 'index']);
 
-Route::get('/loginRestaurant', [IndexController::class, 'loginRestaurant']);
 
-Route::get('/signupRestaurant', [IndexController::class, 'signupRestaurant']);
+// Route::get('/signupRestaurant', [IndexController::class, 'signupRestaurant']);
 
 Route::get('/booking/{idPlat}', [ReserverController::class, 'bookingPage'])->name('booking');
 

@@ -10,113 +10,118 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-  <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap"
-      rel="stylesheet">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap"
+        rel="stylesheet">
 
-  <!-- Icon Font Stylesheet -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-  <!-- Libraries Stylesheet -->
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-  <!-- popular items style  -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <!-- popular items style  -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 
-  <!-- Customized Bootstrap Stylesheet -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Template Stylesheet -->
-  <link href="css/style.css" rel="stylesheet">
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <div class="container-fluid p-0 bg-light">
         <!-- Navbar Start -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5  py-lg-0">
             <a href="index.php" class="navbar-brand p-0 ">
-                <h1 class="text-primary m-0 d-flex">
-                    <img src="./img/logo.svg" alt="Logo" class=" d-inline-block h-100 w-auto">
+                <h3 class="text-primary m-0 d-flex">
+                    <img src="./img/logo.svg" alt="Logo" class="d-inline-block h-100 w-auto">
                     <span class=" h-100 align-bottom align-self-end">Ressine</span>
-                </h1>
+                </h3>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0 pe-4">
-                    <a href="index.php" class="nav-item nav-link active">Accueil</a>
-                    <a href="about.php" class="nav-item nav-link">à propos</a>
-                    <a href="menu.php" class="nav-item nav-link">Menu</a>
+                    <a  href="index.php" class=" nav-item nav-link active">Accueil</a>
+                    <a  href="about.php" class=" nav-item nav-link">à propos</a>
+                    <a  href="menu.php" class=" nav-item nav-link">Menu</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Reserver</a>
+                        <a  href="#" class=" nav-link dropdown-toggle" data-bs-toggle="dropdown">Reserver</a>
                         <div class="dropdown-menu m-0">
-                            <a href="booking.blade.php" class="dropdown-item active">petit déjeuner</a>
-                            <a href="team.php" class="dropdown-item">déjeuner</a>
-                            <a href="testimonial.php" class="dropdown-item">dîner</a>
+                            <a  href="booking.blade.php" class=" dropdown-item active">petit déjeuner</a>
+                            <a  href="team.php" class=" dropdown-item">déjeuner</a>
+                            <a  href="testimonial.php" class=" dropdown-item">dîner</a>
                         </div>
                     </div>
-                    <a href="contact.php" class="nav-item nav-link">Contact</a>
+                    <a  href="contact.php" class="nav-item nav-link">Contact</a>
                 </div>
 
                 @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
                     @auth
-                    <a href="logout" class="btn btn-primary py-2 px-4 rounded-full">Déconnecter</a>
+                        <div class="sm:fixed sm:top-0 sm:right-0 p-4 text-right">
+                            <a  href="profile" class="btn btn-primary py-1 px-3 rounded-full"><i class="fa fa-user" aria-hidden="true"></i></a>
+                        </div>
                     @else
-                        <a href="login" class="btn btn-primary py-2 px-4 rounded-full">se connecter</a>
+                        <div class="sm:fixed sm:top-0 sm:right-0 p-4 text-right">
+                            <a  href="login" class="btn btn-primary py-1 px-3 rounded-full">se connecter</a>
+                        </div>
                     @endauth
-                </div>
-            @endif
+                @endif
 
 
             </div>
         </nav>
         <!-- Navbar End -->
-    <!-- hero start -->
-<div class="container-xxl col-12 d-flex overflow-hidden slider">
-    <div class="list">
-        @foreach ($topPlatsByCategory as $categoryName => $plat)
-            @if ($plat)
-                <div class="col-12 py-5 bg-dark hero-header item d-flex align-items-center justify-content-center" 
-                     id="slide-{{ $plat->idPlat }}" 
-                     style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ $plat->imageHero }}');">
-                    <div class="container my-5 py-2">
-                        <div class="row justify-content-center align-items-center g-5">
-                            <div class="col-lg-7 text-center wow fadeInUp">
-                                <h1 class="display-4 text-white">{{ $categoryName }}<br> 
-                                    <span class="text-primary">{{ $plat->designationPlat }}</span>
-                                </h1>
-                                <p class="text-white mx-4 mb-4 pb-2">{{ $plat->descriptionPlat }}</p>
-                                <a href="{{ url('booking', ['idPlat' => $plat->idPlat]) }}" 
-                                   class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link booking-link-of-slider">
-                                    Book A Table
-                                </a>
+        <!-- hero start -->
+        <div class="container-xxl col-12 d-flex overflow-hidden slider">
+            <div class="list">
+                @foreach ($topPlatsByCategory as $categoryName => $plat)
+                    @if ($plat)
+                        <div class="col-12 py-5 bg-dark hero-header item d-flex align-items-center justify-content-center"
+                            id="slide-{{ $plat->idPlat }}"
+                            style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ $plat->imageHero }}');">
+                            <div class="container my-5 py-2">
+                                <div class="row justify-content-center align-items-center g-5">
+                                    <div class="col-lg-7 text-center wow fadeInUp">
+                                        <h1 class="display-4 text-white">{{ $categoryName }}<br>
+                                            <span class="text-primary">{{ $plat->designationPlat }}</span>
+                                        </h1>
+                                        <p class="text-white mx-4 mb-4 pb-2">{{ $plat->descriptionPlat }}</p>
+                                        <a href="{{ url('booking', ['idPlat' => $plat->idPlat]) }}"
+                                            class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link booking-link-of-slider">
+                                            Book A Table
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            @endif
-        @endforeach
-    </div>
+                    @endif
+                @endforeach
+            </div>
 
-    <div class="buttons">
-        <button id="prev" class="wow fadeInRight"><</button>
-        <button id="next" class="wow fadeInLeft">></button>
-    </div>
-</div>
-<!-- hero end -->
+            <div class="buttons">
+                <button id="prev" class="wow fadeInRight">
+                    <</button>
+                        <button id="next" class="wow fadeInLeft">></button>
+            </div>
+        </div>
+        <!-- hero end -->
 
 
 
@@ -132,41 +137,45 @@
                         <div class="swiper tranding-slider">
                             <div class="swiper-wrapper">
                                 <!-- Slide-start -->
-                                @foreach($topSevenPlats as $plat)
-    <div class="swiper-slide tranding-slide">
-        <div class="tranding-slide-img">
-            <img src="{{ $plat->imageSlide }}" alt="Tranding">
-        </div>
-        <div class="tranding-slide-content">
-            <h1 class="food-price">${{ $plat->prixUnitaire }}</h1>
-            <div class="tranding-slide-content-bottom">
-                <h2 class="food-name">
-                    {{ $plat->designationPlat }}
-                </h2>
-                <h5 class="food-rating">
-                    <span>{{ round($plat->avg_star_rating, 1) }}.0</span>
-                    <div class="rating">
-                        @for ($i = 0; $i < 5; $i++)
-                            @if ($i < $plat->avg_star_rating)
-                            <i class="fa-solid fa-star text-primary"></i>
-                            @else
-                            <i class="fa-regular fa-star text-primary"></i>
-                            @endif
-                        @endfor
-                    </div>
-                </h5>
-                <div class="w-100 row">
-                    <div class="col-6 p-1">
-                        <button class="w-100 p-2 rounded-full btn btn-outline-primary">Explore</button>
-                    </div>
-                    <div class="col-6 p-1">
-                        <a href="{{ url('booking', ['idPlat' => $plat->idPlat]) }}" class="w-100 p-2 rounded-full btn btn-primary">Order <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endforeach
+                                @foreach ($topSevenPlats as $plat)
+                                    <div class="swiper-slide tranding-slide">
+                                        <div class="tranding-slide-img">
+                                            <img src="{{ $plat->imageSlide }}" alt="Tranding">
+                                        </div>
+                                        <div class="tranding-slide-content">
+                                            <h1 class="food-price">${{ $plat->prixUnitaire }}</h1>
+                                            <div class="tranding-slide-content-bottom">
+                                                <h2 class="food-name">
+                                                    {{ $plat->designationPlat }}
+                                                </h2>
+                                                <h5 class="food-rating">
+                                                    <span>{{ round($plat->avg_star_rating, 1) }}.0</span>
+                                                    <div class="rating">
+                                                        @for ($i = 0; $i < 5; $i++)
+                                                            @if ($i < $plat->avg_star_rating)
+                                                                <i class="fa-solid fa-star text-primary"></i>
+                                                            @else
+                                                                <i class="fa-regular fa-star text-primary"></i>
+                                                            @endif
+                                                        @endfor
+                                                    </div>
+                                                </h5>
+                                                <div class="w-100 row">
+                                                    <div class="col-6 p-1">
+                                                        <button
+                                                            class="w-100 p-2 rounded-full btn btn-outline-primary">Explore</button>
+                                                    </div>
+                                                    <div class="col-6 p-1">
+                                                        <a href="{{ url('booking', ['idPlat' => $plat->idPlat]) }}"
+                                                            class="w-100 p-2 rounded-full btn btn-primary">Order <i
+                                                                class="fa fa-shopping-cart"
+                                                                aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
 
 
                                 <!-- Slide-end -->
@@ -195,7 +204,9 @@
             <div class="row g-0">
                 <div class="col-md-6">
                     <div class="video">
-                        <button type="button" class="btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/-Ed-GNq2EyU?si=dkmPyGVj_eda-7ql" data-bs-target="#videoModal">
+                        <button type="button" class="btn-play" data-bs-toggle="modal"
+                            data-src="https://www.youtube.com/embed/-Ed-GNq2EyU?si=dkmPyGVj_eda-7ql"
+                            data-bs-target="#videoModal">
                             <span></span>
                         </button>
                     </div>
@@ -208,31 +219,35 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                        <input type="text" class="form-control" id="name"
+                                            placeholder="Your Name">
                                         <label for="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                        <input type="email" class="form-control" id="email"
+                                            placeholder="Your Email">
                                         <label for="email">Your Email</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date3" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
+                                        <input type="text" class="form-control datetimepicker-input"
+                                            id="datetime" placeholder="Date & Time" data-target="#date3"
+                                            data-toggle="datetimepicker" />
                                         <label for="datetime">Date & Time</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <select class="form-select" id="select1">
-                                          <option value="1">People 1</option>
-                                          <option value="2">People 2</option>
-                                          <option value="3">People 3</option>
+                                            <option value="1">People 1</option>
+                                            <option value="2">People 2</option>
+                                            <option value="3">People 3</option>
                                         </select>
                                         <label for="select1">No Of People</label>
-                                      </div>
+                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
@@ -250,18 +265,20 @@
             </div>
         </div>
 
-        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <!-- 16:9 aspect ratio -->
                         <div class="ratio ratio-16x9">
-                            <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
-                                allow="autoplay"></iframe>
+                            <iframe class="embed-responsive-item" src="" id="video" allowfullscreen
+                                allowscriptaccess="always" allow="autoplay"></iframe>
                         </div>
                     </div>
                 </div>
@@ -277,17 +294,19 @@
                     <h1 class="mb-5">Our <span class="text-primary">Clients </span> Say!!!</h1>
                 </div>
                 <div class="owl-carousel testimonial-carousel row">
-                    @foreach($acceptedTestimonials as $testimonial)
+                    @foreach ($acceptedTestimonials as $testimonial)
                         <div class="testimonial-item bg-transparent border rounded p-4 h-100">
                             <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p  style="height: 6.6em; line-height: 1.2em;">
-                                {{$testimonial->message}}
+                            <p style="height: 6.6em; line-height: 1.2em;">
+                                {{ $testimonial->message }}
                             </p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded-circle"  src="{{$testimonial->client->imageClient}}" style="width: 50px; height: 50px;">
+                                <img class="img-fluid flex-shrink-0 rounded-circle"
+                                    src="{{ $testimonial->client->imageClient }}" style="width: 50px; height: 50px;">
                                 <div class="ps-3">
-                                    <h5 class="mb-1">{{$testimonial->client->nom}}  {{$testimonial->client->prenom}}</h5>
-                                    <small>{{$testimonial->jjmmaaaa}}</small>
+                                    <h5 class="mb-1">{{ $testimonial->client->nom }}
+                                        {{ $testimonial->client->prenom }}</h5>
+                                    <small>{{ $testimonial->jjmmaaaa }}</small>
                                 </div>
                             </div>
                         </div>
@@ -321,10 +340,14 @@
                         <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
                         <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
                         <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i
+                                    class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i
+                                    class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -338,8 +361,10 @@
                         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
                         <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
                         <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                            <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text"
+                                placeholder="Your email">
+                            <button type="button"
+                                class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                         </div>
                     </div>
                 </div>

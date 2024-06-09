@@ -15,24 +15,30 @@ class Plat extends Model
     {
         return $this->belongsTo(Categorie::class, 'idCategorie', 'idCategorie');
     }
+
     public function etoiles()
     {
         return $this->hasMany(Etoile::class, 'idPlat', 'idPlat');
     }
+
     public function images()
     {
         return $this->hasMany(Image::class, 'idPlat', 'idPlat');
     }
 
-
     public function commandes()
     {
-        return $this->hasMany(Commande::class, 'idPlat','idPlat');
+        return $this->hasMany(Commande::class, 'idPlat', 'idPlat');
     }
 
     public function composer()
     {
         return $this->hasMany(Composer::class, 'idPlat', 'idPlat');
+    }
+
+    public function ingredients()
+    {
+        return $this->belongsToMany(Ingredient::class, 'composers', 'idPlat', 'idIngredient');
     }
 
     public static function getTopPlatsByCategory()
@@ -80,9 +86,32 @@ class Plat extends Model
         ->orderByDesc('avg_star_rating') // Then by average star rating
         ->limit(7) // Limit to top seven plats
         ->get();
-
-        
     return $topPlats;
+}
+// public static function getDetailsPlat($idPlat)
+// {
+//     $detailsPlat = Plat::select('plats.*', 'images.imageHero')
+//         ->join('images', 'plats.idPlat', '=', 'images.idPlat')
+//         ->where('plats.idPlat', $idPlat)
+//         ->first(); // Ensure it returns a single result
+//     return $detailsPlat;
+// }
+public static function getDetailsPlat($idPlat)
+{
+    // Récupérer les détails du plat avec l'image hero et les ingrédients
+    $detailsPlat = Plat::with(['images' => function ($query) {
+        $query->select('idPlat', 'imageHero');
+    }, 'ingredients'])
+    ->where('idPlat', $idPlat)
+    ->first();
+
+    // Si les détails du plat sont trouvés
+    if ($detailsPlat) {
+        // Récupérer la première image hero de la collection d'images
+        $detailsPlat->imageHero = $detailsPlat->images->first()->imageHero ?? null;
+    }
+
+    return $detailsPlat;
 }
 
 }

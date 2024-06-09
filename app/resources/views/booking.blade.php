@@ -74,15 +74,15 @@
         </nav>
             <!-- Navbar End -->
 
-            <div class="container-fluid py-5 bg-dark hero-header mb-5" style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('/img/bg-hero.jpg');">
+            <div class="container-fluid py-5 bg-dark hero-header mb-5"  style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ asset($details->imageHero) }}');">
                 <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-3 text-white mb-3 animated slideInDown">Booking</h1>
+                    <h1 class="display-3 text-white mb-3 animated slideInDown"> {{$details->designationPlat}} </h1>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Booking</li>
-                        </ol>
+                        <ul>
+                            @foreach($details->ingredients as $ingredient)
+                                <li>{{ $ingredient->libelle }}</li>
+                            @endforeach
+                        </ul>
                     </nav>
                 </div>
             </div>

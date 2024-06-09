@@ -9,7 +9,7 @@ class ComposersTableSeeder extends Seeder
 {
     public function run()
     {
-        Composer::factory(10)->create();
+        Composer::factory(100)->create();
     }
 }
 

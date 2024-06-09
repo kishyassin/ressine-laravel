@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,18 +10,22 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ImageFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
+        // Generate a unique idPlat value
+        $idPlat = $this->faker->unique()->numberBetween(1, 25);
+
+        // Check if the generated idPlat already exists in the database
+        while (DB::table('images')->where('idPlat', $idPlat)->exists()) {
+            // If it does, generate a new idPlat value until a unique one is found
+            $idPlat = $this->faker->numberBetween(1, 25);
+        }
+
         return [
-            'idPlat' => fake()->unique()->numberBetween(1, 25),
-            'imageHero' => fake()->imageUrl($width = 1370, $height = 770, 'food', true, 'Faker'),
-            'imageIcon' => fake()->imageUrl($width = 200, $height = 200, 'food', true, 'Faker'),
-            'imageSlide' => fake()->imageUrl($width = 320, $height = 480, 'food', true, 'Faker'),
+            'idPlat' => $idPlat,
+            'imageHero' => $this->faker->imageUrl(1370, 770, 'food', true, 'Faker'),
+            'imageIcon' => $this->faker->imageUrl(200, 200, 'food', true, 'Faker'),
+            'imageSlide' => $this->faker->imageUrl(320, 480, 'food', true, 'Faker'),
         ];
     }
 }

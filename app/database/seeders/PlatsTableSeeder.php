@@ -12,7 +12,7 @@ class PlatsTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1, 10) as $index) {
+        foreach (range(1, 25) as $index) {
             DB::table('plats')->insert([
                 'idCategorie' => $faker->numberBetween(1, 3), // Assuming you have 10 categories
                 'designationPlat' => $faker->word,

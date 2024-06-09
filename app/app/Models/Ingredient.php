@@ -29,4 +29,9 @@ class Ingredient extends Model
     {
         return $this->hasMany(Composer::class, 'idIngredient', 'idIngredient');
     }
+
+    public function plats()
+    {
+        return $this->belongsToMany(Plat::class, 'composers', 'idIngredient', 'idPlat');
+    }
 }

@@ -22,7 +22,7 @@ Route::get('/', [IndexController::class, 'index']);
 
 // Route::get('/signupRestaurant', [IndexController::class, 'signupRestaurant']);
 
-Route::get('/booking/{idPlat}', [ReserverController::class, 'bookingPage'])->name('booking');
+Route::get('/ordering/{idPlat}', [ReserverController::class, 'bookingPage'])->name('ordering');
 
 Route::get('/welcome',function(){
     return view('welcome');

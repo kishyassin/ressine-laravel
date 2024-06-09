@@ -103,9 +103,11 @@
                                             <span class="text-primary">{{ $plat->designationPlat }}</span>
                                         </h1>
                                         <p class="text-white mx-4 mb-4 pb-2">{{ $plat->descriptionPlat }}</p>
-                                        <a href="{{ url('booking', ['idPlat' => $plat->idPlat]) }}"
+                                        <a href="{{ url('ordering', ['idPlat' => $plat->idPlat]) }}"
                                             class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link booking-link-of-slider">
-                                            Book A Table
+                                            Order Now<i
+                                                class="fa fa-shopping-cart"
+                                                aria-hidden="true"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -166,7 +168,7 @@
                                                             class="w-100 p-2 rounded-full btn btn-outline-primary">Explore</button>
                                                     </div>
                                                     <div class="col-6 p-1">
-                                                        <a href="{{ url('booking', ['idPlat' => $plat->idPlat]) }}"
+                                                        <a href="{{ url('ordering', ['idPlat' => $plat->idPlat]) }}"
                                                             class="w-100 p-2 rounded-full btn btn-primary">Order <i
                                                                 class="fa fa-shopping-cart"
                                                                 aria-hidden="true"></i></a>
@@ -205,7 +207,7 @@
                 <div class="col-md-6">
                     <div class="video">
                         <button type="button" class="btn-play" data-bs-toggle="modal"
-                            data-src="https://www.youtube.com/embed/-Ed-GNq2EyU?si=dkmPyGVj_eda-7ql"
+                            data-src="https://www.youtube.com/embed/p0Km_B8LyJo?si=5qUycZ1pFBoB4H8K"
                             data-bs-target="#videoModal">
                             <span></span>
                         </button>

@@ -74,7 +74,7 @@
         </nav>
             <!-- Navbar End -->
 
-            <div class="container-fluid py-5 bg-dark hero-header mb-5"  style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ asset($details->imageHero) }}');">
+            {{-- <div class="container-fluid py-5 bg-dark hero-header mb-5"  style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ asset($details->imageHero) }}');">
                 <div class="container text-center my-5 pt-5 pb-4">
                     <h1 class="display-3 text-white mb-3 animated slideInDown"> {{$details->designationPlat}} </h1>
                     <nav aria-label="breadcrumb">
@@ -86,13 +86,14 @@
                     </nav>
                 </div>
             </div>
-        </div>
+        </div> --}}
+
         <!-- Navbar & Hero End -->
 
 
         <!-- Reservation Start -->
-        <div class="container-fluid py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="row g-0">
+        <div class="container-fluid py-5 bg-dark  px-0 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="row g-0 mt-5">
                 <div class="col-md-6">
                     <div class="video">
                         <button type="button" class="btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/-Ed-GNq2EyU?si=dkmPyGVj_eda-7ql" data-bs-target="#videoModal">

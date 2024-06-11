@@ -23,7 +23,7 @@ class ClientFactory extends Factory
             'telephone' =>substr(fake()->phoneNumber(), 0, 15),
             'login' =>fake()->userName, // Ajout du champ login
             'password' => Hash::make('password'), // Ajout du champ password (vous pouvez utiliser une valeur plus sécurisée)
-            'adresse' => fake()->unique()->address
+            'adresseClient' => fake()->unique()->address
         ];
     }
 }

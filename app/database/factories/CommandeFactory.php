@@ -10,6 +10,7 @@ class CommandeFactory extends Factory
     {
         return [
             'etat' => fake()->randomElement(['prepared', 'delivered', 'cancelled']),
+            'adresseLivraison' => fake()->unique()->address,
             'idDate' => \App\Models\OrderDate::factory(),
             'numeroFacture' => \App\Models\Facture::factory(),
             'idPlat' => \App\Models\Plat::factory(),

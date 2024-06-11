@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\ReserverController;
 
 /*
@@ -22,7 +23,13 @@ Route::get('/', [IndexController::class, 'index']);
 
 // Route::get('/signupRestaurant', [IndexController::class, 'signupRestaurant']);
 
-Route::get('/ordering/{idPlat}', [ReserverController::class, 'bookingPage'])->name('ordering');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/ordering/{idPlat}', [CommandeController::class, 'create'])->name('order.create');
+    Route::post('/ordering', [CommandeController::class, 'store'])->name('order.store');
+});
+
+Route::get('/booking', [ReserverController::class, 'bookingPage'])->name('booking');
 
 Route::get('/welcome',function(){
     return view('welcome');

@@ -86,8 +86,8 @@
 /*** Navbar ***/
 .navbar-dark .navbar-nav .nav-link {
     position: relative;
-    margin-left: 25px;
-    padding: 35px 0;
+    margin-left: 20px;
+    padding: 20px 10px;
     font-size: 15px;
     color: var(--light) !important;
     text-transform: uppercase;
@@ -144,7 +144,7 @@
         z-index: 999;
         background: transparent !important;
     }
-    
+
     .sticky-top.navbar-dark {
         position: fixed;
         background: var(--dark) !important;
@@ -254,12 +254,12 @@
 
 
 /* popular items section style start */
-  
+
   #tranding .tranding-slider {
     height: 45rem;
     position: relative;
   }
-  
+
   @media (max-width:500px) {
     #tranding .tranding-slider {
       height: 26rem;
@@ -271,13 +271,13 @@
       height: 40rem;
     }
   }
-  
+
   .tranding-slide {
     width: 33rem;
     height: 38rem;
     position: relative;
   }
-  
+
   @media (max-width:620px) {
     .tranding-slide {
       width: 25rem !important;
@@ -310,15 +310,15 @@
       height: 28rem !important;
     }
   }
-  
-  
+
+
   .tranding-slide .tranding-slide-img img {
     width: 33rem;
     height: 38rem;
     border-radius: 2rem;
     object-fit: cover;
   }
-  
+
   .tranding-slide .tranding-slide-content {
     position: absolute;
     left: 0;
@@ -328,7 +328,7 @@
     background: linear-gradient(0deg,var(--dark),transparent);
     border-radius: 2rem;
   }
-  
+
   .tranding-slide-content .food-price {
     position: absolute;
     top: 2rem;
@@ -339,7 +339,7 @@
   .food-name{
     color: white;
   }
-  
+
   .tranding-slide-content .tranding-slide-content-bottom {
     position: absolute;
     bottom: 1rem;
@@ -347,26 +347,26 @@
     right: 0;
     color: white;
   }
-  
+
   .food-rating {
     display: flex;
     gap: 1rem;
     color: white;
     text-shadow: 0 1px 20px black;
   }
-  
+
   .rating ion-icon {
     color: var(--primary);
   }
   .rounded-full{
     border-radius: 50rem;
   }
-  
+
   .swiper-slide-shadow-left,
   .swiper-slide-shadow-right {
     display: none;
   }
-  
+
   .tranding-slider-control {
     position: relative;
     bottom: 3.5rem;
@@ -374,40 +374,40 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   .tranding-slider-control .swiper-button-next {
     left: 58% !important;
     transform: translateX(-58%) !important;
   }
-  
+
   @media (max-width:990px) {
     .tranding-slider-control .swiper-button-next {
       left: 70% !important;
       transform: translateX(-70%) !important;
     }
   }
-  
+
   @media (max-width:450px) {
     .tranding-slider-control .swiper-button-next {
       left: 80% !important;
       transform: translateX(-80%) !important;
     }
   }
-  
+
   @media (max-width:990px) {
     .tranding-slider-control .swiper-button-prev {
       left: 30% !important;
       transform: translateX(-30%) !important;
     }
   }
-  
+
   @media (max-width:450px) {
     .tranding-slider-control .swiper-button-prev {
       left: 20% !important;
       transform: translateX(-20%) !important;
     }
   }
-  
+
   .tranding-slider-control .slider-arrow {
     background: white;
     width: 3.5rem;
@@ -417,26 +417,26 @@
     transform: translateX(-42%);
     filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
   }
-  
+
   .tranding-slider-control .slider-arrow ion-icon {
     font-size: 2rem;
     color: #222224;
   }
-  
+
   .tranding-slider-control .slider-arrow::after {
     content: '';
   }
-  
+
   .tranding-slider-control .swiper-pagination {
     position: relative;
     width: 15rem;
     bottom: 1rem;
   }
-  
+
   .tranding-slider-control .swiper-pagination .swiper-pagination-bullet {
     filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
   }
-  
+
   .tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
     background: var(--primary);
   }

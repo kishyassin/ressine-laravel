@@ -70,20 +70,35 @@
                         </div>
                     </div>
                     <a  href="contact.php" class="nav-item nav-link">Contact</a>
-                </div>
+
 
                 @if (Route::has('login'))
                     @auth
-                        <div class="sm:fixed sm:top-0 sm:right-0 p-4 text-right">
-                            <a  href="profile" class="btn btn-primary py-1 px-3 rounded-full"><i class="fa fa-user" aria-hidden="true"></i></a>
+                        <div class="nav-item dropdown">
+                            <a  href="#" class="nav-item nav-link"><i class="fa fa-user" aria-hidden="true"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a  href="profile" class=" dropdown-item ">modifier </a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <x-dropdown-link :href="route('logout')" class="dropdown-item"
+                                                     onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                        {{ __('Déconnecter') }}
+                                    </x-dropdown-link>
+                                </form>
+                            </div>
                         </div>
+                        <a  href="cart" class="nav-item nav-link"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+
+
                     @else
-                        <div class="sm:fixed sm:top-0 sm:right-0 p-4 text-right">
-                            <a  href="login" class="btn btn-primary py-1 px-3 rounded-full">se connecter</a>
+                        <div class="sm:fixed sm:top-0 sm:right-0 ps-3 d-flex align-items-center justify-content-center text-right">
+                            <a  href="login" class="btn btn-primary  rounded-full">se connecter</a>
                         </div>
                     @endauth
                 @endif
-
+            </div>
 
             </div>
         </nav>
@@ -145,7 +160,7 @@
                                             <img src="{{ $plat->imageSlide }}" alt="Tranding">
                                         </div>
                                         <div class="tranding-slide-content">
-                                            <h1 class="food-price">${{ $plat->prixUnitaire }}</h1>
+                                            <h1 class="food-price">{{ Number::currency($plat->prixUnitaire,'mad') }}</h1>
                                             <div class="tranding-slide-content-bottom">
                                                 <h2 class="food-name">
                                                     {{ $plat->designationPlat }}
@@ -168,8 +183,8 @@
                                                             class="w-100 p-2 rounded-full btn btn-outline-primary">Explore</button>
                                                     </div>
                                                     <div class="col-6 p-1">
-                                                        <a href="{{ url('ordering', ['idPlat' => $plat->idPlat]) }}"
-                                                            class="w-100 p-2 rounded-full btn btn-primary">Order <i
+                                                        <a href="{{ url('addToCart', ['idPlat' => $plat->idPlat]) }}"
+                                                            class="w-100 p-2 rounded-full btn btn-primary">Ajouter Panier <i
                                                                 class="fa fa-shopping-cart"
                                                                 aria-hidden="true"></i></a>
                                                     </div>

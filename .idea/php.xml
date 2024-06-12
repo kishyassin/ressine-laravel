@@ -163,6 +163,7 @@
       <path value="$PROJECT_DIR$/app/vendor/psr/log" />
       <path value="$PROJECT_DIR$/app/vendor/livewire/livewire" />
       <path value="$PROJECT_DIR$/app" />
+      <path value="$PROJECT_DIR$/app/vendor/darryldecode/cart" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">

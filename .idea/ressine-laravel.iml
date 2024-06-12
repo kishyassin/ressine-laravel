@@ -8,6 +8,8 @@
       <sourceFolder url="file://$MODULE_DIR$/app/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/app/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/app/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/barryvdh/laravel-ide-helper" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/barryvdh/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/blade-ui-kit/blade-heroicons" />
@@ -153,6 +155,7 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/darryldecode/cart" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

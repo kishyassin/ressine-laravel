@@ -1,15 +1,15 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5  py-lg-0">
     <a href="index.php" class="navbar-brand p-0 ">
-        <h3 class="text-primary m-0 d-flex">
+        <h2 class="text-primary m-0 d-flex">
             <img src="./img/logo.svg" alt="Logo" class="d-inline-block h-100 w-auto">
             <span class=" h-100 align-bottom align-self-end">Ressine</span>
-        </h3>
+        </h2>
     </a>
 
     <div class=" navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0 pe-4">
-            <a  href="index.php" class=" nav-item nav-link active">Accueil</a>
+            <a  href="/" class=" nav-item nav-link active">Accueil</a>
             <a  href="about.php" class=" nav-item nav-link">à propos</a>
             <a  href="menu.php" class=" nav-item nav-link">Menu</a>
             <div class="nav-item dropdown">

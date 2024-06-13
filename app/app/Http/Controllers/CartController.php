@@ -15,7 +15,7 @@ class CartController extends Controller
     public function cart()
     {
         $items = \Cart::session(Auth::id())->getContent();
-        return view('cart', ['items' => $items]);
+        return view('cartd', ['items' => $items]);
     }
 
     /**
@@ -23,7 +23,10 @@ class CartController extends Controller
      */
     public function addPlatToCart($idPlat)
     {
-        $plat = Plat::findOrFail($idPlat);
+        $plat = Plat::with('images')->findOrFail($idPlat);
+
+        // Get the first image's icon if it exists
+        $imageIcon = $plat->images->first() ? $plat->images->first()->imageIcon : null;
 
         \Cart::session(Auth::id())->add(array(
             'id' => $idPlat,
@@ -31,12 +34,13 @@ class CartController extends Controller
             'price' => $plat->prixUnitaire,
             'quantity' => 1,
             'attributes' => array(
-                'description' => $plat->descriptionPlat
+                'description' => $plat->descriptionPlat,
+                'image' => $imageIcon,
             ),
             'associatedModel' => $plat
         ));
 
-        return redirect()->route('cart')->with('success', 'Plat added to cart!');
+        return redirect()->route('cart')->with('success', 'Plat ajouté à votre panier!');
     }
 
     /**
@@ -51,7 +55,7 @@ class CartController extends Controller
             ),
         ));
 
-        return redirect()->route('cart')->with('success', 'Cart updated!');
+        return redirect()->route('cart')->with('success', 'votre Panier est mis a jour');
     }
 
     /**
@@ -61,7 +65,7 @@ class CartController extends Controller
     {
         \Cart::session(Auth::id())->remove($rowId);
 
-        return redirect()->route('cart')->with('success', 'Plat removed from cart!');
+        return redirect()->route('cart')->with('success', 'Le plat est retirer du panier');
     }
 
     /**
@@ -71,6 +75,6 @@ class CartController extends Controller
     {
         \Cart::session(Auth::id())->clear();
 
-        return redirect()->route('cart')->with('success', 'Cart cleared!');
+        return redirect()->route('cart')->with('success', 'votre panier est maintenant vide');
     }
 }

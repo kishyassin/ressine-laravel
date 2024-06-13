@@ -51,5 +51,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
 });
 
+Route::get('cartd',function (){
+    return view('cartD');
+});
 
 require __DIR__.'/auth.php';

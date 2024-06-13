@@ -55,7 +55,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])</head>
 
 <body class="">
-<div class="container-fluid p-0 bg-light">
+<div class="container-fluid p-0 bg-white">
     @include('layouts.navigation')
 
 

@@ -10,7 +10,7 @@
     <div class=" navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0 pe-4">
             <a  href="/" class=" nav-item nav-link active">Accueil</a>
-            <a  href="about.php" class=" nav-item nav-link">à propos</a>
+            <a  href="about" class=" nav-item nav-link">à propos</a>
             <a  href="menu.php" class=" nav-item nav-link">Menu</a>
             <div class="nav-item dropdown">
                 <a  href="#" class=" nav-link dropdown-toggle" data-bs-toggle="dropdown">Reserver</a>
@@ -20,7 +20,7 @@
                     <a  href="testimonial.php" class=" dropdown-item">dîner</a>
                 </div>
             </div>
-            <a  href="contact.php" class="nav-item nav-link">Contact</a>
+            <a  href="contact" class="nav-item nav-link">Contact</a>
 
 
             @if (Route::has('login'))
@@ -44,7 +44,7 @@
 
 
                 @else
-                    <div class="sm:fixed sm:top-0 sm:right-0 ps-3 d-flex align-items-center justify-content-center text-right">
+                    <div class="sm:top-0 sm:right-0 ps-3 d-flex align-items-center justify-content-center text-right">
                         <a  href="login" class="btn btn-primary  rounded-full">se connecter</a>
                     </div>
                 @endauth

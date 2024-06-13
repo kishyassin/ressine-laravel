@@ -28,6 +28,14 @@ Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/booking', [ReserverController::class, 'bookingPage'])->name('booking');
 
+Route::get('/about',function(){
+    return view('about');
+});
+
+Route::get('/contact',function(){
+    return view('contact');
+});
+
 Route::get('/welcome',function(){
     return view('welcome');
 });

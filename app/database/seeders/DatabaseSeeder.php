@@ -1,17 +1,23 @@
 <?php
 
+// database/seeders/DatabaseSeeder.php
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\AboutImage;
 use Illuminate\Database\Seeder;
+use App\Models\About;
+use App\Models\Stat;
+use App\Models\Image;
+use App\Models\Service;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
+    public function run()
     {
-        $this->call(PlatsTableSeeder::class);
+        $about = About::factory()->create();
+
+        $about->images()->createMany(AboutImage::factory()->count(4)->make()->toArray());
+
+        Service::factory()->count(3)->create();
     }
 }

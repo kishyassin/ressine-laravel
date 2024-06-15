@@ -1,4 +1,9 @@
 @extends('layouts.ressine')
+
+@section('head')
+    @include('layouts.components.profile-head-links')
+@endsection
+
 @section('content')
 
     <div class="py-12 mt-6">

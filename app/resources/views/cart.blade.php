@@ -1,62 +1,131 @@
+@extends('layouts.ressine')
 
-    <div class="container">
-        <h2>Shopping Cart</h2>
-
-        @if(Session::has('success'))
-            <div class="alert alert-success">
-                {{ Session::get('success') }}
-            </div>
-        @endif
-
-        @if(Session::has('error'))
-            <div class="alert alert-danger">
-                {{ Session::get('error') }}
-            </div>
-        @endif
-
-        @if($items->count() > 0)
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Total</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($items as $item)
-                    <tr>
-                        <td>{{ $item->name }}</td>
-                        <td>
-                            <form action="{{ route('cart.update', $item->id) }}" method="POST">
-                                @csrf
-                                @method('PATCH')
-                                <input type="number" name="quantity" value="{{ $item->quantity }}" min="1">
-                                <button type="submit">Update</button>
-                            </form>
-                        </td>
-                        <td>${{ $item->price }}</td>
-                        <td>${{ $item->getPriceSum() }}</td>
-                        <td>
-                            <form action="{{ route('cart.remove', $item->id) }}" method="POST">
+@section('content')
+    @if($items->count() > 0)
+        <div class="container">
+            <div class="row">
+                <div class="col-10 mx-auto px-4 py-8 mt-4">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                        <h1 class="text-2xl font-bold my-4">Shopping Cart</h1>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                            <form action="{{ route('cart.clear') }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">Remove</button>
+                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Clear Panier</button>
                             </form>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-            <h3>Total: ${{ \Cart::session(Auth::id())->getTotal() }}</h3>
-            <form action="{{ route('cart.clear') }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Clear Cart</button>
-            </form>
-        @else
-            <p>Your cart is empty.</p>
-        @endif
-    </div>
+                            <form action="{{ route('stripe.session') }}" method="POST">
+                                @csrf
+                                <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                                    Checkout
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div>
+                        @foreach($items as $item)
+                            <div class="flex flex-col md:flex-row border-b border-gray-400 py-2">
+                                <div class="flex-shrink-0">
+                                    <img src="{{$item->attributes->image}}" alt="Product image" class="w-32 h-32 object-cover">
+                                </div>
+                                <div class="mt-1 md:mt-0 md:ml-6">
+                                    <h2 class="text-lg font-bold">{{ $item->name }} ${{ $item->price }}</h2>
+                                    <p class="mt-2 text-gray-600">{{$item->attributes->description}}</p>
+                                    <div class="mt-4 flex items-center">
+                                        <span class="mr-2 text-gray-600">Quantity:</span>
+                                        <form action="{{ route('cart.update', $item->id) }}" method="POST" class="cart-form">
+                                            @csrf
+                                            @method('PATCH')
+                                            <div class="flex items-center">
+                                                <button type="button" class="bg-gray-200 rounded-l-lg px-2 py-1 decrement">-</button>
+                                                <input type="text" name="quantity" class="number border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" value="{{ $item->quantity }}">
+                                                <button type="button" class="bg-gray-200 rounded-r-lg px-2 py-1 increment">+</button>
+                                                <input type="submit" value="Update" class="btn btn-secondary">
+
+                                            </div>
+                                        </form>
+                                        <form action="{{ route('cart.remove', $item->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class=" mx-2 btn btn-danger">Remove</button>
+                                        </form>
+                                        <span class="ml-auto font-bold mx-2">${{ $item->getPriceSum() }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="flex justify-end items-center mt-8">
+                        <span class="text-gray-600 mr-4">Subtotal:</span>
+                        <span class="text-xl font-bold">{{ Number::currency(\Cart::session(Auth::id())->getTotal(),'mad') }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @else
+        <div class="container">
+            <div class="row">
+                <div class="col-10 mx-auto px-4 py-8 mt-4">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                        <h1 class="text-2xl font-bold my-4">Shopping Cart</h1>
+                        <div>
+                            Votre Panier est vide !
+                            <a href="/" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                                Ajouter des plats?
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex justify-end items-center mt-8">
+                        <span class="text-gray-600 mr-4">Subtotal:</span>
+                        <span class="text-xl font-bold">{{ Number::currency(\Cart::session(Auth::id())->getTotal(),'mad') }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+    @if(Session::has('success'))
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                    title: "Bien",
+                    text: "{{Session::get('success')}}",
+                    icon: "success"
+                });
+            })
+        </script>
+    @endif
+
+    @if(Session::has('error'))
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                    title: "Ooops",
+                    text: "{{Session::get('error')}}",
+                    icon: "error"
+                });
+            })
+        </script>
+    @endif
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function () {
+            $('.decrement').click(function () {
+                let $input = $(this).siblings('.number');
+                let currentNumber = parseInt($input.val());
+                if (currentNumber > 1) { // Assuming you don't want the number to go below 1
+                    $input.val(currentNumber - 1);
+                }
+            });
+
+            $('.increment').click(function () {
+                let $input = $(this).siblings('.number');
+                let currentNumber = parseInt($input.val());
+                $input.val(currentNumber + 1);
+            });
+
+            // Prevent form submission on button click
+            $('.cart-form button[type="button"]').click(function(event) {
+                event.preventDefault(); // Prevents the form from submitting
+            });
+        });
+    </script>
+@endsection

@@ -15,7 +15,7 @@ class CartController extends Controller
     public function cart()
     {
         $items = \Cart::session(Auth::id())->getContent();
-        return view('cartd', ['items' => $items]);
+        return view('cart', ['items' => $items]);
     }
 
     /**

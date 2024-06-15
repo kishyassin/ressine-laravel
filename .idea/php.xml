@@ -164,6 +164,7 @@
       <path value="$PROJECT_DIR$/app/vendor/livewire/livewire" />
       <path value="$PROJECT_DIR$/app" />
       <path value="$PROJECT_DIR$/app/vendor/darryldecode/cart" />
+      <path value="$PROJECT_DIR$/app/vendor/stripe/stripe-php" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">

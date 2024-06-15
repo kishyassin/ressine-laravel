@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
@@ -57,10 +59,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/cart/update/{rowId}', [CartController::class, 'updatePlatInCart'])->name('cart.update');
     Route::delete('/cart/remove/{rowId}', [CartController::class, 'removePlatFromCart'])->name('cart.remove');
     Route::delete('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+
+    Route::post('stripe/session', [StripeController::class, 'session'])->name('stripe.session');
+    Route::get('stripe/success', [StripeController::class, 'success'])->name('success');
+    Route::get('stripe/cancel', [StripeController::class, 'cancel'])->name('cancel');
+
 });
 
-Route::get('cartd',function (){
-    return view('cartD');
-});
+
 
 require __DIR__.'/auth.php';

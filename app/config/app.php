@@ -186,7 +186,7 @@ return [
 
 
         Darryldecode\Cart\CartServiceProvider::class,
-
+        App\Providers\StripeServiceProvider::class,
         /*
          * Package Service Providers...
          */

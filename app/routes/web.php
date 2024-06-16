@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\StripeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReserverController;
 
@@ -30,9 +31,7 @@ Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/booking', [ReserverController::class, 'bookingPage'])->name('booking');
 
-Route::get('/about',function(){
-    return view('about');
-});
+Route::get('/about',[AboutController::class,'index']);
 
 Route::get('/contact',function(){
     return view('contact');

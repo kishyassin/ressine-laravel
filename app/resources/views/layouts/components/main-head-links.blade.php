@@ -1,3 +1,4 @@
+<!-- layouts/component/main-head-links -->
 <meta charset="utf-8">
 <title>{{config('app.name')}}</title>
 <link rel="icon" type="image/svg+xml" href="img/logo.svg" />
@@ -45,3 +46,4 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+@yield('extended-head')

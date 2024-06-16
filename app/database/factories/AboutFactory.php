@@ -19,6 +19,7 @@ class AboutFactory extends Factory
             'email' => fake()->email, // New field
             'address' => fake()->address, // New field
             'telephone' => fake()->phoneNumber, // New field
+            'starting_year' => fake()->year($max = 'now')
         ];
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-// app/Http/Controllers/AboutController.php
 namespace App\Http\Controllers;
 
 use App\Models\Chef;
@@ -14,7 +13,13 @@ class AboutController extends Controller
     {
         $about = About::with(['images'])->first();
         $services = Service::all();
-        $fourChefs = Chef::orderBy('created_at','asc')->take(4)->get();
-        return view('about', compact('about', 'services','fourChefs'));
+        $fourChefs = Chef::orderBy('created_at', 'asc')->take(4)->get();
+
+        // Calculate dynamic values
+        $currentYear = date('Y');
+        $yearsOfExperience = $currentYear - $about->starting_year;
+        $numberOfChefs = Chef::count();
+
+        return view('about', compact('about', 'services', 'fourChefs', 'yearsOfExperience', 'numberOfChefs'));
     }
 }

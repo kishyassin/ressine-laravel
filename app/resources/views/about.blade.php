@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container-xxl py-5 bg-dark hero-header mb-5">
+<div class="container-xxl py-5 bg-dark hero-header">
     <div class="container text-center my-5 pt-5 pb-4">
         <h1 class="display-3 text-white mb-3 animated slideInDown">{{ $about->title }}</h1>
         <nav aria-label="breadcrumb">
@@ -23,17 +23,19 @@
         <div class="row g-5 align-items-center">
             <div class="col-lg-6">
                 <div class="row g-3">
-                    <div class="col-6 text-start">
-                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="img/about-1.jpg">
-                    </div>
-                    <div class="col-6 text-start">
-                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="img/about-2.jpg" style="margin-top: 25%;">
-                    </div>
-                    <div class="col-6 text-end position-relative">
-                        <img class=" position-absolute top-0 end-2 img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="img/about-3.jpg">
-                    </div>
-                    <div class="col-6 text-end">
-                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="img/about-4.jpg">
+                    <div class="row g-3">
+                        <div class="col-6 text-start">
+                            <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="img/about-1.jpg">
+                        </div>
+                        <div class="col-6 text-start">
+                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="img/about-2.jpg" style="margin-top: 25%;">
+                        </div>
+                        <div class="col-6 text-end">
+                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="img/about-3.jpg">
+                        </div>
+                        <div class="col-6 text-end">
+                            <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="img/about-4.jpg">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,6 +44,26 @@
                 <h1 class="mb-4">{{ $about->welcome_text }}</h1>
                 <p class="mb-4">{{ $about->description }}</p>
                 <p class="mb-4">{{ $about->additional_info }}</p>
+                <div class="row g-4 mb-4">
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center border-start border-5 border-primary px-3">
+                            <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">{{ $yearsOfExperience }}</h1>
+                            <div class="ps-4">
+                                <p class="mb-0">Ans</p>
+                                <h6 class="text-uppercase mb-0">d'expérience</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center border-start border-5 border-primary px-3">
+                            <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">{{ $numberOfChefs }}</h1>
+                            <div class="ps-4">
+                                <p class="mb-0">Populaire</p>
+                                <h6 class="text-uppercase mb-0">MAÎTRES CUISINIERS</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -60,7 +82,7 @@
                         <div class="p-4 text-center">
                             <i class="fa fa-3x {{ $service->icon }} text-primary mb-4"></i>
                             <h5>{{ $service->title }}</h5>
-                            <p>{{ $service->description }}</p>
+                            <p style="height:30px">{{ $service->description }}</p>
                         </div>
                     </div>
                 </div>

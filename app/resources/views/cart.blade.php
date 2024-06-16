@@ -1,5 +1,15 @@
 @extends('layouts.ressine')
 
+@section('head')
+    @include('layouts.components.main-head-links')
+@endsection
+
+@section('extended-head')
+    <script src="https://cdn.tailwindcss.com"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+@endsection
+
+
 @section('content')
     @if($items->count() > 0)
         <div class="container">

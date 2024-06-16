@@ -25,7 +25,7 @@ class StripeController extends Controller
 
             $productItems[] = [
                 'price_data' => [
-                    'currency' => 'USD',
+                    'currency' => 'MAD',
                     'product_data' => [
                         'name' => $product_name,
                     ],
@@ -57,6 +57,7 @@ class StripeController extends Controller
 
     public function success()
     {
+
         \Cart::session(Auth::id())->clear();
         return redirect()->route('cart')->with('success', 'Merci, Votre Ordre Sera servi le plus proche possible');
 

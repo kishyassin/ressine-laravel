@@ -3,6 +3,7 @@
 
 <head>
     @yield('head')
+    @yield('extended-head')
 </head>
 
 <body class="">

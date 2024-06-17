@@ -55,15 +55,23 @@ class CartController extends Controller
             ),
         ));
 
+        if ($request->has('redirect_to_confirmation')) {
+            return redirect()->route('confirmation')->with('success', 'votre Panier est mis a jour');
+        }
+
         return redirect()->route('cart')->with('success', 'votre Panier est mis a jour');
     }
 
     /**
      * Remove an item from the cart.
      */
-    public function removePlatFromCart($rowId)
+    public function removePlatFromCart(Request $request, $rowId)
     {
         \Cart::session(Auth::id())->remove($rowId);
+
+        if ($request->has('redirect_to_confirmation')) {
+            return redirect()->route('confirmation')->with('success', 'Le plat est retirer du panier');
+        }
 
         return redirect()->route('cart')->with('success', 'Le plat est retirer du panier');
     }

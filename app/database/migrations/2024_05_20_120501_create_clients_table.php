@@ -16,6 +16,10 @@ class CreateClientsTable extends Migration
             $table->string('adresseClient')->nullable();
             $table->string('login'); // Ajout du champ login
             $table->string('password')->unique(); // Ajout du champ password unique
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

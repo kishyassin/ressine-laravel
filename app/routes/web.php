@@ -45,6 +45,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::post('/confirmation', [StripeController::class, 'confirmationPage'])->name('confirmation');
+Route::post('/confirm', [StripeController::class, 'session'])->name('confirm');
 
 Route::middleware('auth')->group(function () {
     //profile actions

@@ -23,7 +23,7 @@
                                 @method('DELETE')
                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Clear Panier</button>
                             </form>
-                            <form action="{{ route('stripe.session') }}" method="POST">
+                            <form action="{{ route('confirmation') }}" method="POST">
                                 @csrf
                                 <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
                                     Checkout

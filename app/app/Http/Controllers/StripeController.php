@@ -10,12 +10,19 @@ class StripeController extends Controller
 {
     public function confirmationPage(Request $request)
 {
-    $cartItems = \Cart::session(Auth::id())->getContent();
-    $total = \Cart::session(Auth::id())->getTotal();
-    $user = Auth::user();
-    
-    return view('confirmation', compact('cartItems', 'total', 'user'));
+    $user = auth()->user();
+    $items = \Cart::session(Auth::id())->getContent(); // Assuming you're using a package like darryldecode/cart
+    $total = $items->sum(function ($item) {
+        return $item->price * $item->quantity;
+    });
+
+    return view('confirmation', [
+        'user' => $user,
+        'items' => $items,
+        'total' => $total
+    ]);
 }
+    
 public function session(Request $request)
 {
     $address = $request->input('address');

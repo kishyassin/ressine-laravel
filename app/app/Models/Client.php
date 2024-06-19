@@ -2,23 +2,34 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 /**
  * Client Model
  *
  * Represents a client in the system.
  */
-class Client extends Model
+class Client extends Authenticatable
 {
     use HasFactory;
+    use Notifiable;
 
+    protected $primaryKey = 'idClient';
+
+    protected $fillable = [
+        'nom', 'prenom', 'imageClient', 'telephone', 'adresseClient', 'login', 'email', 'password',
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
     // Specify the table associated with the model
     protected $table = 'clients';
 
-    // Specify the primary key for the model
-    protected $primaryKey = 'idClient';
+
 
     // Indicates if the model should be timestamped
     public $timestamps = true;

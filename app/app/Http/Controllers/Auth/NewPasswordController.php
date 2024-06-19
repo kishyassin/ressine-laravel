@@ -40,13 +40,13 @@ class NewPasswordController extends Controller
         // database. Otherwise we will parse the error and return the response.
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user) use ($request) {
-                $user->forceFill([
+            function ($client) use ($request) {
+                $client->forceFill([
                     'password' => Hash::make($request->password),
                     'remember_token' => Str::random(60),
                 ])->save();
 
-                event(new PasswordReset($user));
+                event(new PasswordReset($client));
             }
         );
 

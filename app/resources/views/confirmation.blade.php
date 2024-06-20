@@ -16,7 +16,7 @@
     <h2 class="text-lg font-bold mb-2">Client Information</h2>
     <p>Name: {{ $user->nom }} {{ $user->prenom }}</p>
     <p>Email: {{ $user->email }}</p>
-    
+
     <h2 class="text-lg font-bold mb-2 mt-4">Purchased Items</h2>
     <div>
         @foreach($items as $item)
@@ -28,23 +28,7 @@
                     <h2 class="text-lg font-bold">{{ $item->name }} ${{ $item->price }}</h2>
                     <p class="mt-2 text-gray-600">{{$item->attributes->description}}</p>
                     <div class="mt-4 flex items-center">
-                        <span class="mr-2 text-gray-600">Quantity:</span>
-                        <form action="{{ route('cart.update', $item->id) }}" method="POST" class="cart-form">
-                            @csrf
-                            @method('PATCH')
-                            <div class="flex items-center">
-                                <button type="button" class="bg-gray-200 rounded-l-lg px-2 py-1 decrement">-</button>
-                                <input type="text" name="quantity" class="number border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" value="{{ $item->quantity }}">
-                                <button type="button" class="bg-gray-200 rounded-r-lg px-2 py-1 increment">+</button>
-                                <input type="submit" value="Update" class="btn btn-secondary">
-
-                            </div>
-                        </form>
-                        <form action="{{ route('cart.remove', $item->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class=" mx-2 btn btn-danger">Remove</button>
-                        </form>
+                        <span class="mr-2 text-gray-600">Quantity:</span>{{ $item->quantity }} &nbsp &nbsp prix:
                         <span class="ml-auto font-bold mx-2">${{ $item->getPriceSum() }}</span>
                     </div>
                 </div>

@@ -22,7 +22,7 @@ class StripeController extends Controller
         'total' => $total
     ]);
 }
-    
+
 public function session(Request $request)
 {
     $address = $request->input('address');
@@ -82,6 +82,6 @@ public function session(Request $request)
 
     public function cancel()
     {
-        return redirect()->route('cart')->with('success', 'Votre Payment n\'est pas complet');
+        return redirect()->route('cart')->with('error', 'Votre Payment n\'est pas complet');
     }
 }

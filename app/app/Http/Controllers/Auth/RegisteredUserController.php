@@ -34,7 +34,6 @@ class RegisteredUserController extends Controller
             'nom' => ['required', 'string', 'max:255'],
             'prenom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:clients'],
-            'login' => ['required', 'string', 'max:255', 'unique:clients'],
             'telephone' => ['required', 'string', 'max:20'], // Validation rules for telephone
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'adresseClient' => ['nullable', 'string', 'max:255'], // Validation rules for adresseClient
@@ -44,14 +43,12 @@ class RegisteredUserController extends Controller
         // Handle image upload if provided
         $imagePath = null;
         if ($request->hasFile('imageClient')) {
-            $imagePath = $request->file('imageClient')->store('clients'); // Adjust storage path as needed
+            $imagePath = $request->file('imageClient')->store('storage/images'); // Adjust storage path as needed
         }
 
         $client = Client::create([
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
+            'name' => $request->nom. ' ' . $request->prenom,
             'email' => $request->email,
-            'login' => $request->login,
             'telephone' => $request->telephone, // Store telephone number
             'password' => Hash::make($request->password),
             'adresseClient' => $request->adresseClient, // Store adresseClient if provided
@@ -62,6 +59,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($client);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->intended();
     }
 }

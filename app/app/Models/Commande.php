@@ -57,10 +57,7 @@ class Commande extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function livreur()
-    {
-        return $this->belongsTo(Livreur::class, 'idLivreur', 'idLivreur');
-    }
+
 
     /**
      * Get the client associated with the commande.
@@ -70,10 +67,7 @@ class Commande extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function client()
-    {
-        return $this->belongsTo(Client::class, 'idClient', 'idClient');
-    }
+
 
     /**
      * Get the dish associated with the commande.

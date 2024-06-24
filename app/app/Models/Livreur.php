@@ -25,8 +25,8 @@ class Livreur extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function commandes()
+    public function factures()
     {
-        return $this->hasMany(Commande::class, 'idLivreur', 'idLivreur');
+        return $this->hasMany(Facture::class, 'idLivreur', 'idLivreur');
     }
 }

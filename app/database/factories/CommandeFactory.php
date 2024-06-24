@@ -10,12 +10,12 @@ class CommandeFactory extends Factory
     {
         return [
             'etat' => fake()->randomElement(['prepared', 'delivered', 'cancelled']),
-            'adresseLivraison' => fake()->unique()->address,
+            'adresseLivraison' => fake()->address,
             'idDate' => \App\Models\OrderDate::factory(),
             'numeroFacture' => \App\Models\Facture::factory(),
             'idPlat' => \App\Models\Plat::factory(),
-            'idLivreur' => \App\Models\Livreur::factory(),
-            'idClient' => \App\Models\Client::factory()
+            'prix_vente' => fake()->randomFloat(2, 5, 100),  // generates a random float between 5 and 100
+            'quantite' => fake()->numberBetween(1, 10),     // generates a random integer between 1 and 10
         ];
     }
 }

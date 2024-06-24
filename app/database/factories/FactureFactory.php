@@ -11,6 +11,8 @@ class FactureFactory extends Factory
         return [
             'etat' => fake()->randomElement(['annulée', 'payée', 'impayée','en attente de paiement']),
             'idDate' => \App\Models\OrderDate::factory(),
+            'idLivreur' => \App\Models\Livreur::factory(),
+            'idClient' => \App\Models\Client::factory()
         ];
     }
 }

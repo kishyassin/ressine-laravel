@@ -55,9 +55,9 @@ class Client extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function commandes()
+    public function factures()
     {
-        return $this->hasMany(Commande::class, 'idClient', 'idClient');
+        return $this->hasMany(Facture::class, 'idClient', 'idClient');
     }
 
     /**

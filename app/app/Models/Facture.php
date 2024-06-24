@@ -43,6 +43,16 @@ class Facture extends Model
         return $this->hasMany(Commande::class, 'numeroFacture', 'numeroFacture');
     }
 
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'idClient', 'idClient');
+    }
+
+    public function livreur()
+    {
+        return $this->belongsTo(Livreur::class, 'idLivreur', 'idLivreur');
+    }
+
     /**
      * Get the payments associated with the invoice.
      *

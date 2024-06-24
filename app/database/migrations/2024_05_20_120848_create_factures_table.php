@@ -12,6 +12,12 @@ class CreateFacturesTable extends Migration
             $table->string('etat');
             $table->unsignedBigInteger('idDate');
             $table->foreign('idDate')->references('idDate')->on('order_dates')->onDelete('cascade');
+            
+            $table->unsignedBigInteger('idLivreur')->nullable();
+            $table->foreign('idLivreur')->references('idLivreur')->on('livreurs')->onDelete('cascade');
+
+            $table->unsignedBigInteger('idClient');
+            $table->foreign('idClient')->references('idClient')->on('clients')->onDelete('cascade');
 
             $table->timestamps();
         });

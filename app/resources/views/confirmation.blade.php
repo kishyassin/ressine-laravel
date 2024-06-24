@@ -14,7 +14,7 @@
     <h1 class="text-2xl font-bold mb-4">Confirmation Page</h1>
 
     <h2 class="text-lg font-bold mb-2">Client Information</h2>
-    <p>Name: {{ $user->nom }} {{ $user->prenom }}</p>
+    <p>Name: {{ $user->name }} </p>
     <p>Email: {{ $user->email }}</p>
 
     <h2 class="text-lg font-bold mb-2 mt-4">Purchased Items</h2>
@@ -29,7 +29,7 @@
                     <p class="mt-2 text-gray-600">{{$item->attributes->description}}</p>
                     <div class="mt-4 flex items-center">
                         <span class="mr-2 text-gray-600">Quantity:</span>{{ $item->quantity }} &nbsp &nbsp prix:
-                        <span class="ml-auto font-bold mx-2">${{ $item->getPriceSum() }}</span>
+                        <span class="ml-auto font-bold mx-2">MAD {{ $item->getPriceSum() }}</span>
                     </div>
                 </div>
             </div>

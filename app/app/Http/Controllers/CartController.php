@@ -6,6 +6,7 @@ use App\Models\Plat;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Cart;
+use Storage;
 
 class CartController extends Controller
 {
@@ -35,7 +36,7 @@ class CartController extends Controller
             'quantity' => 1,
             'attributes' => array(
                 'description' => $plat->descriptionPlat,
-                'image' => $imageIcon,
+                'image' => Storage::url($imageIcon)
             ),
             'associatedModel' => $plat
         ));

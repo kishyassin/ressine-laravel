@@ -11,7 +11,7 @@ class Plat extends Model
 
     protected $primaryKey = 'idPlat';
 
-    public function category()
+    public function categorie()
     {
         return $this->belongsTo(Categorie::class, 'idCategorie', 'idCategorie');
     }
@@ -45,10 +45,10 @@ class Plat extends Model
 {
     // Define an array to store the top plat for each category
     $topPlatByCategory = [];
-    
+
     // Retrieve all categories
     $categories = Categorie::all();
-    
+
     // Loop through each category
     foreach ($categories as $category) {
         // Retrieve the top plat for the current category
@@ -68,11 +68,11 @@ class Plat extends Model
             $topPlatByCategory[$category->designation] = $topPlat;
         }
     }
-    
+
     return $topPlatByCategory;
 }
 
-    
+
 
     public static function getTopSevenPlats()
 {

@@ -35,16 +35,19 @@ class RegisteredUserController extends Controller
             'prenom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:clients'],
             'login' => ['required', 'string', 'max:255', 'unique:clients'],
-            'telephone' => ['required', 'string', 'max:20'], // Validation rules for telephone
+            'telephone' => ['required', 'string', 'max:20'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'adresseClient' => ['nullable', 'string', 'max:255'], // Validation rules for adresseClient
-            'imageClient' => ['nullable', 'image', 'max:2048'] // Optional image validation
+            'adresseClient' => ['nullable', 'string', 'max:255'],
+            'imageClient' => ['nullable', 'image', 'max:2048']
         ]);
 
         // Handle image upload if provided
         $imagePath = null;
         if ($request->hasFile('imageClient')) {
-            $imagePath = $request->file('imageClient')->store('clients'); // Adjust storage path as needed
+            $image = $request->file('imageClient');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img'), $imageName);
+            $imagePath = 'img/' . $imageName;
         }
 
         $client = Client::create([
@@ -52,10 +55,10 @@ class RegisteredUserController extends Controller
             'prenom' => $request->prenom,
             'email' => $request->email,
             'login' => $request->login,
-            'telephone' => $request->telephone, // Store telephone number
+            'telephone' => $request->telephone,
             'password' => Hash::make($request->password),
-            'adresseClient' => $request->adresseClient, // Store adresseClient if provided
-            'imageClient' => $imagePath, // Store the image path in the database
+            'adresseClient' => $request->adresseClient,
+            'imageClient' => $imagePath,
         ]);
 
         event(new Registered($client));

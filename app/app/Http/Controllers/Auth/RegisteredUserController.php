@@ -34,25 +34,42 @@ class RegisteredUserController extends Controller
             'nom' => ['required', 'string', 'max:255'],
             'prenom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:clients'],
+<<<<<<< HEAD
+            'login' => ['required', 'string', 'max:255', 'unique:clients'],
+            'telephone' => ['required', 'string', 'max:20'],
+=======
             'telephone' => ['required', 'string', 'max:20'], // Validation rules for telephone
+>>>>>>> 5c064e64916d5620a5f4eec1ef518af43cacf779
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'adresseClient' => ['nullable', 'string', 'max:255'], // Validation rules for adresseClient
-            'imageClient' => ['nullable', 'image', 'max:2048'] // Optional image validation
+            'adresseClient' => ['nullable', 'string', 'max:255'],
+            'imageClient' => ['nullable', 'image', 'max:2048']
         ]);
 
         // Handle image upload if provided
         $imagePath = null;
         if ($request->hasFile('imageClient')) {
+<<<<<<< HEAD
+            $image = $request->file('imageClient');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img'), $imageName);
+            $imagePath = 'img/' . $imageName;
+=======
             $imagePath = $request->file('imageClient')->store('storage/images'); // Adjust storage path as needed
+>>>>>>> 5c064e64916d5620a5f4eec1ef518af43cacf779
         }
 
         $client = Client::create([
             'name' => $request->nom. ' ' . $request->prenom,
             'email' => $request->email,
+<<<<<<< HEAD
+            'login' => $request->login,
+            'telephone' => $request->telephone,
+=======
             'telephone' => $request->telephone, // Store telephone number
+>>>>>>> 5c064e64916d5620a5f4eec1ef518af43cacf779
             'password' => Hash::make($request->password),
-            'adresseClient' => $request->adresseClient, // Store adresseClient if provided
-            'imageClient' => $imagePath, // Store the image path in the database
+            'adresseClient' => $request->adresseClient,
+            'imageClient' => $imagePath,
         ]);
 
         event(new Registered($client));

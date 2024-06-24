@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class PlatResource extends Resource
 {
     protected static ?string $model = Plat::class;
+    protected static ?string $navigationGroup = 'Restaurant';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     public static function form(Form $form): Form
@@ -44,13 +45,14 @@ class PlatResource extends Resource
         public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->defaultGroup('Categorie.designation')
+        ->columns([
                 Tables\Columns\TextColumn::make('designationPlat')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('prixUnitaire')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('idCategorie')
+                Tables\Columns\TextColumn::make('Categorie.designation')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')

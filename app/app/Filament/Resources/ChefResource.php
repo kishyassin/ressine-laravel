@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\FileUpload;
 
 class ChefResource extends Resource
 {
@@ -61,7 +62,11 @@ class ChefResource extends Resource
                 Forms\Components\Section::make('profile')
                     ->schema([
                         Forms\Components\FileUpload::make('imageChef')->directory('uploads')
-                            ->label('Upload Chef Image'),
+                            ->label('Upload Chef Image')
+                            ->image()
+                            ->avatar()
+                            ->imageEditor()
+                        ,
                     ])
                     ->columns([
                         'sm' => 1,
@@ -77,11 +82,11 @@ class ChefResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('imageChef')
+                    ->searchable()->circular(),
                 Tables\Columns\TextColumn::make('nomChef')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('prenomChef')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('imageChef')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('fonction')
                     ->searchable(),

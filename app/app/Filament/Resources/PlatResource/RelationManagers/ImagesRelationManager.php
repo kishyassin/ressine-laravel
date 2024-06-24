@@ -19,12 +19,26 @@ class ImagesRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\FileUpload::make('imageSlide')->directory('uploads')
-                    ->label('Upload Slide Image'),
+                    ->label('Upload Slide Image')
+                    ->image()
+                    ->moveFiles()->imageEditor()
+                    ->imageResizeMode('force')
+                    ->imageResizeTargetWidth('320')
+                    ->imageResizeTargetHeight('480'),
                 Forms\Components\FileUpload::make('imageHero')->directory('uploads')
-                    ->label('Upload Hero Image'),
+                    ->label('Upload Hero Image')
+                    ->image()
+                    ->moveFiles()->imageEditor()
+                    ->imageResizeMode('force')
+                    ->imageResizeTargetWidth('1370')
+                    ->imageResizeTargetHeight('770'),
                 Forms\Components\FileUpload::make('imageIcon')->directory('uploads')
-                    ->label('Upload Icon Image'),
-
+                    ->label('Upload Icon Image')
+                    ->image()
+                    ->moveFiles()->imageEditor()
+                    ->imageResizeMode('force')
+                    ->imageResizeTargetWidth('200')
+                    ->imageResizeTargetHeight('200'),
             ]);
     }
 

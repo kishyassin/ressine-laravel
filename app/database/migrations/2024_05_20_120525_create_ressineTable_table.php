@@ -7,7 +7,7 @@ class CreateTablesTable extends Migration
 {
     public function up()
     {
-        Schema::create('tables', function (Blueprint $table) {
+        Schema::create('ressineTable', function (Blueprint $table) {
             $table->id('numeroTable');
             $table->integer('nbPlaces');
             $table->timestamps();

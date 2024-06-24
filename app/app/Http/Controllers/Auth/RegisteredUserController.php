@@ -30,18 +30,16 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'nom' => ['required', 'string', 'max:255'],
             'prenom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:clients'],
-            'login' => ['required', 'string', 'max:255', 'unique:clients'],
             'telephone' => ['required', 'string', 'max:20'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'adresseClient' => ['nullable', 'string', 'max:255'],
             'imageClient' => ['nullable', 'image', 'max:2048']
         ]);
 
-        // Handle image upload if provided
         $imagePath = null;
         if ($request->hasFile('imageClient')) {
             $image = $request->file('imageClient');
@@ -50,21 +48,26 @@ class RegisteredUserController extends Controller
             $imagePath = 'img/' . $imageName;
         }
 
-        $client = Client::create([
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
-            'email' => $request->email,
-            'login' => $request->login,
-            'telephone' => $request->telephone,
-            'password' => Hash::make($request->password),
-            'adresseClient' => $request->adresseClient,
-            'imageClient' => $imagePath,
-        ]);
+        try {
+            $client = Client::create([
+                'nom' => $validatedData['nom'],
+                'prenom' => $validatedData['prenom'],
+                'email' => $validatedData['email'],
+                'telephone' => $validatedData['telephone'],
+                'password' => Hash::make($validatedData['password']),
+                'adresseClient' => $validatedData['adresseClient'],
+                'imageClient' => $imagePath,
+            ]);
 
-        event(new Registered($client));
+            event(new Registered($client));
 
-        Auth::login($client);
+            Auth::login($client);
 
-        return redirect(RouteServiceProvider::HOME);
+            return redirect(RouteServiceProvider::HOME);
+        } catch (\Exception $e) {
+            // Handle any database or other exceptions here
+            // You can log the error or redirect back with an error message
+            return back()->withInput()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 }

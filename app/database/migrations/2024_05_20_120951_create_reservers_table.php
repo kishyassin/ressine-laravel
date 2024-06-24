@@ -11,19 +11,19 @@ class CreateReserversTable extends Migration
 
 
             $table->unsignedBigInteger('idClient');
-            $table->foreign('idClient')->references('idClient')->on('clients')->onDelete('cascade');         
-        
+            $table->foreign('idClient')->references('idClient')->on('clients')->onDelete('cascade');
+
             $table->unsignedBigInteger('numeroTable');
-            $table->foreign('numeroTable')->references('numeroTable')->on('tables')->onDelete('cascade');         
-        
-                    
+            $table->foreign('numeroTable')->references('numeroTable')->on('ressineTables')->onDelete('cascade');
+
+
             $table->unsignedBigInteger('idDate');
-            $table->foreign('idDate')->references('idDate')->on('order_dates')->onDelete('cascade');         
-        
-            
+            $table->foreign('idDate')->references('idDate')->on('order_dates')->onDelete('cascade');
+
+
             $table->unsignedBigInteger('idCategorie');
-            $table->foreign('idCategorie')->references('idCategorie')->on('categories')->onDelete('cascade');         
-        
+            $table->foreign('idCategorie')->references('idCategorie')->on('categories')->onDelete('cascade');
+
             $table->primary(['idClient', 'numeroTable', 'idDate']);
             $table->timestamps();
         });

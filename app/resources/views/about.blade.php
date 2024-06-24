@@ -6,15 +6,8 @@
 
 @section('content')
 <div class="container-xxl py-5 bg-dark hero-header">
-    <div class="container text-center my-5 pt-5 pb-4">
+    <div class="container-fluid text-center my-5 pt-5 pb-4">
         <h1 class="display-3 text-white mb-3 animated slideInDown">{{ $about->title }}</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb justify-content-center text-uppercase">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">Service</li>
-            </ol>
-        </nav>
     </div>
 </div>
 
@@ -102,7 +95,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item text-center rounded overflow-hidden">
                         <div class="rounded-circle overflow-hidden m-4">
-                            <img class="img-fluid" src="{{ $chef->imageChef }}" alt="">
+                            <img class="img-fluid" src="{{ Storage::url($chef->imageChef) }}" alt="">
                         </div>
                         <h5 class="mb-0">{{ $chef->nomChef }} {{ $chef->prenomChef }}</h5>
                         <small>{{ $chef->fonction }}</small>

@@ -12,6 +12,7 @@ class About extends Model
 
     protected $fillable = ['title', 'welcome_text', 'description', 'additional_info','email','address','telephone'];
 
+    protected $primaryKey = 'idAbout';
 
     public function images()
     {

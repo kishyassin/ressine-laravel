@@ -38,7 +38,7 @@
                                     <img src="{{$item->attributes->image}}" alt="Product image" class="w-32 h-32 object-cover">
                                 </div>
                                 <div class="mt-1 md:mt-0 md:ml-6">
-                                    <h2 class="text-lg font-bold">{{ $item->name }} ${{ $item->price }}</h2>
+                                    <h2 class="text-lg font-bold">{{ $item->name }} MAD {{ $item->price }}</h2>
                                     <p class="mt-2 text-gray-600">{{$item->attributes->description}}</p>
                                     <div class="mt-4 flex items-center">
                                         <span class="mr-2 text-gray-600">Quantity:</span>

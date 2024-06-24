@@ -20,7 +20,7 @@ class Client extends Authenticatable
     protected $primaryKey = 'idClient';
 
     protected $fillable = [
-        'nom', 'prenom', 'imageClient', 'telephone', 'adresseClient', 'login', 'email', 'password',
+        'name',  'imageClient', 'telephone', 'adresseClient',  'email', 'password',
     ];
 
     protected $hidden = [

@@ -34,8 +34,12 @@ class RegisteredUserController extends Controller
             'nom' => ['required', 'string', 'max:255'],
             'prenom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:clients'],
+<<<<<<< HEAD
             'login' => ['required', 'string', 'max:255', 'unique:clients'],
             'telephone' => ['required', 'string', 'max:20'],
+=======
+            'telephone' => ['required', 'string', 'max:20'], // Validation rules for telephone
+>>>>>>> 5c064e64916d5620a5f4eec1ef518af43cacf779
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'adresseClient' => ['nullable', 'string', 'max:255'],
             'imageClient' => ['nullable', 'image', 'max:2048']
@@ -44,18 +48,25 @@ class RegisteredUserController extends Controller
         // Handle image upload if provided
         $imagePath = null;
         if ($request->hasFile('imageClient')) {
+<<<<<<< HEAD
             $image = $request->file('imageClient');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('img'), $imageName);
             $imagePath = 'img/' . $imageName;
+=======
+            $imagePath = $request->file('imageClient')->store('storage/images'); // Adjust storage path as needed
+>>>>>>> 5c064e64916d5620a5f4eec1ef518af43cacf779
         }
 
         $client = Client::create([
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
+            'name' => $request->nom. ' ' . $request->prenom,
             'email' => $request->email,
+<<<<<<< HEAD
             'login' => $request->login,
             'telephone' => $request->telephone,
+=======
+            'telephone' => $request->telephone, // Store telephone number
+>>>>>>> 5c064e64916d5620a5f4eec1ef518af43cacf779
             'password' => Hash::make($request->password),
             'adresseClient' => $request->adresseClient,
             'imageClient' => $imagePath,
@@ -65,6 +76,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($client);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->intended();
     }
 }

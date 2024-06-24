@@ -23,11 +23,9 @@ class ClientFactory extends Factory
     public function definition()
     {
         return [
-            'nom' => $this->faker->unique()->lastName,
+            'name' => $this->faker->unique()->name,
             'imageClient' => $this->faker->imageUrl(),
-            'prenom' => $this->faker->unique()->firstName,
             'telephone' => substr($this->faker->phoneNumber(), 0, 15),
-            'login' => $this->faker->unique()->userName, // Ensure login is unique
             'password' => Hash::make('password'), // Hash the password (you can use a more secure method)
             'email' => $this->faker->unique()->safeEmail, // Generate a unique email address
             'adresseClient' => $this->faker->unique()->address,

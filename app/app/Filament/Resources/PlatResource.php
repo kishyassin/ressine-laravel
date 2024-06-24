@@ -4,6 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PlatResource\Pages;
 use App\Filament\Resources\PlatResource\RelationManagers;
+use App\Filament\Resources\PlatResource\RelationManagers\ImagesRelationManager;
+use App\Models\Categorie;
 use App\Models\Plat;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -18,7 +20,6 @@ class PlatResource extends Resource
     protected static ?string $model = Plat::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
     public static function form(Form $form): Form
     {
         return $form
@@ -31,15 +32,16 @@ class PlatResource extends Resource
                 Forms\Components\TextInput::make('prixUnitaire')
                     ->required()
                     ->numeric(),
-                Forms\Components\TextInput::make('imageIcon')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('idCategorie')
+                Forms\Components\Select::make('idCategorie') // Use Select component
+                ->label('Categorie')
                     ->required()
-                    ->numeric(),
+                    ->relationship('categorie', 'designation') // Define relationship
+                    ->options(Categorie::all()->pluck('designation', 'idCategorie')) // Fetch categories
+                    ->searchable(),
             ]);
     }
 
-    public static function table(Table $table): Table
+        public static function table(Table $table): Table
     {
         return $table
             ->columns([
@@ -48,8 +50,6 @@ class PlatResource extends Resource
                 Tables\Columns\TextColumn::make('prixUnitaire')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\ImageColumn::make('imageIcon')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('idCategorie')
                     ->numeric()
                     ->sortable(),
@@ -77,14 +77,14 @@ class PlatResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
-            //
+            ImagesRelationManager::class,
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -92,5 +92,5 @@ class PlatResource extends Resource
             'create' => Pages\CreatePlat::route('/create'),
             'edit' => Pages\EditPlat::route('/{record}/edit'),
         ];
-    }    
+    }
 }

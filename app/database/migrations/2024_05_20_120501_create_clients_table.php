@@ -10,12 +10,10 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id('idClient');
-            $table->string('nom');
-            $table->string('prenom');
+            $table->string('name');
             $table->string('imageClient')->nullable();
-            $table->string('telephone', 20); 
+            $table->string('telephone', 20);
             $table->string('adresseClient')->nullable();
-            $table->string('login')->unique(); // Marked login as unique
             $table->string('password'); // Removed the duplicate and unique constraint
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

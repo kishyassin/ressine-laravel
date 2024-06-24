@@ -12,7 +12,7 @@
                 @if ($plat)
                     <div class="col-12 py-5 bg-dark hero-header item d-flex align-items-center justify-content-center"
                          id="slide-{{ $plat->idPlat }}"
-                         style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ $plat->imageHero }}');">
+                         style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ Storage::url($plat->imageHero)  }}'); background-size: cover; background-position: center">
                         <div class="container my-5 py-2">
                             <div class="row justify-content-center align-items-center g-5">
                                 <div class="col-lg-7 text-center wow fadeInUp">

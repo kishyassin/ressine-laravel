@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckOutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AboutController;
@@ -65,8 +66,9 @@ Route::middleware('auth')->group(function () {
     Route::get('stripe/success', [StripeController::class, 'success'])->name('success');
     Route::get('stripe/cancel', [StripeController::class, 'cancel'])->name('cancel');
 
-});
+    Route::post('/checkout', [CheckoutController::class, 'confirmCheckout'])->name('checkout.confirm');
 
+});
 
 
 require __DIR__.'/auth.php';

@@ -40,11 +40,11 @@
         <span class="text-xl font-bold">{{ Number::currency(\Cart::session(Auth::id())->getTotal(),'mad') }}</span>
     </div>
 
-    <form action="{{ route('confirm') }}" method="POST" class="mt-4">
+    <form  action="{{ route('checkout.confirm') }}" method="POST" class="mt-4">
         @csrf
         <div class="mb-4">
-            <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
-            <input type="text" name="address" id="address" value="{{ $user->adresseClient }}" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
+            <label for="adresseLivraison" class="block text-sm font-medium text-gray-700">Address</label>
+            <input type="text" name="adresseLivraison" id="adresseLivraison" value="{{ $user->adresseClient }}" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
         </div>
         <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Confirm and Pay</button>
     </form>

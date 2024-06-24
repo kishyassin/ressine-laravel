@@ -31,8 +31,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
-            'nom' => ['required', 'string', 'max:255'],
-            'prenom' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:clients'],
             'telephone' => ['required', 'string', 'max:20'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -50,8 +49,7 @@ class RegisteredUserController extends Controller
 
         try {
             $client = Client::create([
-                'nom' => $validatedData['nom'],
-                'prenom' => $validatedData['prenom'],
+                'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
                 'telephone' => $validatedData['telephone'],
                 'password' => Hash::make($validatedData['password']),

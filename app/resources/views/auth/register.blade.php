@@ -4,17 +4,11 @@
 
         <!-- Name -->
         <div>
-            <x-input-label for="nom" :value="__('Nom')" />
-            <x-text-input id="nom" class="block mt-1 w-full" type="text" name="nom" :value="old('nom')" required autofocus autocomplete="nom" />
-            <x-input-error :messages="$errors->get('nom')" class="mt-2" />
+            <x-input-label for="name" :value="__('Nom')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('nom')" required autofocus autocomplete="nom" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
-        <!-- Prenom -->
-        <div class="mt-4">
-            <x-input-label for="prenom" :value="__('Prenom')" />
-            <x-text-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus autocomplete="prenom" />
-            <x-input-error :messages="$errors->get('prenom')" class="mt-2" />
-        </div>
 
         <!-- Email Address -->
         <div class="mt-4">

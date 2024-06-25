@@ -11,7 +11,7 @@
         <div class="navbar-nav ms-auto py-0 pe-4">
             <a  href="/" class=" nav-item nav-link active">Accueil</a>
             <a  href="about" class=" nav-item nav-link">à propos</a>
-            <a  href="menu.php" class=" nav-item nav-link">Menu</a>
+            <a  href="menu" class=" nav-item nav-link">Menu</a>
             <div class="nav-item dropdown">
                 <a  href="#" class=" nav-link dropdown-toggle" data-bs-toggle="dropdown">Reserver</a>
                 <div class="dropdown-menu m-0">

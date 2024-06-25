@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\StripeController;
@@ -27,9 +28,7 @@ Route::get('/', [IndexController::class, 'index']);
 // Route::get('/signupRestaurant', [IndexController::class, 'signupRestaurant']);
 
 
-Route::get('/menu',function(){
-    return view('menu');
-});
+Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 
 Route::get('/booking',function(){
     return view('booking');

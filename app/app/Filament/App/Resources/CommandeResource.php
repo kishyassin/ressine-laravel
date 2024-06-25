@@ -5,6 +5,7 @@ namespace App\Filament\App\Resources;
 use App\Filament\App\Resources\CommandeResource\Pages;
 use App\Filament\App\Resources\CommandeResource\RelationManagers;
 use App\Models\Commande;
+use Auth;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -44,17 +45,13 @@ class CommandeResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultGroup('Facture.created_at')
             ->columns([
-                Tables\Columns\TextColumn::make('etat')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('numeroFacture')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('idPlat')
+                Tables\Columns\TextColumn::make('Plat.designationPlat')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('prixVente')
-                    ->numeric()
+                    ->money('MAD')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('quantite')
                     ->numeric()
@@ -63,25 +60,21 @@ class CommandeResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('etat')
+                    ->searchable()
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'en attente' => 'gray',
+                        'en preparation' => 'warning',
+                        'en livraison' => 'success',
+                        'livrée' => 'success',
+                    }),
             ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ])
-            ->emptyStateActions([
-                Tables\Actions\CreateAction::make(),
-            ]);
+            ->modifyQueryUsing(function ($query) {
+                return $query->whereHas('facture', function ($query) {
+                    $query->where('idClient', Auth::id());
+                });
+            });
     }
 
     public static function getRelations(): array
@@ -98,5 +91,24 @@ class CommandeResource extends Resource
             'create' => Pages\CreateCommande::route('/create'),
             'edit' => Pages\EditCommande::route('/{record}/edit'),
         ];
+    }
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function canEdit($record): bool
+    {
+        return false;
+    }
+
+    public static function canDelete($record): bool
+    {
+        return false;
+    }
+
+    public static function canDeleteAny(): bool
+    {
+        return false;
     }
 }

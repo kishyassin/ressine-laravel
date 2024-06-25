@@ -29,6 +29,8 @@
                         <a  href="#" class="nav-item nav-link"><i class="fa fa-user" aria-hidden="true"></i></a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a  href="profile" class=" dropdown-item ">modifier </a>
+                            <a  href="app" class=" dropdown-item ">dashboard </a>
+
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
@@ -37,7 +39,9 @@
                                                 this.closest('form').submit();">
                                     {{ __('Déconnecter') }}
                                 </a>
+
                             </form>
+
                         </div>
                     </div>
                     <a  href="cart" class="nav-item nav-link"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>

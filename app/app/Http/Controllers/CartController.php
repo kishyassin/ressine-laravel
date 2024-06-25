@@ -24,10 +24,10 @@ class CartController extends Controller
      */
     public function addPlatToCart($idPlat)
     {
-        $plat = Plat::with('images')->findOrFail($idPlat);
+        $plat = Plat::findOrFail($idPlat);
 
         // Get the first image's icon if it exists
-        $imageIcon = $plat->images->first() ? $plat->images->first()->imageIcon : null;
+        $imageIcon = $plat->first() ? $plat->first()->imageIcon : null;
 
         \Cart::session(Auth::id())->add(array(
             'id' => $idPlat,

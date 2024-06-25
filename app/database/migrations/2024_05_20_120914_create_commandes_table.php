@@ -10,10 +10,6 @@ class CreateCommandesTable extends Migration
         Schema::create('commandes', function (Blueprint $table) {
             $table->id('idCommande');
             $table->string('etat');
-            $table->string('adresseLivraison')->nullable();
-
-            $table->unsignedBigInteger('idDate');
-            $table->foreign('idDate')->references('idDate')->on('order_dates')->onDelete('cascade');
 
             $table->unsignedBigInteger('numeroFacture');
             $table->foreign('numeroFacture')->references('numeroFacture')->on('factures')->onDelete('cascade');

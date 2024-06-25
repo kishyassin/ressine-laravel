@@ -39,6 +39,27 @@ class PlatResource extends Resource
                     ->relationship('categorie', 'designation') // Define relationship
                     ->options(Categorie::all()->pluck('designation', 'idCategorie')) // Fetch categories
                     ->searchable(),
+                Forms\Components\FileUpload::make('imageSlide')->directory('uploads')
+                    ->label('Upload Slide Image')
+                    ->image()
+                    ->imageEditor()
+                    ->imageResizeMode('force')
+                    ->imageResizeTargetWidth('320')
+                    ->imageResizeTargetHeight('480'),
+                Forms\Components\FileUpload::make('imageHero')->directory('uploads')
+                    ->label('Upload Hero Image')
+                    ->image()
+                    ->imageEditor()
+                    ->imageResizeMode('force')
+                    ->imageResizeTargetWidth('1370')
+                    ->imageResizeTargetHeight('770'),
+                Forms\Components\FileUpload::make('imageIcon')->directory('uploads')
+                    ->label('Upload Icon Image')
+                    ->image()
+                    ->imageEditor()
+                    ->imageResizeMode('force')
+                    ->imageResizeTargetWidth('200')
+                    ->imageResizeTargetHeight('200'),
             ]);
     }
 
@@ -83,7 +104,6 @@ class PlatResource extends Resource
     public static function getRelations(): array
     {
         return [
-            ImagesRelationManager::class,
         ];
     }
 

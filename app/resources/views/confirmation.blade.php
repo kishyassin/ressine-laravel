@@ -40,7 +40,7 @@
         <span class="text-xl font-bold">{{ Number::currency(\Cart::session(Auth::id())->getTotal(),'mad') }}</span>
     </div>
 
-    <form  action="{{ route('checkout.confirm') }}" method="POST" class="mt-4">
+    <form action="{{ route('confirm') }}" method="POST" class="mt-4">
         @csrf
         <div class="mb-4">
             <label for="adresseLivraison" class="block text-sm font-medium text-gray-700">Address</label>

@@ -61,7 +61,7 @@ class RegisteredUserController extends Controller
 
             Auth::login($client);
 
-            return redirect(RouteServiceProvider::HOME);
+            return redirect()->intended();
         } catch (\Exception $e) {
             // Handle any database or other exceptions here
             // You can log the error or redirect back with an error message

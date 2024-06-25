@@ -10,9 +10,11 @@ class CreateFacturesTable extends Migration
         Schema::create('factures', function (Blueprint $table) {
             $table->id('numeroFacture');
             $table->string('etat');
+            $table->string('adresseLivraison')->nullable();
+
             $table->unsignedBigInteger('idDate');
             $table->foreign('idDate')->references('idDate')->on('order_dates')->onDelete('cascade');
-            
+
             $table->unsignedBigInteger('idLivreur')->nullable();
             $table->foreign('idLivreur')->references('idLivreur')->on('livreurs')->onDelete('cascade');
 

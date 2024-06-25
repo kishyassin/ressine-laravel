@@ -23,18 +23,6 @@ class Commande extends Model
     // Indicates if the model should be timestamped
     public $timestamps = true;
 
-    /**
-     * Get the order date associated with the commande.
-     *
-     * This defines a many-to-one relationship between commandes and order dates.
-     * Each commande belongs to one order date.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function orderDate()
-    {
-        return $this->belongsTo(OrderDate::class, 'idDate', 'idDate');
-    }
 
     /**
      * Get the invoice associated with the commande.
@@ -58,15 +46,6 @@ class Commande extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
 
-
-    /**
-     * Get the client associated with the commande.
-     *
-     * This defines a many-to-one relationship between commandes and clients.
-     * Each commande belongs to one client.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
 
 
     /**

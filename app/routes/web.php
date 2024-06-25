@@ -27,9 +27,14 @@ Route::get('/', [IndexController::class, 'index']);
 // Route::get('/signupRestaurant', [IndexController::class, 'signupRestaurant']);
 
 
+Route::get('/menu',function(){
+    return view('menu');
+});
 
+Route::get('/booking',function(){
+    return view('booking');
+});
 
-Route::get('/booking', [ReserverController::class, 'bookingPage'])->name('booking');
 
 Route::get('/about',[AboutController::class,'index']);
 

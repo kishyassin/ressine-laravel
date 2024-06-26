@@ -66,6 +66,7 @@ class CommandeResource extends Resource
                     ->color(fn (string $state): string => match ($state) {
                         'en attente' => 'gray',
                         'en preparation' => 'warning',
+                        'preparée' => 'info',
                         'en livraison' => 'success',
                         'livrée' => 'success',
                     }),

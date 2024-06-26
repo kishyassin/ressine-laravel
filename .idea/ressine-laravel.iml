@@ -10,6 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/app/tests/Unit" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/app/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/barryvdh/laravel-ide-helper" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/barryvdh/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/blade-ui-kit/blade-heroicons" />
@@ -30,7 +31,6 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/fakerphp/faker" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/filament/actions" />
-      <excludeFolder url="file://$MODULE_DIR$/app/vendor/filament/filament" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/filament/forms" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/filament/infolists" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/filament/notifications" />
@@ -50,7 +50,6 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravel/pint" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravel/prompts" />
-      <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravel/sail" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravel/sanctum" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravel/serializable-closure" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravel/tinker" />
@@ -149,7 +148,6 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/translation-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/uid" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/var-dumper" />
-      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/yaml" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/tijsverkoyen/css-to-inline-styles" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/vlucas/phpdotenv" />
@@ -157,6 +155,10 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/darryldecode/cart" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/stripe/stripe-php" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/anourvalar/eloquent-serialize" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/league/csv" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/openspout/openspout" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/spatie/error-solutions" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

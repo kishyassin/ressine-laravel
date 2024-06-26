@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LivreurController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AboutController;
@@ -72,6 +73,7 @@ Route::middleware('auth')->group(function () {
 
 });
 
-
+Route::get('livreur/login',[LivreurController::class,'showLogin'])->name('livreur/login');
+Route::post('livreur/login',[LivreurController::class,'login'])->name('livreur/login');
 
 require __DIR__.'/auth.php';

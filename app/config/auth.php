@@ -45,6 +45,14 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'livreur' => [
+            'driver' => 'session',
+            'provider' => 'livreurs',
+        ],
+        'chef' => [
+            'driver' => 'session',
+            'provider' => 'chefs',
+        ],
     ],
 
     /*
@@ -68,6 +76,14 @@ return [
         'clients' => [
             'driver' => 'eloquent',
             'model' => App\Models\Client::class,
+        ],
+        'livreurs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Livreur::class,
+        ],
+        'chefs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Chef::class,
         ],
 
         // 'users' => [

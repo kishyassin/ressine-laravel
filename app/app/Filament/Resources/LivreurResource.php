@@ -24,42 +24,42 @@ class LivreurResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nom')
+                Forms\Components\TextInput::make('name')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('prenom')
-                    ->required()
-                    ->maxLength(255),
+                    ->label('Name'),
                 Forms\Components\TextInput::make('email')
+                    ->required()
                     ->email()
+                    ->label('Email'),
+                Forms\Components\TextInput::make('password')
+                    ->password()
+                    ->revealable()
                     ->required()
-                    ->maxLength(255),
+                    ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
+                    ->dehydrated(fn (?string $state): bool => filled($state))
+                    ->required(fn (string $operation): bool => $operation === 'create')
+                    ->label('Password'),
                 Forms\Components\TextInput::make('telephone')
-                    ->tel()
                     ->required()
-                    ->maxLength(255),
+                    ->label('Telephone'),
             ]);
+
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nom')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('prenom')
+                Tables\Columns\TextColumn::make('name')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('telephone')
+                    ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
+                Tables\Columns\TextColumn::make('password')
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([

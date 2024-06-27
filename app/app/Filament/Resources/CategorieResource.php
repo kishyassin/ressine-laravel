@@ -54,6 +54,7 @@ class CategorieResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -68,7 +69,7 @@ class CategorieResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\PlatsRelationManager::class
         ];
     }
 

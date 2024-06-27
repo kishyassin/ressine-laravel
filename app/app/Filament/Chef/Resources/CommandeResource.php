@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Filament\App\Resources;
+namespace App\Filament\Chef\Resources;
 
-use App\Filament\App\Resources\CommandeResource\Pages;
-use App\Filament\App\Resources\CommandeResource\RelationManagers;
+use App\Filament\Chef\Resources\CommandeResource\Pages;
+use App\Filament\Chef\Resources\CommandeResource\RelationManagers;
 use App\Models\Commande;
-use Auth;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -45,35 +44,31 @@ class CommandeResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-           ->defaultGroup('Facture.created_at')
-//            ->defaultSort('created_at','asc')
+            ->defaultGroup('Facture.created_at')
             ->columns([
-                Tables\Columns\TextColumn::make('Plat.designationPlat'),
-                Tables\Columns\TextColumn::make('prixVente')
-                    ->money('MAD')
+                Tables\Columns\TextColumn::make('Plat.designationPlat')
+                    ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('quantite'),
-                Tables\Columns\TextColumn::make('Facture.adresseLivraison')
-                    ->wrap()
-                    ->label('adresse'),
-                Tables\Columns\TextColumn::make('etat')
-                    ->badge()
-                    ->color(fn (string $state): string => match ($state) {
-                        'en attente' => 'gray',
-                        'en preparation' => 'warning',
-                        'preparée' => 'info',
-                        'en livraison' => 'success',
-                        'livrée' => 'success',
-                    }),
-            ])
+                Tables\Columns\TextColumn::make('Plat.descriptionPlat')
+                    ->wrap(),
+                Tables\Columns\TextColumn::make('quantite')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\SelectColumn::make('etat')
+                    ->options([
+                        'en attente' => 'en attente',
+                        'en preparation' => 'en preparation',
+                        'preparée' => 'preparée',
+                       // 'en livraison' => 'en livraison'
+                        // 'livrée' => 'livrée',
+                    ]),
 
-            ->modifyQueryUsing(function ($query) {
-                return $query->whereHas('facture', function ($query) {
-                    $query->where('idClient', Auth::id());
-                })
-                //    ->join('factures','factures.numeroFacture','=','commandes.numeroFacture')
-                  //  ->orderBy('idDate', 'desc')
-                ;
+            ])->modifyQueryUsing(function ($query){
+                return $query->whereIn('etat',['en preparation', 'en attente']);
             });
     }
 
@@ -92,23 +87,13 @@ class CommandeResource extends Resource
             'edit' => Pages\EditCommande::route('/{record}/edit'),
         ];
     }
+
     public static function canCreate(): bool
     {
-        return false;
+        return 0;
     }
-
     public static function canEdit($record): bool
     {
-        return false;
-    }
-
-    public static function canDelete($record): bool
-    {
-        return false;
-    }
-
-    public static function canDeleteAny(): bool
-    {
-        return false;
+        return 0;
     }
 }

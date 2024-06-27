@@ -58,7 +58,7 @@
                                             @method('DELETE')
                                             <button type="submit" class=" mx-2 btn btn-danger">Remove</button>
                                         </form>
-                                        <span class="ml-auto font-bold mx-2">${{ $item->getPriceSum() }}</span>
+                                        <span class="ml-auto font-bold mx-2">{{ Number::currency($item->getPriceSum() , "mad") }}</span>
                                     </div>
                                 </div>
                             </div>

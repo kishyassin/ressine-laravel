@@ -10,10 +10,4 @@ class EditFacture extends EditRecord
 {
     protected static string $resource = FactureResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
 }

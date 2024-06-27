@@ -237,6 +237,7 @@
       <path value="$PROJECT_DIR$/app/vendor/filament/filament" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/yaml" />
       <path value="$PROJECT_DIR$/app/vendor/laravel/sail" />
+      <path value="$PROJECT_DIR$/app/vendor/flowframe/laravel-trend" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">

@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class FactureResource extends Resource
@@ -23,19 +24,15 @@ class FactureResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('etat')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('adresseLivraison')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('Date.jjmmaaaa')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('idLivreur')
-                    ->numeric(),
-                Forms\Components\TextInput::make('idClient')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('etat')
+                    ->options([
+                        'en attente' => 'en attente',
+                       // 'en preparation' => 'en preparation',
+                       // 'preparée' => 'preparée',
+                         'en livraison' => 'en livraison',
+                         'livrée' => 'livrée',
+                    ]),
+
             ]);
     }
 
@@ -43,51 +40,35 @@ class FactureResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('etat')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('OrderDate.jjmmaaaa'),
                 Tables\Columns\TextColumn::make('adresseLivraison')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('idDate')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('idLivreur')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('idClient')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('Client.name'),
+                Tables\Columns\TextColumn::make('Client.telephone')
+                ->label('phone'),
+                Tables\Columns\SelectColumn::make('etat')
+                    ->options([
+                        'en attente' => 'en attente',
+                         'en livraison' => 'en livraison',
+                         'livrée' => 'livrée',
+                    ]),
             ])
 
-            ->filters([
-                //
-            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ])
             ->modifyQueryUsing(function ($query) {
-                return $query->whereHas('commandes', function ($query) {
-                    $query->where('etat', 'preparée');
+                return $query->whereDoesntHave('commandes', function ($query) {
+                    $query->whereIn('etat', ['en attente', 'livrée']);
                 });
             });
+
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\CommandesRelationManager::class
         ];
     }
 
@@ -98,5 +79,19 @@ class FactureResource extends Resource
             'create' => Pages\CreateFacture::route('/create'),
             'edit' => Pages\EditFacture::route('/{record}/edit'),
         ];
+    }
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function canDelete($record): bool
+    {
+        return false;
+    }
+
+    public static function canDeleteAny(): bool
+    {
+        return false;
     }
 }

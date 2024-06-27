@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('prenomChef');
             $table->string('imageChef')->nullable();
             $table->string('fonction')->nullable();
             $table->string('facebook')->nullable();

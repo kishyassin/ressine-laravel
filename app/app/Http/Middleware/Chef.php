@@ -16,7 +16,7 @@ class Chef
     public function handle(Request $request, Closure $next): Response
     {
         if (!\Auth::guard('chef')->check()){
-            return redirect()->route('login_chef');
+            return redirect()->route('chef/login');
         }
         return $next($request);
     }

@@ -29,7 +29,7 @@
                         <a href="#" class="nav-item nav-link"><i class="fa fa-user" aria-hidden="true"></i></a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="{{ route('profile') }}" class="dropdown-item">modifier</a>
-                            <a href="{{ route('dashboard') }}" class="dropdown-item">dashboard</a>
+                            <a href="/app" class="dropdown-item">dashboard</a>
 
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

@@ -26,15 +26,9 @@ class Plat extends Model
         return $this->hasMany(Commande::class, 'idPlat', 'idPlat');
     }
 
-    public function composer()
-    {
-        return $this->hasMany(Composer::class, 'idPlat', 'idPlat');
-    }
 
-    public function ingredients()
-    {
-        return $this->belongsToMany(Ingredient::class, 'composers', 'idPlat', 'idIngredient');
-    }
+
+
 
     public static function getTopPlatsByCategory()
     {

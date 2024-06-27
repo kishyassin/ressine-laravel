@@ -37,7 +37,6 @@ class ChefPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Chef/Widgets'), for: 'App\\Filament\\Chef\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

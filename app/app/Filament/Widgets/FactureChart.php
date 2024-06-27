@@ -9,26 +9,29 @@ use Flowframe\Trend\TrendValue;
 
 class FactureChart extends ChartWidget
 {
-    protected static ?string $heading = 'Chart';
+    protected static ?string $heading = 'Factures Du Semaine';
+    protected int | string | array $columnSpan = 'full';
+    protected static ?int $sort = 4;
 
     protected function getData(): array
     {
         $data = Trend::model(Facture::class)
         ->between(
-            start: now()->startOfYear(),
-            end: now()->endOfYear(),
+            start: now()->startOfWeek(),
+            end: now()->endOfWeek(),
         )
-        ->perMonth()
+        ->perDay()
         ->count();
 
         return [
             'datasets' => [
                 [
-                    'label' => 'Blog posts',
+                    'label' => 'Factures',
                     'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
                 ],
             ],
             'labels' => $data->map(fn (TrendValue $value) => $value->date),
+            'fill' => 'rgb(255, 0, 0)'
         ];
 
     }

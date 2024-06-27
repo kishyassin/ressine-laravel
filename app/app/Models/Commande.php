@@ -60,4 +60,11 @@ class Commande extends Model
     {
         return $this->belongsTo(Plat::class, 'idPlat', 'idPlat');
     }
+
+
+
+    public function chef()
+    {
+        return $this->belongsTo(Chef::class, 'idChef', 'idChef');
+    }
 }

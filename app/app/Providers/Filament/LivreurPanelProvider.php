@@ -37,7 +37,6 @@ class LivreurPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Livreur/Widgets'), for: 'App\\Filament\\Livreur\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

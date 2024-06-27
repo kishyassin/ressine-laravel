@@ -47,16 +47,13 @@ Route::get('/welcome',function(){
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/confirmation', [StripeController::class, 'confirmationPage'])->name('confirmation');
 Route::post('/confirm', [StripeController::class, 'session'])->name('confirm');
 
 Route::middleware('auth')->group(function () {
     //profile actions
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 

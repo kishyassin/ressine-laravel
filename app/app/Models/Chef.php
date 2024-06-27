@@ -33,4 +33,9 @@ class Chef extends Authenticatable
     static public function getFourChefs(){
         return Chef::orderBy('created_at', 'asc')->take(4)->get();
     }
+
+    public function commandes()
+    {
+        return $this->hasMany(Commande::class, 'idChef', 'idChef');
+    }
 }

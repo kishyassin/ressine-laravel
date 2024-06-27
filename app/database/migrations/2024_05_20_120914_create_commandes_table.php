@@ -17,6 +17,9 @@ class CreateCommandesTable extends Migration
             $table->unsignedBigInteger('idPlat');
             $table->foreign('idPlat')->references('idPlat')->on('plats')->onDelete('cascade');
 
+            $table->unsignedBigInteger('idChef')->nullable();
+            $table->foreign('idChef')->references('idChef')->on('chefs')->onDelete('cascade');
+
             $table->decimal('prixVente', 8, 2);
             $table->integer('quantite');
 

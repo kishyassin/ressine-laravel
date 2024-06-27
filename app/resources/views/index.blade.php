@@ -22,7 +22,7 @@
                                     <p class="text-white mx-4 mb-4 pb-2">{{ $plat->descriptionPlat }}</p>
                                     <a href="{{ url('addToCart', ['idPlat' => $plat->idPlat]) }}"
                                        class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link booking-link-of-slider">
-                                        Order Now<i
+                                       Commander Maintenant <i
                                             class="fa fa-shopping-cart"
                                             aria-hidden="true"></i>
                                     </a>
@@ -51,8 +51,8 @@
             <section id="tranding" class=" container-fluid p-0 m-0">
                 <div class="container-fluid p-0 m-0">
                     <div class="text-center" data-wow-delay="0.1s">
-                        <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
-                        <h1 class="mb-2">Trending food</h1>
+                        <h5 class="section-title ff-secondary text-center text-primary fw-normal">Menu</h5>
+                        <h1 class="mb-2">Plat Tendance</h1>
                     </div>
                     <div class="swiper tranding-slider">
                         <div class="swiper-wrapper">
@@ -83,12 +83,12 @@
                                             <div class="w-100 row">
                                                 <div class="col-6 p-1">
                                                     <button
-                                                        class="w-100 p-2 rounded-full btn btn-outline-primary">Explore
+                                                        class="w-100 p-2 rounded-full btn btn-outline-primary">Découvrir
                                                     </button>
                                                 </div>
                                                 <div class="col-6 p-1">
                                                     <a href="{{ url('addToCart', ['idPlat' => $plat->idPlat]) }}"
-                                                       class="w-100 p-2 rounded-full btn btn-primary">Ajouter Panier <i
+                                                       class="w-100 p-2 rounded-full btn btn-primary">Ajouter Au Panier <i
                                                             class="fa fa-shopping-cart"
                                                             aria-hidden="true"></i></a>
                                                 </div>
@@ -134,51 +134,51 @@
             </div>
             <div class="col-md-6 bg-dark d-flex align-items-center">
                 <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
-                    <h5 class="section-title ff-secondary text-start text-primary fw-normal">Reservation</h5>
-                    <h1 class="text-white mb-4">Book A Table Online</h1>
+                    <h5 class="section-title ff-secondary text-start text-primary fw-normal">Réservation</h5>
+                    <h1 class="text-white mb-4">Réservez une table en ligne</h1>
                     <form>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name"
-                                           placeholder="Your Name">
-                                    <label for="name">Your Name</label>
+                                    <input type="text" class="form-control" id="nom"
+                                           placeholder="Votre Nom">
+                                    <label for="nom">Votre Nom</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="email" class="form-control" id="email"
-                                           placeholder="Your Email">
-                                    <label for="email">Your Email</label>
+                                           placeholder="Votre Email">
+                                    <label for="email">Votre  Email</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating date" id="date3" data-target-input="nearest">
                                     <input type="text" class="form-control datetimepicker-input"
-                                           id="datetime" placeholder="Date & Time" data-target="#date3"
+                                           id="Date et heure" placeholder="Date et heure" data-target="#date3"
                                            data-toggle="datetimepicker"/>
-                                    <label for="datetime">Date & Time</label>
+                                    <label for="Date et heure">Date et heure</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <select class="form-select" id="select1">
-                                        <option value="1">People 1</option>
-                                        <option value="2">People 2</option>
-                                        <option value="3">People 3</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
                                     </select>
-                                    <label for="select1">No Of People</label>
+                                    <label for="select1">Nombre de personnes</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Special Request" id="message"
+                                    <textarea class="form-control" placeholder="demande spéciale" id="message"
                                               style="height: 100px"></textarea>
-                                    <label for="message">Special Request</label>
+                                    <label for="message">demande spéciale</label>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
+                                <button class="btn btn-primary w-100 py-3" type="submit">Réserver maintenant</button>
                             </div>
                         </div>
                     </form>
@@ -192,7 +192,7 @@
         <div class="modal-dialog">
             <div class="modal-content rounded-0">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Vidéo YouTube</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                 </div>
@@ -212,8 +212,8 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container-fluid">
             <div class="text-center">
-                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Testimonial</h5>
-                <h1 class="mb-5">Our <span class="text-primary">Clients </span> Say!!!</h1>
+                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Témoignage</h5>
+                <h1 class="mb-5">Nos   <span class="text-primary">Clients </span> disent!!!</h1>
             </div>
             <div class="owl-carousel testimonial-carousel row">
                 @foreach ($acceptedTestimonials as $testimonial)
@@ -240,8 +240,8 @@
     <!-- panorama start -->
     <div class="container-fluid my-5">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h5 class="section-title ff-secondary text-center text-primary fw-normal">Our Restaurant</h5>
-            <h1 class="mb-2"><span class=" text-primary">Ressine</span> from inside</h1>
+            <h5 class="section-title ff-secondary text-center text-primary fw-normal">Notre restaurant</h5>
+            <h1 class="mb-2"><span class=" text-primary">Ressine</span> de l’intérieur</h1>
         </div>
         <div id="panorama" class=" my-2 rounded-5 shadow wow fadeInUp"></div>
     </div>

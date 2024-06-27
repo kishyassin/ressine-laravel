@@ -24,20 +24,20 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
-                <h5 class="text-light fw-normal">Monday - Saturday</h5>
-                <p>09AM - 09PM</p>
-                <h5 class="text-light fw-normal">Sunday</h5>
-                <p>10AM - 08PM</p>
+                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Ouverture</h4>
+                <h5 class="text-light fw-normal">Lundi - Samedi</h5>
+                <p>09h - 21h</p>
+                <h5 class="text-light fw-normal">Dimanche</h5>
+                <p>10h - 20h</p>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
+                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">newsletter                </h4>
                 <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
                 <div class="position-relative mx-auto" style="max-width: 400px;">
-                    <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text"
-                           placeholder="Your email">
+                    <input class="form-control border-primary w-100 py-3 ps-2 pe-2" type="text"
+                           placeholder="Votre email ">
                     <button type="button"
-                            class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                            class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Inscription</button>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
         <div class="copyright">
             <div class="row">
                 <div class="col-md-12 text-center text-md-center mb-3 mb-md-0">
-                    © 2024 Ressine - All Rights Reserved
+                    © 2024 Ressine - Tous droits réservés
                 </div>
             </div>
         </div>

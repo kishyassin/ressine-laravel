@@ -3,8 +3,10 @@
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
                 <h1 class="text-primary m-0 d-flex">
-                    <img src="./img/logo.svg" alt="Logo" class=" d-inline-block h-100 w-auto">
-                    <span class=" h-100 align-bottom align-self-end">Ressine</span>
+                    <img src="./img/logo.svg" alt="Logo" class=" d-inline-block h-100 w-50">
+                </h1>
+                <h1>
+                    <span class="text-primary  h-100 align-bottom align-self-end">Ressine</span>
                 </h1>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -31,14 +33,11 @@
                 <p>10h - 20h</p>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">newsletter                </h4>
-                <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                <div class="position-relative mx-auto" style="max-width: 400px;">
-                    <input class="form-control border-primary w-100 py-3 ps-2 pe-2" type="text"
-                           placeholder="Votre email ">
-                    <button type="button"
-                            class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Inscription</button>
-                </div>
+                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">liens utils                </h4>
+
+                <p class="mb-2"><a href="/admin">Ressine Admin Panel</a></p>
+                <p class="mb-2"><a href="/chef">Ressine Chef Panel</a></p>
+                <p class="mb-2"><a href="/livreur">Ressine Livreur Panel</a></p>
             </div>
         </div>
     </div>

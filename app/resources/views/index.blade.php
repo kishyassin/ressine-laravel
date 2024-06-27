@@ -22,7 +22,7 @@
                                     <p class="text-white mx-4 mb-4 pb-2">{{ $plat->descriptionPlat }}</p>
                                     <a href="{{ url('addToCart', ['idPlat' => $plat->idPlat]) }}"
                                        class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link booking-link-of-slider">
-                                       Commander Maintenant <i
+                                        <span class="fw-bold">{{ Number::currency($plat->prixUnitaire,'mad') }}</span> | Commander <i
                                             class="fa fa-shopping-cart"
                                             aria-hidden="true"></i>
                                     </a>

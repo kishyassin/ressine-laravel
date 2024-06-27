@@ -71,8 +71,11 @@ class PlatResource extends Resource
         return $table
             ->defaultGroup('Categorie.designation')
         ->columns([
+                Tables\Columns\ImageColumn::make('imageIcon'),
                 Tables\Columns\TextColumn::make('designationPlat')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('descriptionPlat')
+                    ->wrap(),
                 Tables\Columns\TextColumn::make('prixUnitaire')
                     ->numeric()
                     ->sortable(),

@@ -45,35 +45,35 @@ class CommandeResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->defaultGroup('Facture.created_at')
+           ->defaultGroup('Facture.created_at')
+//            ->defaultSort('created_at','asc')
             ->columns([
-                Tables\Columns\TextColumn::make('Plat.designationPlat')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('Plat.designationPlat'),
                 Tables\Columns\TextColumn::make('prixVente')
                     ->money('MAD')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('quantite')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('quantite'),
+                Tables\Columns\TextColumn::make('Facture.adresseLivraison')
+                    ->wrap()
+                    ->label('adresse'),
                 Tables\Columns\TextColumn::make('etat')
-                    ->searchable()
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         'en attente' => 'gray',
                         'en preparation' => 'warning',
+                        'preparée' => 'info',
                         'en livraison' => 'success',
                         'livrée' => 'success',
                     }),
             ])
+
             ->modifyQueryUsing(function ($query) {
                 return $query->whereHas('facture', function ($query) {
                     $query->where('idClient', Auth::id());
-                });
+                })
+                //    ->join('factures','factures.numeroFacture','=','commandes.numeroFacture')
+                  //  ->orderBy('idDate', 'desc')
+                ;
             });
     }
 

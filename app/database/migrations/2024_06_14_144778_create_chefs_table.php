@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('chefs', function (Blueprint $table) {
             $table->id('idChef');
-            $table->string('nomChef');
-            $table->string('prenomChef');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->string('imageChef')->nullable();
             $table->string('fonction')->nullable();
             $table->string('facebook')->nullable();

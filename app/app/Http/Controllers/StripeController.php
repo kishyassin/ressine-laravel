@@ -29,7 +29,7 @@ class StripeController extends Controller
 
     public function session(Request $request)
     {
-        $address = $request->input('address');
+        $address = $request->input('adresseLivraison');
         $productItems = [];
 
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));

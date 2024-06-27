@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ChefController;
+use App\Http\Controllers\LivreurController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\MenuController;
@@ -71,6 +73,10 @@ Route::middleware('auth')->group(function () {
 
 });
 
+Route::get('livreur/login',[LivreurController::class,'showLogin'])->name('livreur/login');
+Route::post('livreur/login',[LivreurController::class,'login'])->name('livreur/login');
 
+Route::get('chef/login',[ChefController::class,'showLogin'])->name('chef/login');
+Route::post('chef/login',[ChefController::class,'login'])->name('chef/login');
 
 require __DIR__.'/auth.php';

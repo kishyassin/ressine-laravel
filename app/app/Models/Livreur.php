@@ -3,28 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-/**
- * Livreur Model
- *
- * Represents a delivery person.
- */
-class Livreur extends Model
+class Livreur extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
-    // Specify the primary key for the model
+    protected $fillable = [
+        'name', 'email', 'password', 'telephone',
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
     protected $primaryKey = 'idLivreur';
 
-    /**
-     * Get the orders assigned to this delivery person.
-     *
-     * This defines a one-to-many relationship between livreurs and commandes.
-     * Each livreur may have multiple commandes assigned to them.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function factures()
     {
         return $this->hasMany(Facture::class, 'idLivreur', 'idLivreur');

@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Hash;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\FileUpload;
@@ -31,14 +32,22 @@ class ChefResource extends Resource
             ->schema([
                 Forms\Components\Section::make('information personelles')
                     ->schema([
-                        Forms\Components\TextInput::make('nomChef')
+                        Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255)
-                            ->label('nom'),
-                        Forms\Components\TextInput::make('prenomChef')
+                            ->label('nom et prenom'),
+                        Forms\Components\TextInput::make('email')
                             ->required()
-                            ->maxLength(255)
-                            ->label('prenom'),
+                            ->email()
+                            ->label('Email'),
+                        Forms\Components\TextInput::make('password')
+                            ->password()
+                            ->revealable()
+                            ->required()
+                            ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
+                            ->dehydrated(fn (?string $state): bool => filled($state))
+                            ->required(fn (string $operation): bool => $operation === 'create')
+                            ->label('Password'),
                         Forms\Components\TextInput::make('fonction')
                             ->maxLength(255),
                     ])

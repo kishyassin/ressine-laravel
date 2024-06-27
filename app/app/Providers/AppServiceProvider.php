@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use Carbon\Laravel\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\ServiceProvider;
+use App\Models\Facture;
+use App\Observers\FactureObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Facture::observe(FactureObserver::class);
+
         Model::unguard();
     }
 }

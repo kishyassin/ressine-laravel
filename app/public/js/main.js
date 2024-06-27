@@ -1,6 +1,6 @@
 (function ($) {
     "use strict";
-    
+
     // Spinner
     var spinner = function () {
         setTimeout(function () {
@@ -10,8 +10,8 @@
         }, 1);
     };
     spinner();
-    
-    
+
+
     // Initiate the wowjs
     new WOW().init();
 
@@ -25,14 +25,14 @@
             $('.navbar').removeClass('sticky-top shadow-sm');
         }
     });
-    
-    
+
+
     // Dropdown on mouse hover
     const $dropdown = $(".dropdown");
     const $dropdownToggle = $(".dropdown-toggle");
     const $dropdownMenu = $(".dropdown-menu");
     const showClass = "show";
-    
+
     $(window).on("load resize", function() {
         if (this.matchMedia("(min-width: 992px)").matches) {
             $dropdown.hover(
@@ -53,8 +53,8 @@
             $dropdown.off("mouseenter mouseleave");
         }
     });
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
@@ -91,6 +91,15 @@
         $('#videoModal').on('hide.bs.modal', function (e) {
             $("#video").attr('src', $videoSrc);
         })
+
+
+
+//   panorama
+        pannellum.viewer('panorama', {
+            "type": "equirectangular",
+            "panorama": "./img/restaurant-panorama.jpg",
+            "preview": "./img/restaurant-panorama.jpg"
+        });
     });
 
 
@@ -115,7 +124,7 @@
             }
         }
     });
-    
+
 })(jQuery);
 
 
@@ -186,7 +195,7 @@ bookingLinks.forEach((link) => {
 
 
 
-// popular items script 
+// popular items script
 var TrandingSlider = new Swiper('.tranding-slider', {
     effect: 'coverflow',
     grabCursor: true,
@@ -208,11 +217,3 @@ var TrandingSlider = new Swiper('.tranding-slider', {
       prevEl: '.swiper-button-prev',
     }
   });
-
-
-//   panorama
-pannellum.viewer('panorama', {
-    "type": "equirectangular",
-    "panorama": "./img/restaurant-panorama.jpg",
-    "preview": "./img/restaurant-panorama.jpg"
-});

@@ -12,10 +12,9 @@ class CategorieFactory extends Factory
     public function definition()
     {
         return [
-            'designation'=>fake()->text(),
-            'description'=>fake()->sentence(),
+            'designation' => $this->faker->text(),
+            'description' => $this->faker->sentence(),
+            'iconCategorie' => 'fas fa-utensils', // Example Font Awesome icon class
         ];
     }
-
-
 }

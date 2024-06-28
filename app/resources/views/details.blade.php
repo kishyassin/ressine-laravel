@@ -30,7 +30,7 @@
         }
     </style>
 @endsection
-    
+
 @section('content')
     <div class="container py-5 mt-5">
         <div class="card">
@@ -60,16 +60,15 @@
                                         <button type="submit" class="btn btn-primary mt-3">Submit Rating</button>
                                     </form>
                                 </div>
-                            @else
                             @endif
                         @else
-                         
-                            <p class="mt-4">Veuillez vous  <a href="{{ route('login') }}">connecter</a> pour évaluer ce plat.</p>
+                            <p class="mt-4">Veuillez vous <a href="{{ route('login') }}">connecter</a> pour évaluer ce plat.</p>
                         @endauth
                     </div>
                 </div>
             </div>
         </div>
+        @include('layouts.components.menuComponent')
     </div>
 @endsection
 

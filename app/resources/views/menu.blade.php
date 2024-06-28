@@ -36,7 +36,9 @@
                                         <img class="flex-shrink-0 img-fluid rounded-pill" src="{{ asset('storage/' . $plat->imageIcon) }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>{{ $plat->designationPlat }}</span>
+                                                <a href="{{ route('plat.details', ['idPlat' => $plat->idPlat]) }}">
+                                                    {{ $plat->designationPlat }}
+                                                </a>      
                                                 <span class="text-primary">${{ number_format($plat->prixUnitaire, 2) }}</span>
                                             </h5>
                                             <small class="fst-italic">{{ $plat->descriptionPlat }}</small>

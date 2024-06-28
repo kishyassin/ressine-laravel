@@ -122,6 +122,8 @@
         </div>
     </div>
     <!-- special offers end -->
+    
+    @include('layouts.components.menuComponent')
 
     <!-- Reservation Start -->
     <div class="container-fluid py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">

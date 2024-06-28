@@ -18,6 +18,7 @@ class Etoile extends Model
     protected $primaryKey = null;
     public $incrementing = false;
 
+    protected $fillable = ['idPlat', 'idClient', 'nombreEtoile'];
     /**
      * Get the dish associated with the rating.
      *

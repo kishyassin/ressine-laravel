@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\ChefController;
-use App\Http\Controllers\LivreurController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ChefController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PlatController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\EtoileController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\LivreurController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReserverController;
@@ -47,6 +49,8 @@ Route::get('/welcome',function(){
     return view('welcome');
 });
 
+Route::get('/plat/details/{idPlat}', [PlatController::class, 'details'])->name('plat.details');
+Route::post('/plat/rate/{idPlat}', [EtoileController::class, 'rate'])->name('plat.rate')->middleware('auth');
 
 Route::post('/confirmation', [StripeController::class, 'confirmationPage'])->name('confirmation');
 Route::post('/confirm', [StripeController::class, 'session'])->name('confirm');

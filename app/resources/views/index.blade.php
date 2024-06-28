@@ -17,8 +17,9 @@
                             <div class="row justify-content-center align-items-center g-5">
                                 <div class="col-lg-7 text-center wow fadeInUp">
                                     <h1 class="display-4 text-white">{{ $categoryName }}<br>
-                                        <span class="text-primary">{{ $plat->designationPlat }}</span>
-                                    </h1>
+                                        <a href="{{ route('plat.details', ['idPlat' => $plat->idPlat]) }}">
+                                            {{ $plat->designationPlat }}
+                                        </a>                                    </h1>
                                     <p class="text-white mx-4 mb-4 pb-2">{{ $plat->descriptionPlat }}</p>
                                     <a href="{{ url('addToCart', ['idPlat' => $plat->idPlat]) }}"
                                        class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link booking-link-of-slider">
@@ -66,7 +67,9 @@
                                         <h1 class="food-price">{{ Number::currency($plat->prixUnitaire,'mad') }}</h1>
                                         <div class="tranding-slide-content-bottom">
                                             <h2 class="food-name">
-                                                {{ $plat->designationPlat }}
+                                                <a href="{{ route('plat.details', ['idPlat' => $plat->idPlat]) }}">
+                                                    {{ $plat->designationPlat }}
+                                                </a>
                                             </h2>
                                             <h5 class="food-rating">
                                                 <span>{{ round($plat->avg_star_rating, 1) }}.0</span>

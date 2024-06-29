@@ -72,10 +72,10 @@
                                                 </a>
                                             </h2>
                                             <h5 class="food-rating">
-                                                <span>{{ round($plat->avg_star_rating, 1) }}.0</span>
+                                                <span>{{ round($plat->etoiles_avg_nombre_etoile, 1) }}.0</span>
                                                 <div class="rating">
                                                     @for ($i = 0; $i < 5; $i++)
-                                                        @if ($i < $plat->avg_star_rating)
+                                                        @if ($i < $plat->etoiles_avg_nombre_etoile)
                                                             <i class="fa-solid fa-star text-primary"></i>
                                                         @else
                                                             <i class="fa-regular fa-star text-primary"></i>

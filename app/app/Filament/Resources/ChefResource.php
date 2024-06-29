@@ -93,18 +93,19 @@ class ChefResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('imageChef')
                     ->searchable()->circular(),
-                Tables\Columns\TextColumn::make('nomChef')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('prenomChef')
+                Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('fonction')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('facebook')
-                    ->searchable(),
+                    ->searchable()
+                    ->wrap(),
                 Tables\Columns\TextColumn::make('twitter')
-                    ->searchable(),
+                    ->searchable()
+                    ->wrap(),
                 Tables\Columns\TextColumn::make('instagram')
-                    ->searchable(),
+                    ->searchable()
+                    ->wrap(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

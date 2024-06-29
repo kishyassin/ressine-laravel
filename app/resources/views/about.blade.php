@@ -5,11 +5,12 @@
 @endsection
 
 @section('content')
-<div class="container-xxl py-5 bg-dark hero-header">
-    <div class="container-fluid text-center my-5 pt-5 pb-4">
-        <h1 class="display-3 text-white mb-3 animated slideInDown">{{ $about->title }}</h1>
+    <div class="container-xxl py-5 bg-dark hero-header"
+         style="background: linear-gradient(rgba(15, 23, 43, 0.9), rgba(15, 23, 43, 0.4)), url('{{ asset('img/bg-hero.jpg') }}'); background-size: cover; background-position: center;">
+        <div class="container-fluid text-center my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">{{$about->title}}e</h1>
+        </div>
     </div>
-</div>
 
 <div class="container-xxl py-5">
     <div class="container">

@@ -42,7 +42,7 @@ class PlatResource extends Resource
                 Forms\Components\FileUpload::make('imageSlide')->directory('uploads')
                     ->label('Upload Slide Image')
                     ->image()
-                    ->multiple()
+                    
                     ->imageEditor()
                     ->imageResizeMode('force')
                     ->imageResizeTargetWidth('320')
@@ -50,7 +50,7 @@ class PlatResource extends Resource
                 Forms\Components\FileUpload::make('imageHero')->directory('uploads')
                     ->label('Upload Hero Image')
                     ->image()
-                    ->multiple()
+                    
                     ->imageEditor()
                     ->imageResizeMode('force')
                     ->imageResizeTargetWidth('1370')
@@ -58,7 +58,7 @@ class PlatResource extends Resource
                 Forms\Components\FileUpload::make('imageIcon')->directory('uploads')
                     ->label('Upload Icon Image')
                     ->image()
-                    ->multiple()
+                    
                     ->imageEditor()
                     ->imageResizeMode('force')
                     ->imageResizeTargetWidth('200')

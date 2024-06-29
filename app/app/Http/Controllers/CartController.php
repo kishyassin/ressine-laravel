@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Plat;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use Cart;
-use Storage;
+use App\Models\Plat;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class CartController extends Controller
 {
@@ -27,7 +27,7 @@ class CartController extends Controller
         $plat = Plat::findOrFail($idPlat);
 
         // Get the first image's icon if it exists
-        $imageIcon = $plat->first() ? $plat->first()->imageIcon : null;
+        $imageIcon = $plat->imageIcon ;
 
         \Cart::session(Auth::id())->add(array(
             'id' => $idPlat,

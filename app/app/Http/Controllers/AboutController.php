@@ -11,7 +11,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $about = About::with(['images'])->first();
+        $about = About::first();
         $services = Service::all();
         $fourChefs = Chef::orderBy('created_at', 'asc')->take(4)->get();
 
@@ -20,6 +20,6 @@ class AboutController extends Controller
         $yearsOfExperience = $currentYear - $about->starting_year;
         $numberOfChefs = Chef::count();
 
-        return view('about', compact('about', 'services', 'fourChefs', 'yearsOfExperience', 'numberOfChefs'));
+        return view('about' , compact( 'about','services', 'fourChefs', 'yearsOfExperience', 'numberOfChefs'));
     }
 }

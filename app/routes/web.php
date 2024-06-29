@@ -45,9 +45,7 @@ Route::get('/contact',function(){
     return view('contact');
 });
 
-Route::get('/welcome',function(){
-    return view('welcome');
-});
+
 
 Route::get('/plat/details/{idPlat}', [PlatController::class, 'details'])->name('plat.details');
 Route::post('/plat/rate/{idPlat}', [EtoileController::class, 'rate'])->name('plat.rate')->middleware('auth');

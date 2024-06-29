@@ -7,13 +7,13 @@
             <span class="h-100 align-bottom align-self-end">Ressine</span>
         </h2>
     </a>
-    
+
     <!-- Toggle button for mobile view -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="collapsee navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0 pe-4">
             <a href="/" class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}">Accueil</a>
             <a href="/about" class="nav-item nav-link {{ request()->is('about') ? 'active' : '' }}">à propos</a>

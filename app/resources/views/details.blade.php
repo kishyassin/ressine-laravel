@@ -34,7 +34,7 @@
 @section('content')
     <div class="container-xxl py-5 bg-dark hero-header"
          style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ Storage::url($plat->imageHero)  }}'); background-size: cover; background-position: center">
-    <div class="container-fluid text-center my-5 pt-5 pb-4">
+        <div class="container-fluid text-center my-5 pt-5 pb-4">
             <h1 class="display-3 text-white mb-3 animated slideInDown">{{ $plat->designationPlat }}</h1>
         </div>
     </div>

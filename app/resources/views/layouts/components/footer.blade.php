@@ -3,7 +3,7 @@
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
                 <h1 class="text-primary m-0 d-flex">
-                    <img src="./img/logo.svg" alt="Logo" class=" d-inline-block h-100 w-50">
+                    <img src="{{ asset('img/logo.svg') }}" alt="Logo" class=" d-inline-block h-100 w-50">
                 </h1>
                 <h1>
                     <span class="text-primary  h-100 align-bottom align-self-end">Ressine</span>

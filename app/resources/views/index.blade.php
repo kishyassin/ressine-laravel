@@ -61,7 +61,7 @@
                             @foreach ($topSevenPlats as $plat)
                                 <div class="swiper-slide tranding-slide">
                                     <div class="tranding-slide-img">
-                                        <img src="{{ $plat->imageSlide }}" alt="Tranding">
+                                        <img src="{{ Storage::url($plat->imageSlide) }}" alt="Tranding">
                                     </div>
                                     <div class="tranding-slide-content">
                                         <h1 class="food-price">{{ Number::currency($plat->prixUnitaire,'mad') }}</h1>
@@ -85,9 +85,9 @@
                                             </h5>
                                             <div class="w-100 row">
                                                 <div class="col-6 p-1">
-                                                    <button
+                                                    <a href="{{ route('plat.details', ['idPlat' => $plat->idPlat]) }}"
                                                         class="w-100 p-2 rounded-full btn btn-outline-primary">Découvrir
-                                                    </button>
+                                                    </a>
                                                 </div>
                                                 <div class="col-6 p-1">
                                                     <a href="{{ url('addToCart', ['idPlat' => $plat->idPlat]) }}"
@@ -122,7 +122,7 @@
         </div>
     </div>
     <!-- special offers end -->
-    
+
     @include('layouts.components.menuComponent')
 
     <!-- Reservation Start -->

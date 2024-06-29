@@ -1,9 +1,9 @@
 <!-- _menu.blade.php -->
-<div class="container-xxl py-5 mt-5">
+<div class="container py-5 mt-5">
     <div class="container">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5 class="section-title ff-secondary text-center text-primary fw-normal">Menu</h5>
-            <h1 class="mb-5">Plats les plus populaires</h1>
+            <h1 class="mb-5">Ressine Plats par cetegorie</h1>
         </div>
         <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
             <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
@@ -31,7 +31,7 @@
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="{{ route('plat.details', ['idPlat' => $plat->idPlat]) }}">
                                                     {{ $plat->designationPlat }}
-                                                </a>      
+                                                </a>
                                                 <span class="text-primary">${{ number_format($plat->prixUnitaire, 2) }}</span>
                                             </h5>
                                             <small class="fst-italic">{{ $plat->descriptionPlat }}</small>

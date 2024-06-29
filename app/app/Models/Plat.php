@@ -65,26 +65,17 @@ class Plat extends Model
     public static function getTopSevenPlats()
 {
     // Retrieve the top seven plats based on stars and purchases
-    $topPlats = Plat::select('plats.*', \DB::raw('COALESCE(AVG(etoiles.nombreEtoile), 0) as avg_star_rating'))
-        ->join('etoiles', 'plats.idPlat', '=', 'etoiles.idPlat')
-        ->withCount('commandes') // Count the number of times the plat was bought
-        ->groupBy('plats.idPlat', 'plats.designationPlat', 'plats.descriptionPlat', 'plats.prixUnitaire', 'plats.imageSlide', 'plats.imageHero', 'plats.imageIcon', 'plats.idCategorie', 'plats.created_at', 'plats.updated_at')
-        ->orderByDesc('commandes_count') // Order by the number of times bought
-        ->orderByDesc('avg_star_rating') // Then by average star rating
-        ->limit(7) // Limit to top seven plats
+    $topPlats = self::withCount('commandes')
+        ->withAvg('etoiles', 'nombreEtoile')
+        ->orderBy('commandes_count', 'desc')
+        ->take(7)
         ->get();
+
 
     return $topPlats;
 }
 
-// public static function getDetailsPlat($idPlat)
-// {
-//     $detailsPlat = Plat::select('plats.*', 'images.imageHero')
-//         ->join('images', 'plats.idPlat', '=', 'images.idPlat')
-//         ->where('plats.idPlat', $idPlat)
-//         ->first(); // Ensure it returns a single result
-//     return $detailsPlat;
-// }
+
 public static function getDetailsPlat($idPlat)
 {
     $detailsPlat = Plat::with('ingredients')

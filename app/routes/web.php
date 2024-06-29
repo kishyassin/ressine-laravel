@@ -37,6 +37,9 @@ Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/booking',function(){
     return view('booking');
 });
+Route::get('/app',function(){
+    return redirect('/app/commandes');
+});
 
 
 Route::get('/about',[AboutController::class,'index']);

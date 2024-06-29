@@ -16,6 +16,7 @@ class FactureObserver
      */
     public function updated(Facture $facture)
     {
+        set_time_limit(300);
         if ($facture->etat == 'livrée') {
             $facture->commandes()->update(['etat' => 'livrée']);
             $facture->idLivreur = Auth::guard('livreur')->id();

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Commande;
+use App\Observers\CommandeObserver;
 use Carbon\Laravel\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Facture;
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Facture::observe(FactureObserver::class);
+        Commande::observe(CommandeObserver::class);
 
         Model::unguard();
     }

@@ -13,11 +13,18 @@ class PlatController extends Controller
 {
     public function details($idPlat)
     {
-        $plat = Plat::findOrFail($idPlat);
-        $hasRated = Etoile::where('idPlat', $idPlat)->where('idClient', Auth::id())->exists();
+        $plat = Plat::where('idPlat', $idPlat)
+            ->withAvg('etoiles', 'nombreEtoile')
+            ->firstOrFail();
+
+        $hasRated = Etoile::where('idPlat', $idPlat)
+            ->where('idClient', Auth::id())
+            ->exists();
+
         $categories = Categorie::all();
         $plats = Plat::all();
-        return view('details', compact('plat', 'hasRated','categories', 'plats'));
+
+        return view('details', compact('plat', 'hasRated', 'categories', 'plats'));
     }
 
 }

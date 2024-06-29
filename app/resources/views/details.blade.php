@@ -32,18 +32,57 @@
 @endsection
 
 @section('content')
+    <div class="container-xxl py-5 bg-dark hero-header"
+         style="background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .4)), url('{{ Storage::url($plat->imageHero)  }}'); background-size: cover; background-position: center">
+    <div class="container-fluid text-center my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">{{ $plat->designationPlat }}</h1>
+        </div>
+    </div>
     <div class="container py-5 mt-5">
-        <div class="card">
-            <div class="card-body">
+        <div class="">
+            <div class="">
                 <div class="row">
-                    <div class="col-md-6">
-                        <img src="{{ Storage::url($plat->imageSlide) }}" alt="{{ $plat->designationPlat }}" class="img-fluid rounded">
+                    <div class="swiper-wrapper col-md-6 m-0 p-0 ">
+                        <div class="swiper-slide tranding-slide">
+                        <div class="tranding-slide-img">
+                            <img src="{{ Storage::url($plat->imageSlide) }}" alt="Tranding">
+                        </div>
+                        <div class="tranding-slide-content">
+                            <h1 class="food-price">{{ Number::currency($plat->prixUnitaire,'mad') }}</h1>
+                            <div class="tranding-slide-content-bottom">
+                                <h2 class="food-name">
+                                    <a href="{{ route('plat.details', ['idPlat' => $plat->idPlat]) }}">
+                                        {{ $plat->designationPlat }}
+                                    </a>
+                                </h2>
+                                <h5 class="food-rating">
+                                    <span>{{ round($plat->etoiles_avg_nombre_etoile, 1) }}.0</span>
+                                    <div class="rating">
+                                        @for ($i = 0; $i < 5; $i++)
+                                            @if ($i < $plat->etoiles_avg_nombre_etoile)
+                                                <i class="fa-solid fa-star text-primary"></i>
+                                            @else
+                                                <i class="fa-regular fa-star text-primary"></i>
+                                            @endif
+                                        @endfor
+                                    </div>
+                                </h5>
+                                <div class="w-100 row">
+                                    <div class="col p-1">
+                                        <a href="{{ url('addToCart', ['idPlat' => $plat->idPlat]) }}"
+                                           class="w-100 p-2 rounded-full btn btn-primary">Ajouter Au Panier <i
+                                                class="fa fa-shopping-cart"
+                                                aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                     <div class="col-md-6">
                         <h1 class="display-4">{{ $plat->designationPlat }}</h1>
                         <p class="lead">{{ $plat->descriptionPlat }}</p>
-                        <p class="h4">Price: {{ Number::currency($plat->prixUnitaire, 'mad') }}</p>
-                        <a href="{{ route('cart.add', ['idPlat' => $plat->idPlat]) }}" class="btn btn-primary mt-3">Add to Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                        <p class="h4">Prix: {{ Number::currency($plat->prixUnitaire, 'mad') }}</p>
 
                         @auth
                             @if(!$hasRated)
@@ -57,13 +96,18 @@
                                             <input type="radio" value="4" name="rating" id="rating4"><label for="rating4" class="fa fa-star"></label>
                                             <input type="radio" value="5" name="rating" id="rating5"><label for="rating5" class="fa fa-star"></label>
                                         </div>
-                                        <button type="submit" class="btn btn-primary mt-3">Submit Rating</button>
+                                        <button type="submit" class="btn btn-primary mt-3">Valider</button>
                                     </form>
                                 </div>
                             @endif
                         @else
                             <p class="mt-4">Veuillez vous <a href="{{ route('login') }}">connecter</a> pour évaluer ce plat.</p>
                         @endauth
+
+                        <br>
+                        <img src="{{Storage::url($plat->imageIcon)}}" alt="Product image" class="mt-2 object-cover">
+                        <br>
+                        <a href="{{ route('cart.add', ['idPlat' => $plat->idPlat]) }}" class="btn btn-primary mt-3">Add to Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -73,6 +117,30 @@
 @endsection
 
 @section('scripts')
+    @if(Session::has('success'))
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                    title: "Bien",
+                    text: "{{Session::get('success')}}",
+                    icon: "success"
+                });
+            })
+        </script>
+    @endif
+
+    @if(Session::has('error'))
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                    title: "Ooops",
+                    text: "{{Session::get('error')}}",
+                    icon: "error"
+                });
+            })
+        </script>
+    @endif
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // Optional: JavaScript for visual feedback on rating selection
         document.addEventListener('DOMContentLoaded', function () {

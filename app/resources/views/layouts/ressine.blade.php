@@ -20,6 +20,7 @@
     @yield('content')
 
     @include('layouts.components.footer')
+    @yield('scripts')
 </div>
 
 

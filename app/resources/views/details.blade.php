@@ -4,8 +4,8 @@
     @include('layouts.components.main-head-links')
     <style>
         .rating-css div {
-            color: #ffe400;
-            font-size: 30px;
+            color: #ff8c00; /* Change to a shade of orange */
+            font-size: 20px; /* Reduce font size */
             font-family: sans-serif;
             font-weight: 800;
             text-align: center;
@@ -16,9 +16,10 @@
             display: none;
         }
         .rating-css input + label {
-            font-size: 60px;
+            font-size: 30px; /* Reduce font size */
             text-shadow: 1px 1px 0 #8f8420;
             cursor: pointer;
+            color: #ff8c00; /* Change to a shade of orange */
         }
         .rating-css input:checked + label ~ label {
             color: #b4afaf;
@@ -29,9 +30,9 @@
         }
     </style>
 @endsection
-    
+
 @section('content')
-    <div class="container py-5">
+    <div class="container py-5 mt-5">
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -59,15 +60,15 @@
                                         <button type="submit" class="btn btn-primary mt-3">Submit Rating</button>
                                     </form>
                                 </div>
-                            @else
                             @endif
                         @else
-                            <p class="mt-4">Please <a href="{{ route('login') }}">log in</a> to rate this plat.</p>
+                            <p class="mt-4">Veuillez vous <a href="{{ route('login') }}">connecter</a> pour évaluer ce plat.</p>
                         @endauth
                     </div>
                 </div>
             </div>
         </div>
+        @include('layouts.components.menuComponent')
     </div>
 @endsection
 
@@ -78,7 +79,7 @@
             document.querySelectorAll('.rating-css input').forEach(function (input) {
                 input.addEventListener('change', function () {
                     this.parentElement.querySelectorAll('label').forEach(function (label) {
-                        label.style.color = label.getAttribute('for') <= input.id ? '#ffe400' : '#b4afaf';
+                        label.style.color = label.getAttribute('for') <= input.id ? '#ff8c00' : '#b4afaf';
                     });
                 });
             });

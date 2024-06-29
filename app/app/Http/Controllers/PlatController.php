@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Plat;
 use App\Models\Etoile;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,9 @@ class PlatController extends Controller
     {
         $plat = Plat::findOrFail($idPlat);
         $hasRated = Etoile::where('idPlat', $idPlat)->where('idClient', Auth::id())->exists();
-        return view('details', compact('plat', 'hasRated'));
+        $categories = Categorie::all();
+        $plats = Plat::all();
+        return view('details', compact('plat', 'hasRated','categories', 'plats'));
     }
 
 }

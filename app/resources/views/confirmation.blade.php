@@ -46,7 +46,8 @@
             <label for="adresseLivraison" class="block text-sm font-medium text-gray-700">Address</label>
             <input type="text" name="adresseLivraison" id="adresseLivraison" value="{{ $user->adresseClient }}" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
         </div>
-        <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Confirm and Pay</button>
+        <button name="cash" value="cash" type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Confirmer et payer apres livraison</button>
+        <button name="online" value="online" type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Confirmer et payer maintenant</button>
     </form>
 </div>
 

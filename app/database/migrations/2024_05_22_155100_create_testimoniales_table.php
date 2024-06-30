@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('idTestimoniale');
             $table->string('message');
             $table->date('jjmmaaaa');
+            $table->boolean('etatTestimoniale')->default(false);
             $table->timestamps();
             $table->unsignedBigInteger('idClient');
             $table->foreign('idClient')->references('idClient')->on('clients')->onDelete('cascade');

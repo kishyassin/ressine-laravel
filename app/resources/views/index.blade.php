@@ -17,7 +17,7 @@
                             <div class="row justify-content-center align-items-center g-5">
                                 <div class="col-lg-7 text-center wow fadeInUp">
                                     <h1 class="display-4 text-white">{{ $categoryName }}<br>
-                                        <a href="{{ route('plat.details', ['idPlat' => $plat->idPlat]) }}">
+                                        <a href="{{ route('plat.details', ['idPlat' => $plat->idPlat]) }}" class="booking-link-of-slider">
                                             {{ $plat->designationPlat }}
                                         </a>                                    </h1>
                                     <p class="text-white mx-4 mb-4 pb-2">{{ $plat->descriptionPlat }}</p>

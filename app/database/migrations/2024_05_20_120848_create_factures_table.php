@@ -12,6 +12,8 @@ class CreateFacturesTable extends Migration
             $table->string('etat');
             $table->string('adresseLivraison')->nullable();
 
+            $table->boolean('reglee')->default(0);
+
             $table->unsignedBigInteger('idDate');
             $table->foreign('idDate')->references('idDate')->on('order_dates')->onDelete('cascade');
 

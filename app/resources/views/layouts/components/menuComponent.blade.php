@@ -32,7 +32,7 @@
                                                 <a href="{{ route('plat.details', ['idPlat' => $plat->idPlat]) }}">
                                                     {{ $plat->designationPlat }}
                                                 </a>
-                                                <span class="text-primary">${{ number_format($plat->prixUnitaire, 2) }}</span>
+                                                <span class="text-primary">MAD {{ number_format($plat->prixUnitaire, 2) }}</span>
                                             </h5>
                                             <small class="fst-italic">{{ $plat->descriptionPlat }}</small>
                                         </div>

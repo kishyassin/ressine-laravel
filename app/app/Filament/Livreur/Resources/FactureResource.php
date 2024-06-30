@@ -46,6 +46,9 @@ class FactureResource extends Resource
                 Tables\Columns\TextColumn::make('Client.name'),
                 Tables\Columns\TextColumn::make('Client.telephone')
                 ->label('phone'),
+                Tables\Columns\IconColumn::make('reglee')
+                ->label('Payée')
+                ->boolean(),
                 Tables\Columns\SelectColumn::make('etat')
                     ->options([
                         'en attente' => 'en attente',

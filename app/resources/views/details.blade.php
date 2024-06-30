@@ -51,9 +51,7 @@
                             <h1 class="food-price">{{ Number::currency($plat->prixUnitaire,'mad') }}</h1>
                             <div class="tranding-slide-content-bottom">
                                 <h2 class="food-name">
-                                    <a href="{{ route('plat.details', ['idPlat' => $plat->idPlat]) }}">
-                                        {{ $plat->designationPlat }}
-                                    </a>
+                                        {{ $plat->designationPlat }}                   
                                 </h2>
                                 <h5 class="food-rating">
                                     <span>{{ round($plat->etoiles_avg_nombre_etoile, 1) }}.0</span>

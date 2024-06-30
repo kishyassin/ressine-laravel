@@ -15,14 +15,10 @@
                 <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
                 <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
                 <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-social" href=""><i
-                            class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i
-                            class="fab fa-youtube"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i
-                            class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -33,11 +29,17 @@
                 <p>10h - 20h</p>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">liens utils                </h4>
+                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">liens utils </h4>
 
-                <p class="mb-2"><a href="/admin">Ressine Admin Panel</a></p>
-                <p class="mb-2"><a href="/chef">Ressine Chef Panel</a></p>
-                <p class="mb-2"><a href="/livreur">Ressine Livreur Panel</a></p>
+                <p class="mb-2"><a href="/admin">Admin </a>|<a href="/chef"> Chef </a>|<a href="/livreur"> Livreur
+                    </a></p>
+                <form class="position-relative mx-auto" action="{{ route('envoyer.testimonial') }}" method="POST"
+                    style="max-width: 400px;">
+                    @csrf
+                    <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" name="message"
+                        placeholder="Votre Message" required>
+                    <button type="submit" class="btn btn-primary py-2 mt-2 me-2">Envoyer</button>
+                </form>
             </div>
         </div>
     </div>

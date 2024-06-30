@@ -13,6 +13,7 @@ use App\Http\Controllers\LivreurController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReserverController;
+use App\Http\Controllers\TestimonialeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,7 @@ Route::middleware('auth')->group(function () {
     Route::post('stripe/session', [StripeController::class, 'session'])->name('stripe.session');
     Route::get('stripe/success', [StripeController::class, 'success'])->name('success');
     Route::get('stripe/cancel', [StripeController::class, 'cancel'])->name('cancel');
+    Route::post('/envoyer-testimonial', [TestimonialeController::class, 'store'])->name('envoyer.testimonial');
 
 });
 

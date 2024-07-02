@@ -8,7 +8,7 @@
     <div class="container-xxl py-5 bg-dark hero-header"
          style="background: linear-gradient(rgba(15, 23, 43, 0.9), rgba(15, 23, 43, 0.4)), url('{{ asset('img/bg-hero.jpg') }}'); background-size: cover; background-position: center;">
         <div class="container-fluid text-center my-5 pt-5 pb-4">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">Ressine Menue</h1>
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Ressine Menu</h1>
         </div>
     </div>
     @include('layouts.components.menuComponent')

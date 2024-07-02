@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <div class="flex justify-end items-center mt-8">
-                        <span class="text-gray-600 mr-4">Subtotal:</span>
+                        <span class="text-gray-600 mr-4">Total:</span>
                         <span
                             class="text-xl font-bold">{{ Number::currency(\Cart::session(Auth::id())->getTotal(), 'mad') }}</span>
                     </div>

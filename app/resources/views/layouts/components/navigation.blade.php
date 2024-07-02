@@ -18,14 +18,14 @@
             <a href="/" class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}">Accueil</a>
             <a href="/about" class="nav-item nav-link {{ request()->is('about') ? 'active' : '' }}">à propos</a>
             <a href="/menu" class="nav-item nav-link {{ request()->is('menu') ? 'active' : '' }}">Menu</a>
-            <div class="nav-item dropdown">
+            {{-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Reserver</a>
                 <div class="dropdown-menu m-0">
                     <a href="#" class="dropdown-item">petit déjeuner</a>
                     <a href="#" class="dropdown-item">déjeuner</a>
                     <a href="#" class="dropdown-item">dîner</a>
                 </div>
-            </div>
+            </div> --}}
             <a href="/contact" class="nav-item nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
 
             @if (Route::has('login'))

@@ -29,6 +29,8 @@ class CategorieResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('description')
                     ->maxLength(255),
+                Forms\Components\TextInput::make('iconCategorie')
+                    ->maxLength(255),
             ]);
     }
 
@@ -36,18 +38,18 @@ class CategorieResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('iconCategorie')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('designation')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
-                    ->searchable(),
+                    ->searchable()
+                    ->wrap(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+
             ])
             ->filters([
                 //
